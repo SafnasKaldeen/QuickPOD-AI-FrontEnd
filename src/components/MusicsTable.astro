@@ -1,10 +1,14 @@
 ---
 import { Icon } from "astro-icon";
 import { songs } from "../lib/data";
+import PureInlineArtists from "./PureInlineArtists.astro";
 import InlineArtists from "./InlineArtists.astro";
 
-// Get the `category` prop
-const { category } = Astro.props;
+interface Props {
+  category: string;
+}
+
+const category = Astro.props.category;
 ---
 
 <table class="table-auto text-left min-w-full divide-y-2 divide-gray-500/30">
@@ -40,9 +44,6 @@ const { category } = Astro.props;
                 >
                   {song.title}
                 </a>
-                <div class="text-sm text-gray-300 group-hover:text-white">
-                  <InlineArtists artists={song.artists} />
-                </div>
               </div>
             </td>
             <td class="whitespace-nowrap px-4 py-2">
@@ -50,7 +51,7 @@ const { category } = Astro.props;
                 href="#"
                 class="text-gray-300 group-hover:text-white hover:underline text-sm"
               >
-                {song.artists}
+                {song.artists[0]}
               </a>
             </td>
             <td class="whitespace-nowrap px-4 py-2 text-right">

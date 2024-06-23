@@ -38,7 +38,6 @@ const playlist = allPlaylists.find((playlist) => playlist.id === id);
         />
       </div>
       <div class="flex flex-col justify-between">
-        <div class="flex flex-1 items-end">Playlist</div>
         <div>
           <h1 class="title-clamp font-bold block">
             {playlist?.title}
@@ -66,7 +65,7 @@ const playlist = allPlaylists.find((playlist) => playlist.id === id);
     </div>
     <div
       class="absolute h-screen inset-0 z-[-1] bg-gradient-to-b from-context"
-      style=`--context-color:${playlist?.color.accent}`
+      style=`--context-color:${playlist?.title}`
     >
       <img
         src={playlist?.cover}

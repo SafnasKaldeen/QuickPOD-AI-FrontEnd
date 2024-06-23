@@ -313,7 +313,7 @@ export const songs: Song[] = [
 ];
 
 export const morePlaylists = [
-  ...playlists.map((item) => ({
+  ...songs.map((item) => ({
     ...item,
     id: item.id + "a",
   })),
@@ -331,3 +331,4 @@ export const allPlaylists = [
   ...morePlaylists,
   ...sidebarPlaylists,
 ];
+
