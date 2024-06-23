@@ -2,6 +2,7 @@
 import type { Song } from "../lib/data";
 import PlayButton from "./PlayButton.astro";
 import PureInlineArtists from "./PureInlineArtists.astro";
+import colors from "../lib/colors";
 interface Props {
   song: Song;
 }
@@ -12,7 +13,7 @@ const { song } = Astro.props;
 <a
   href={`/podcast/${song.title}`}
   class="playlist-card p-4 flex-col items-center group relative transition-all duration-300 overflow-hidden gap-5 rounded-md shadow-lg hover:shadow-xl outline-none bg-zinc-500/5 hover:bg-zinc-500/20 focus:bg-zinc-500/20"
-  data-color={"blue"}
+  data-color={"colors.teal.dark"}
   transition:name=`playlist ${song.id} box`
 >
   <div class="w-40">

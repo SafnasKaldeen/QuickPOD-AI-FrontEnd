@@ -1,0 +1,23 @@
+---
+function handleSearch(event) {
+  event.preventDefault();
+  const formData = new FormData(event.target);
+  const query = formData.get("query");
+  // Perform any search action here (e.g., navigate to a search results page)
+  alert(`Performing search for: ${query}`);
+}
+
+import Icon from "astro-icon";
+---
+
+<div class="flex items-center">
+  <input
+    type="text"
+    name="query"
+    placeholder="Search..."
+    class="flex-1 p-2 rounded-md bg-zinc-800 text-white ml-5"
+  />
+  <button type="submit">
+    <Icon name="carbon:search" class="h-5 w-5 text-gray-300 m-5" />
+  </button>
+</div>

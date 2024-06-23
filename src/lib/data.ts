@@ -28,7 +28,7 @@ export const playlists: Playlist[] = [
   {
     id: "3",
     title: "Business Mix",
-    color: colors.rose,
+    color: colors.blue,
     cover:
       "https://th.bing.com/th/id/R.66740679ff58c398154c59a00de8fd88?rik=FcPo70d3kfj8Lw&riu=http%3a%2f%2fwilcostrategy.com%2fwp-content%2fuploads%2f2016%2f08%2fimage25.jpg&ehk=p0DPLsYING4A%2f2mKrjGoAWDMXapM2FV0yusmLODGNt0%3d&risl=&pid=ImgRaw&r=0",
     artists: ["Crypto", "Stocks", "Gold", "Economy", "Fuel"],
