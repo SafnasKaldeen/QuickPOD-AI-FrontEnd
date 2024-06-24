@@ -2,31 +2,34 @@
 import SideMenuItem from "./SideMenuItem.astro";
 import { sidebarPlaylists } from "../../lib/data";
 import SideItemCard from "./SideItemCard.astro";
-import SearchBox from "./SearchBox.astro";
+import Search from "./Search.jsx";
 
-function toggleTheme() {
-  alert("Theme toggled!");
-}
+const query = "" || Astro.params.query;
 ---
 
 <div class="flex flex-col flex-1 gap-2">
-  <div class="bg-zinc-900 rounded-lg">
+  <div class="bg-zinc-900 rounded-lg py-2">
     <ul>
-      <SideMenuItem href="/" iconName="carbon:home">Home</SideMenuItem>
-      <form action="/search" method="get" on:submit={toggleTheme}>
-        <SearchBox />
-      </form>
+      <SideMenuItem iconName="carbon:home">Home</SideMenuItem>
+      <Search client:load />
     </ul>
-
-    <div class="bg-zinc-900 rounded-lg flex-1">
-      <ul>
-        <SideMenuItem href="#" iconName="carbon:media-library">
-          Your library
-        </SideMenuItem>
-      </ul>
+  </div>
+  <div class="bg-zinc-900 rounded-lg flex-1">
+    <ul>
+      <SideMenuItem href="#" iconName="carbon:media-library">
+        Your library
+      </SideMenuItem>
       <ul class="pl-2">
-        {sidebarPlaylists.map((song) => <SideItemCard song={song} />)}
+        {
+          sidebarPlaylists
+            .filter((song) =>
+              song.title
+                .toLowerCase()
+                .includes((query && query.toLowerCase()) || "")
+            )
+            .map((song) => <SideItemCard song={song} />)
+        }
       </ul>
-    </div>
+    </ul>
   </div>
 </div>
