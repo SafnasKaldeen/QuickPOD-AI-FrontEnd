@@ -53,7 +53,7 @@ class Switch extends Component {
             }`}
           ></div>
         </div>
-        <div className="ml-1 text-sky-500 font-medium">{label}</div>
+        <div className="ml-1 text-green-500 font-medium">{label}</div>
       </label>
     );
   }

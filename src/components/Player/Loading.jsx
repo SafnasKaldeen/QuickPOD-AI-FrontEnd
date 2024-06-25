@@ -8,7 +8,7 @@ class Loading extends Component {
     return (
       <div className="flex items-center gap-2">
         {loaded ? (
-          <FaMusic size={20} color="magenta" />
+          <FaMusic size={20} color="#87ceeb" />
         ) : (
           <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-white"></div>
         )}

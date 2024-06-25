@@ -2,7 +2,7 @@ import React from "react";
 import ReactHowler from "react-howler";
 import raf from "raf";
 import { ImVolumeMedium } from "react-icons/im";
-import { FaPlay, FaStop } from "react-icons/fa";
+import { FaPlay, FaStop, FaHeart } from "react-icons/fa";
 import Switch from "./Switch";
 import Loading from "./Loading";
 import TimeItem from "./TimeItem";
@@ -23,8 +23,10 @@ class AudioPlayer extends React.Component {
       hours: 0,
       minutes: 0,
       seconds: 0,
+      Liked: false,
     };
     this.handleToggle = this.handleToggle.bind(this);
+    this.handleLike = this.handleLike.bind(this);
     this.handleOnLoad = this.handleOnLoad.bind(this);
     this.handleOnEnd = this.handleOnEnd.bind(this);
     this.handleOnPlay = this.handleOnPlay.bind(this);
@@ -45,6 +47,12 @@ class AudioPlayer extends React.Component {
   handleToggle() {
     this.setState({
       playing: !this.state.playing,
+    });
+  }
+
+  handleLike() {
+    this.setState({
+      Liked: !this.state.Liked,
     });
   }
 
@@ -144,7 +152,7 @@ class AudioPlayer extends React.Component {
           volume={this.state.volume}
           ref={(ref) => (this.player = ref)}
         />
-        <div className="bg-transparent text-sky-400 font-mono rounded-lg flex flex-col gap-4 p-4">
+        <div className="bg-transparent text-green-500 font-mono rounded-lg flex flex-col gap-4 p-4">
           <div className="flex justify-around">
             <Loading loaded={this.state.loaded} title={this.props.title} />
             <div>
@@ -180,6 +188,11 @@ class AudioPlayer extends React.Component {
               <button onClick={this.handleToggle}>
                 <FaPlay
                   className={`${this.state.playing ? "" : "opacity-50"}`}
+                />
+              </button>
+              <button onClick={this.handleLike}>
+                <FaHeart
+                  className={`${this.state.Liked ? "" : "opacity-50"}`}
                 />
               </button>
             </div>
