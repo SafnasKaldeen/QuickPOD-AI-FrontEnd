@@ -65,7 +65,6 @@ const playlist = allPlaylists.find((playlist) => playlist.id === id);
             <div class="ml-4" transition:name=`playlist ${playlist?.id} play`>
             </div>
             <LikeButton />
-            <DotsButton />
           </div>
           <div class="px-6 pt-4">
             <MusicsTable category={playlist?.title} />
