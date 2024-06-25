@@ -1,0 +1,19 @@
+---
+const { podcast } = Astro.params;
+
+import Layout from "../../layouts/Layout.astro";
+import { allPlaylists } from "../../lib/data";
+import SideMenu from "../../components/Side/SideMenu.astro";
+
+export function getStaticPaths() {
+  return allPlaylists.map((playlist) => ({
+    params: {
+      podcast: playlist.title,
+    },
+  }));
+}
+
+const POD = allPlaylists.find((playlist) => playlist.title === podcast);
+---
+
+<p>title: {POD?.title}</p>

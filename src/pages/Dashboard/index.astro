@@ -1,13 +1,15 @@
 ---
 const query = Astro.params.query;
 
-import GreetingTitle from "../components/GreetingTitle.svelte";
-import PageHeader from "../components/PageHeader.astro";
-import PlaylistCard from "../components/PlaylistCard.astro";
-import PlaylistItemCard from "../components/PlaylistItemCard.astro";
-import Layout from "../layouts/Layout.astro";
-import { playlists, morePlaylists } from "../lib/data";
-import SideMenu from "../components/Side/SideMenu.astro";
+import GreetingTitle from "../../components/GreetingTitle.svelte";
+import PageHeader from "../../components/PageHeader.astro";
+import PlaylistCard from "../../components/PlaylistCard.astro";
+import PlaylistItemCard from "../../components/PlaylistItemCard.astro";
+import Layout from "../../layouts/Layout.astro";
+import { playlists, morePlaylists } from "../../lib/data";
+import SideMenu from "../../components/Side/SideMenu.astro";
+
+const userName = "Safnas Kaldeen";
 ---
 
 <div class="relative h-screen gap-2 flex items-stretch">
@@ -23,7 +25,9 @@ import SideMenu from "../components/Side/SideMenu.astro";
       >
         <PageHeader />
         <div class="relative z-10 px-6">
-          <GreetingTitle client:visible />
+          <span>
+            <GreetingTitle client:visible />
+          </span>
           <div
             class="grid gap-y-4 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 mt-6"
           >
@@ -39,7 +43,6 @@ import SideMenu from "../components/Side/SideMenu.astro";
         >
         </div>
       </div>
-      <p>query: {query}</p>
       <div class="px-6 relative z-10 mt-4">
         <h2 class="text-2xl font-bold">Podcasts selected For you</h2>
         <div class="flex flex-wrap mt-6 gap-4">
