@@ -132,7 +132,7 @@ class AudioPlayer extends React.Component {
 
   render() {
     return (
-      <div className="max-w-[600px]">
+      <div className="">
         <ReactHowler
           src={this.props.src}
           playing={this.state.playing}
