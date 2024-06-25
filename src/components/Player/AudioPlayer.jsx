@@ -179,7 +179,7 @@ class AudioPlayer extends React.Component {
             />
           </div>
           <div className="flex text-2xl">
-            <div className="mx-auto flex gap-4">
+            <div className="mx-auto flex gap-10">
               <button onClick={this.handleStop}>
                 <FaStop
                   className={`${this.state.playing ? "opacity-50" : ""}`}

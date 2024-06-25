@@ -1,15 +1,16 @@
 <script lang="ts">
   const currentTime = new Date();
   const currentHour = currentTime.getHours();
+  const userName = 'Safnas'
 
   let greeting = "";
 
   if (currentHour >= 5 && currentHour < 12) {
-    greeting = "Good morning";
+    greeting = `Good morning ${userName}!`;
   } else if (currentHour >= 12 && currentHour < 18) {
-    greeting = "Good afternoon";
+    greeting = `Good afternoon ${userName}!`;
   } else {
-    greeting = "Good night";
+    greeting = `Good night ${userName}!`;
   }
 </script>
 
