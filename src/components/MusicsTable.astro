@@ -3,6 +3,7 @@ import { Icon } from "astro-icon";
 import { songs } from "../lib/data";
 import PureInlineArtists from "./PureInlineArtists.astro";
 import InlineArtists from "./InlineArtists.astro";
+import PlayButton from "./PlayButton.astro"
 
 interface Props {
   category: string;
@@ -41,10 +42,10 @@ const category = Astro.props.category;
             </td>
             <td class="whitespace-nowrap px-4 py-2">
               <a
-                href="#"
-                class="text-gray-300 group-hover:text-white hover:underline text-sm"
+                href={`/podcast/${encodeURIComponent(song.title)}`}
+                class="text-gray-300 group-hover:text-white"
               >
-                {song.artists[0]}
+                <PlayButton />
               </a>
             </td>
             <td class="whitespace-nowrap px-4 py-2 text-right">
