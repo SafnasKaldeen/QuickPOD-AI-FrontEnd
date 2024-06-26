@@ -12,7 +12,7 @@ class AudioPlayer extends React.Component {
     super(props);
 
     this.state = {
-      playing: false,
+      playing: true, // set the initial value for autoplay
       loaded: false,
       loop: false,
       mute: false,
@@ -152,6 +152,7 @@ class AudioPlayer extends React.Component {
           volume={this.state.volume}
           ref={(ref) => (this.player = ref)}
         />
+        <p>{this.props.color}</p>
         <div className="bg-transparent text-green-500 font-mono rounded-lg flex flex-col gap-4 p-4">
           <div className="flex justify-around">
             <Loading loaded={this.state.loaded} title={this.props.title} />

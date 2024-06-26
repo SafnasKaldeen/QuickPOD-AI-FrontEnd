@@ -12,6 +12,17 @@ import MusicsTable from "../../components/MusicsTable.astro"
 // import AudioPlayer from "../../components/AudioPlayer.astro"
 import AudioPlayer from "../../components/Player/AudioPlayer.jsx"
 // import Loading from "../../components/Player/Loading.jsx"
+// import color from "../../lib/colors.ts"
+
+// Define the actual colorMapping object
+// export const colorMapping = {
+//   "Sports Mix": colors.teal,
+//   "Political Mix": colors.green,
+//   "Business Mix": colors.blue,
+//   "Tech Mix": colors.red,
+//   "Korean Mix": colors.pink,
+//   "Health & Wellness Mix": colors.gray,
+// };
 
 
 export function getStaticPaths() {
@@ -72,7 +83,7 @@ const POD = allPlaylists.find((playlist) => playlist.title === podcast);
               <!-- <AudioPlayer audioSrc="/Audio/Football.mp3" /> -->
               <main className="flex min-h-screen flex-col items-center gap-20 py-20 px-4 md:px-24 md:py-24">
                 <div className="flex flex-col gap-4">
-                  <AudioPlayer title="Take Me - DJ Jay Sudo" src="/Audio/Football.mp3" client:visible />
+                  <AudioPlayer title="Take Me - DJ Jay Sudo" src={`/Audio/${POD?.title}.mp3`} client:visible color={POD?.color}/>
                    <!-- <Loading client:visible/> -->
                 </div>
               </main>
