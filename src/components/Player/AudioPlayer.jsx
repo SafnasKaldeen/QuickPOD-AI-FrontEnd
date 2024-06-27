@@ -186,14 +186,14 @@ class AudioPlayer extends React.Component {
                   className={`${this.state.playing ? "opacity-50" : ""}`}
                 />
               </button>
-              <button onClick={this.handleToggle}>
-                <FaPlay
-                  className={`${this.state.playing ? "" : "opacity-50"}`}
-                />
-              </button>
               <button onClick={this.handleLike}>
                 <FaHeart
                   className={`${this.state.Liked ? "" : "opacity-50"}`}
+                />
+              </button>
+              <button onClick={this.handleToggle}>
+                <FaPlay
+                  className={`${this.state.playing ? "" : "opacity-50"}`}
                 />
               </button>
             </div>

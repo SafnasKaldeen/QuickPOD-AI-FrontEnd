@@ -1,25 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import { parseTime } from "@/lib/helpers";
 
-class TimeItem extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      formattedTime: "",
-    };
-  }
-
-  componentDidMount() {
-    const { time } = this.props;
-    const hms = parseTime(time).join(":");
-    this.setState({ formattedTime: hms });
-  }
-
-  render() {
-    const { formattedTime } = this.state;
-
-    return <span>{formattedTime}</span>;
-  }
-}
+const TimeItem = ({ time }) => {
+  const hms = parseTime(time).join(":");
+  return <span>{hms}</span>;
+};
 
 export default TimeItem;
