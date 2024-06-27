@@ -183,22 +183,29 @@ class AudioPlayer extends React.Component {
             <div className="mx-auto flex gap-10">
               <button onClick={this.handleStop}>
                 <FaStop
-                  className={`${this.state.playing ? "opacity-50" : ""}`}
+                  className={`${this.state.playing ? "text-white" : ""}`}
                 />
               </button>
               <button onClick={this.handleLike}>
                 <FaHeart
-                  className={`${this.state.Liked ? "" : "opacity-50"}`}
+                  className={`${this.state.Liked ? "text-red-500" : "text-white"}`}
                 />
               </button>
               <button onClick={this.handleToggle}>
                 <FaPlay
-                  className={`${this.state.playing ? "" : "opacity-50"}`}
+                  className={`${this.state.playing ? "" : "text-white"}`}
                 />
               </button>
             </div>
           </div>
           <div className="grid grid-cols-12">
+            <div className="col-span-6 md:col-span-4 flex [&>*]:mx-auto">
+              <Switch
+                checked={this.state.loop}
+                onChange={this.handleLoopToggle}
+                label="Loop"
+              />
+            </div>
             <div className="col-span-12 md:col-span-4 flex gap-1 [&>*]:my-auto text-2xl [&>*]:mb-6 md:[&>*]:mb-0">
               <ImVolumeMedium />
               <input
@@ -211,13 +218,6 @@ class AudioPlayer extends React.Component {
                 onChange={(e) =>
                   this.setState({ volume: parseFloat(e.target.value) })
                 }
-              />
-            </div>
-            <div className="col-span-6 md:col-span-4 flex [&>*]:mx-auto">
-              <Switch
-                checked={this.state.loop}
-                onChange={this.handleLoopToggle}
-                label="Loop"
               />
             </div>
             <div className="col-span-6 md:col-span-4 flex [&>*]:mx-auto">
