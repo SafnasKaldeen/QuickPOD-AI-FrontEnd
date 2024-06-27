@@ -11,6 +11,7 @@ import LikeButton from "../../components/LikeButton.astro"
 import MusicsTable from "../../components/MusicsTable.astro"
 import AudioPlayer from "../../components/Player/AudioPlayer.jsx"
 import Transcript from "../../components/Transcript.astro"
+import BlogButton from "../../components/BlogButton.astro"
 
 
 export function getStaticPaths() {
@@ -37,30 +38,30 @@ const POD = allPlaylists.find((playlist) => playlist.title === podcast);
         >
           <PageHeader />
           <div
-            class="flex flex-col items-center md:flex-row md:items-stretch gap-8 px-6"
-          >
-            <div class="h-52 w-52 flex-none">
-              <img
-                src={POD?.image}
-                alt={POD?.title}
-                class="object-cover h-full w-full shadow-[5px_0_30px_0px_rgba(0,0,0,0.3)]"
-                transition:name=`playlist ${POD?.id} image`
-              />
+          class="flex flex-col items-center md:flex-row md:items-stretch gap-8 px-6">
+          <div class="h-52 w-52 flex-none">
+            <img
+              src={POD?.image}
+              alt={POD?.title}
+              class="object-cover h-full w-full shadow-[5px_0_30px_0px_rgba(0,0,0,0.3)]"
+              transition:name=`playlist ${POD?.id} image`
+            />
+          </div>
+          <div class="flex flex-col justify-between">
+            <div>
+              <h1 class="title-clamp font-bold block text-8xl">
+                {POD?.title}
+                <span transition:name=`playlist ${POD?.id} title`></span>
+              </h1>
             </div>
-            <div class="flex flex-col justify-between">
-              <div>
-                <h1 class="title-clamp font-bold block">
-                  {POD?.title}
-                  <span transition:name=`playlist ${POD?.id} title`></span>
-                </h1>
-              </div>
-              <div class="flex-1 flex items-end">
-                <div class="text-sm">
-                  <InlineArtists artists={POD?.artists || []} />
-                </div>
+            <div class="flex-1 flex items-end">
+              <div class="text-sm">
+                <!-- <InlineArtists artists={POD?.artists || []} /> -->
+                 <BlogButton/>
               </div>
             </div>
           </div>
+        </div>
   
           <div class="bg-zinc-900/30 mt-6 flex-1 p-6 blur-100">
             <div class="flex gap-1 items-center">
