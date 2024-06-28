@@ -10,6 +10,21 @@ import { playlists, morePlaylists } from "../../lib/data";
 import AvatarCard from "../../components/AvatarCard.astro";
 import ProfileForm from "../../components/ProfileForm.astro";
 import Details from "../../components/Details.astro";
+import Interests from "../../components/Interests.astro";
+
+const interests = [
+  "Sports",
+  "Cricket",
+  "Football",
+  "Basketball",
+  "Wrestling",
+  "Politics",
+  "Business",
+  "Tech",
+  "Korean",
+  "Music",
+  "Bollywood",
+];
 ---
 
 <div class="relative h-screen gap-2 flex items-stretch">
@@ -37,8 +52,11 @@ import Details from "../../components/Details.astro";
           <span>
             <GreetingTitle client:visible />
           </span>
-          <div class="w-full lg:w-2/3 px-4 m-2">
-            This place is researved for interest selection
+          <!-- <h2 class="text-2xl font-bold">Select your Interests in</h2> -->
+          <div
+            class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 m-8"
+          >
+            {interests.map((interest) => <Interests interest={interest} />)}
           </div>
         </div>
         <div

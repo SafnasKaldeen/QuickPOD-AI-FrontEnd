@@ -1,0 +1,66 @@
+---
+interface Interest {
+  interest: string;
+}
+
+const { interest } = Astro.props;
+---
+
+<div
+  class="border-2 text-sky-500 border-gray-300 p-2 rounded-lg hover:border-sky-500 cursor-pointer interest-item"
+>
+  <div class="flex items-center space-x-2">
+    <span class="icon">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6 plus-icon"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M12 4v16m8-8H4"></path>
+      </svg>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6 minus-icon hidden"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M20 12H4"></path>
+      </svg>
+    </span>
+    <span>{interest}</span>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll(".interest-item").forEach((item) => {
+    item.addEventListener("click", () => {
+      item.classList.toggle("bg-green-500");
+      item.classList.toggle("text-white");
+      item.querySelector(".plus-icon").classList.toggle("hidden");
+      item.querySelector(".minus-icon").classList.toggle("hidden");
+    });
+  });
+</script>
+
+<style>
+  .bg-green-500 {
+    background-color: purple; /* Tailwind green-500 color */
+  }
+  .text-white {
+    color: #ffffff; /* Text color for better contrast */
+  }
+  .hidden {
+    display: none;
+  }
+</style>

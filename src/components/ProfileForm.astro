@@ -5,42 +5,31 @@
         <div class="card bg-transparent rounded-lg p-6">
           <div class="mb-4">
             <div class="flex items-center mb-2">
-              <h6 class="mb-0 w-1/4 font-bold text-gray-700">Full Name</h6>
+              <h6 class="mb-0 w-1/4 font-bold text-gray-200">Full Name</h6>
               <input
                 type="text"
-                class="form-input w-3/4 px-4 py-2 border border-gray-300 rounded text-black"
-                value="Current value"
+                class="form-input w-3/4 px-4 py-2 border border-gray-300 rounded text-black bg-blue-100"
+                value="Safnas Kaldeen"
                 placeholder="Mr.Whatever"
               />
             </div>
           </div>
           <div class="mb-4">
             <div class="flex items-center mb-2">
-              <h6 class="mb-0 w-1/4 text-gray-700">Email</h6>
+              <h6 class="mb-0 w-1/4 font-bold text-gray-200">Language</h6>
               <input
                 type="text"
-                class="form-input w-3/4 px-4 py-2 border border-gray-300 rounded text-black"
-                value="Current value"
-                placeholder="john@example.com"
-              />
-            </div>
-          </div>
-          <div class="mb-4">
-            <div class="flex items-center mb-2">
-              <h6 class="mb-0 w-1/4 text-gray-700">Language</h6>
-              <input
-                type="text"
-                class="form-input w-3/4 px-4 py-2 border border-gray-300 rounded text-black"
-                value="Current value"
+                class="form-input w-3/4 px-4 py-2 border border-gray-300 rounded text-black bg-blue-100"
+                value="English"
                 placeholder="English"
               />
             </div>
           </div>
           <div class="mb-4">
             <div class="flex items-center mb-2">
-              <h6 class="mb-0 w-1/4 text-gray-700">Gender</h6>
+              <h6 class="mb-0 w-1/4 text-gray-200 font-bold">Gender</h6>
               <select
-                class="form-select w-3/4 px-4 py-2 border border-gray-300 rounded text-black"
+                class="form-select w-3/4 px-4 py-2 border border-gray-300 rounded text-black bg-blue-100"
               >
                 <option value="1">Male</option>
                 <option value="2">Female</option>
@@ -50,12 +39,23 @@
           </div>
           <div class="mb-4">
             <div class="flex items-center mb-2">
-              <h6 class="mb-0 w-1/4 text-gray-700">Country</h6>
+              <h6 class="mb-0 w-1/4 font-bold text-gray-200 bold">Country</h6>
               <input
                 type="text"
-                class="form-input w-3/4 px-4 py-2 border border-gray-300 rounded text-black"
-                value="Current value"
+                class="form-input w-3/4 px-4 py-2 border border-gray-300 rounded text-black bg-blue-100"
+                value="Sri Lanka"
                 placeholder="USA"
+              />
+            </div>
+          </div>
+          <div class="mb-4">
+            <div class="flex items-center mb-2">
+              <h6 class="mb-0 w-1/4 font-bold text-gray-200">Bot Name</h6>
+              <input
+                type="text"
+                class="form-input w-3/4 px-4 py-2 border border-gray-300 rounded text-black bg-blue-100"
+                value="Alexa"
+                placeholder="Siri"
               />
             </div>
           </div>
@@ -80,14 +80,15 @@
           <img
             src="/images/Ai.gif"
             alt="AI"
-            class="w-full rounded-lg opacity-10"
+            class="w-full rounded-lg opacity-20"
             id="Gif"
           />
         </div>
         <select
           id="voiceSelect"
-          class="form-select w-full px-4 py-2 mt-4 border border-gray-300 rounded text-black"
+          class="form-select w-full px-4 py-2 mt-4 border border-gray-300 rounded text-black bg-blue-100"
         >
+          <option selected disabled value="0">Select Voice</option>
           <option value="alloy">Alloy: Female</option>
           <option value="echo">Echo: Male</option>
           <option value="fable">Fable: Male (British)</option>
@@ -135,12 +136,12 @@
 
             if (audioSrc) {
               audioElement.src = audioSrc;
-              Gif.classList.remove("opacity-10");
+              Gif.classList.remove("opacity-20");
               audioElement.play();
 
               // Re-add the class once the audio is finished playing
               audioElement.addEventListener("ended", function () {
-                Gif.classList.add("opacity-10");
+                Gif.classList.add("opacity-20");
               });
             }
           });
