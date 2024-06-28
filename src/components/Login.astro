@@ -88,6 +88,7 @@ if (FormType === 'Log In') {
     border-radius: 8px;
     width: 100%;
     outline: none;
+    text-color: black;
   }
 
   .form-container {
@@ -207,19 +208,19 @@ if (FormType === 'Log In') {
       <span>or use your email for registration</span>
       
       <!-- First Name -->
-      <input type="text" placeholder="First Name" required />
+      <input type="text" placeholder="First Name" required class="text-black"class="text-black" />
     
       <!-- Last Name -->
-      <input type="text" placeholder="Last Name" required />
+      <input type="text" placeholder="Last Name" required class="text-black"/>
     
       <!-- Email -->
-      <input type="email" placeholder="Email" required />
+      <input type="email" placeholder="Email" required class="text-black"/>
     
       <!-- Password -->
-      <input type="password" placeholder="Password" required />
+      <input type="password" placeholder="Password" required class="text-black"/>
     
       <!-- Language Dropdown -->
-      <input type="text" id="language" list="languages" placeholder="Select your language" required autocomplete="off" />
+      <input type="text" id="language" list="languages" placeholder="Select your language" required class="text-black"autocomplete="off" />
       <datalist id="languages">
         <!-- Example languages, add more as needed -->
         <option value="English"></option>
@@ -229,7 +230,7 @@ if (FormType === 'Log In') {
       </datalist>
     
       <!-- Country Dropdown -->
-      <input type="text" id="country" list="countries" placeholder="Select your country" required autocomplete="off" />
+      <input type="text" id="country" list="countries" placeholder="Select your country" required class="text-black"autocomplete="off" />
       <datalist id="countries">
         <!-- Example countries, add more as needed -->
         <option value="USA"></option>
@@ -247,8 +248,8 @@ if (FormType === 'Log In') {
     <form>
       <h1 class="font-bold">Sign In</h1>
       <span>or use your email password</span>
-      <input type="email" placeholder="Email" />
-      <input type="password" placeholder="Password" />
+      <input class="text-black" type="email" placeholder="Email" />
+      <input class="text-black" type="password" placeholder="Password" />
       
       <a href="#">Forget Your Password?</a>
       <button>Sign In</button>
