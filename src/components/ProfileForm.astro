@@ -1,0 +1,150 @@
+<div class="container mx-auto p-4">
+  <div class="main-body">
+    <div class="grid gap-y-4 gap-x-6 sm:grid-cols-1 lg:grid-cols-2">
+      <div class="px-4">
+        <div class="card bg-transparent rounded-lg p-6">
+          <div class="mb-4">
+            <div class="flex items-center mb-2">
+              <h6 class="mb-0 w-1/4 font-bold text-gray-700">Full Name</h6>
+              <input
+                type="text"
+                class="form-input w-3/4 px-4 py-2 border border-gray-300 rounded text-black"
+                value="Current value"
+                placeholder="Mr.Whatever"
+              />
+            </div>
+          </div>
+          <div class="mb-4">
+            <div class="flex items-center mb-2">
+              <h6 class="mb-0 w-1/4 text-gray-700">Email</h6>
+              <input
+                type="text"
+                class="form-input w-3/4 px-4 py-2 border border-gray-300 rounded text-black"
+                value="Current value"
+                placeholder="john@example.com"
+              />
+            </div>
+          </div>
+          <div class="mb-4">
+            <div class="flex items-center mb-2">
+              <h6 class="mb-0 w-1/4 text-gray-700">Language</h6>
+              <input
+                type="text"
+                class="form-input w-3/4 px-4 py-2 border border-gray-300 rounded text-black"
+                value="Current value"
+                placeholder="English"
+              />
+            </div>
+          </div>
+          <div class="mb-4">
+            <div class="flex items-center mb-2">
+              <h6 class="mb-0 w-1/4 text-gray-700">Gender</h6>
+              <select
+                class="form-select w-3/4 px-4 py-2 border border-gray-300 rounded text-black"
+              >
+                <option value="1">Male</option>
+                <option value="2">Female</option>
+                <option value="3">Rather Not say</option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-4">
+            <div class="flex items-center mb-2">
+              <h6 class="mb-0 w-1/4 text-gray-700">Country</h6>
+              <input
+                type="text"
+                class="form-input w-3/4 px-4 py-2 border border-gray-300 rounded text-black"
+                value="Current value"
+                placeholder="USA"
+              />
+            </div>
+          </div>
+          <div class="flex items-center">
+            <div class="w-1/4"></div>
+            <div class="w-3/4">
+              <input
+                type="button"
+                class="btn btn-primary px-4 py-2 bg-blue-500 text-white rounded"
+                value="Save Changes"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Second Column for AI Voice Selection -->
+      <div class="px-4 flex flex-col justify-center items-center">
+        <div
+          class="card bg-transparent rounded-lg p-2 w-full"
+          style="width: 400px;"
+        >
+          <img
+            src="/images/Ai.gif"
+            alt="AI"
+            class="w-full rounded-lg opacity-10"
+            id="Gif"
+          />
+        </div>
+        <select
+          id="voiceSelect"
+          class="form-select w-full px-4 py-2 mt-4 border border-gray-300 rounded text-black"
+        >
+          <option value="alloy">Alloy: Female</option>
+          <option value="echo">Echo: Male</option>
+          <option value="fable">Fable: Male (British)</option>
+          <option value="onyx">Onyx: Male</option>
+          <option value="nova">Nova: Female</option>
+          <option value="shimmer">Shimmer: Female</option>
+        </select>
+      </div>
+
+      <!-- Audio Element for Playing Selected Voice -->
+      <audio id="voiceAudio" src=""></audio>
+
+      <!-- JavaScript to Play Audio Based on Selected Option -->
+      <script>
+        document
+          .getElementById("voiceSelect")
+          .addEventListener("change", function () {
+            const selectedValue = this.value;
+            const audioElement = document.getElementById("voiceAudio");
+            const Gif = document.getElementById("Gif");
+            let audioSrc = "";
+
+            switch (selectedValue) {
+              case "alloy":
+                audioSrc = "/Audio/AI-Voices/alloy.wav";
+                break;
+              case "echo":
+                audioSrc = "/Audio/AI-Voices/echo.wav";
+                break;
+              case "fable":
+                audioSrc = "/Audio/AI-Voices/fable.wav";
+                break;
+              case "onyx":
+                audioSrc = "/Audio/AI-Voices/onyx.wav";
+                break;
+              case "nova":
+                audioSrc = "/Audio/AI-Voices/nova.wav";
+                break;
+              case "shimmer":
+                audioSrc = "/Audio/AI-Voices/shimmer.wav";
+                break;
+              default:
+                audioSrc = "";
+            }
+
+            if (audioSrc) {
+              audioElement.src = audioSrc;
+              Gif.classList.remove("opacity-10");
+              audioElement.play();
+
+              // Re-add the class once the audio is finished playing
+              audioElement.addEventListener("ended", function () {
+                Gif.classList.add("opacity-10");
+              });
+            }
+          });
+      </script>
+    </div>
+  </div>
+</div>
