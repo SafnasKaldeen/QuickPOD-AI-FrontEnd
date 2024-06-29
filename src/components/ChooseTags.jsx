@@ -47,16 +47,16 @@ class ChooseTags extends Component {
             <Tags key={tag.name} interest={tag.name} active={tag.active} />
           ))}
         </div>
-        <div className="content-center">
+        <div className="content-center flex items-center">
           <input
             type="text"
             placeholder="Add more tags"
             value={newTag}
             onChange={this.handleChange}
-            className="p-2 bg-sky-900 text-white rounded border border-gray-400 w-full mt-4"
+            className="p-2 bg-sky-900 text-white rounded border border-gray-400 flex-1 mr-2"
           />
           <button
-            className="p-2 text-white rounded w-full mt-4 bg-green-500"
+            className="p-2 text-white rounded bg-green-500"
             onClick={this.handleAddTag}
           >
             Add Tag
