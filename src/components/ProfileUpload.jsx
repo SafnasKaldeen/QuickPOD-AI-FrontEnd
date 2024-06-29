@@ -42,7 +42,7 @@ const ProfileUpload = () => {
   };
 
   return (
-    <div className="col-span-3 border border-gray-300 rounded p-4">
+    <div className="col-span-3 rounded p-4">
       <h1 className="text-3xl font-bold text-center text-gray-200">
         Select your Profile Image
       </h1>
