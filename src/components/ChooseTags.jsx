@@ -25,11 +25,20 @@ const TagArray = [
 class ChooseTags extends Component {
   render() {
     return (
-      <div className="flex flex-wrap">
-        {TagArray.map((tag) => (
-          <Tags key={tag} interest={tag} />
-        ))}
-      </div>
+      <React.Fragment>
+        <div className="flex flex-wrap">
+          {TagArray.map((tag) => (
+            <Tags key={tag} interest={tag} />
+          ))}
+        </div>
+        <div className="content-center">
+          <input
+            type="text"
+            placeholder="Add more tags"
+            className="p-2 bg-sky-900 text-white rounded"
+          />
+        </div>
+      </React.Fragment>
     );
   }
 }
