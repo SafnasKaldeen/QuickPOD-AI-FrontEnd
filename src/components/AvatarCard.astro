@@ -1,8 +1,18 @@
+---
+const gender = "Male"; // Change to "Male" , "Female" or undefined to test different scenarios
+
+const avatarSrc = gender === "Male"
+  ? "/images/Male-avatar.png"
+  : gender === "Female"
+  ? "/images/Female-avatar.png"
+  : "/images/Undefined-avatar.png";
+---
+
 <div class="card-body p-4">
   <div class="flex flex-col items-center text-center">
     <img
       id="avatarImage"
-      src="https://bootdey.com/img/Content/avatar/avatar7.png"
+      src={avatarSrc}
       alt="Admin"
       class="rounded-full w-36 h-36 object-cover border-4 border-blue-500"
     />
@@ -40,3 +50,4 @@
     }
   });
 </script>
+

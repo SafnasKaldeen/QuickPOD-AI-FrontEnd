@@ -1,5 +1,6 @@
 ---
 import colors from "../lib/";
+import Layout from "../../src/layouts/Layout.astro";
 
 const { FormType } = Astro.props;
 
@@ -251,8 +252,10 @@ if (FormType === 'Log In') {
       <input class="text-black" type="email" placeholder="Email" />
       <input class="text-black" type="password" placeholder="Password" />
       
-      <a href="#">Forget Your Password?</a>
+      <!-- Sign In Button -->
+      <a href="/Dashboard">
       <button>Sign In</button>
+      </a>
     </form>
   </div>
   <div class="toggle-container">
