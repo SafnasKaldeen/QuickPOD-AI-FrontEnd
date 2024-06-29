@@ -64,7 +64,14 @@ const ProfileUpload = () => {
         <button type="submit" className="mt-4 px-4 py-2 bg-blue-500 rounded">
           Upload
         </button>
-        <p id="uploadStatus" className="mt-2 text-white">
+        <p
+          id="uploadStatus"
+          className={`mt-2 text-center ${
+            uploadStatus === "Upload successful!"
+              ? "text-green-500"
+              : "text-red-500"
+          }`}
+        >
           {uploadStatus}
         </p>
       </form>
