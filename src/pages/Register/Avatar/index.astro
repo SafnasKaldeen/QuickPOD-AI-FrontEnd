@@ -2,6 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import Container from '../../../componentLandingPage/Container.astro';
 import RegistrationAvatarSelection from '../../../components/RegistrationAvatarSelection.astro';
+import ChooseTags from '../../../components/ChooseTags.jsx';
 ---
 <Layout title="Add Avatar">
     <body class="dark">
@@ -20,6 +21,9 @@ import RegistrationAvatarSelection from '../../../components/RegistrationAvatarS
                             <div class="text-center mx-auto">
                                 <div class="flex flex-wrap justify-center gap-y-4 gap-x-6">
                                     <RegistrationAvatarSelection />
+                                </div>
+                                <div className="flex flex-wrap justify-center gap-y-4 gap-x-6 m-100px w-full">
+                                    <ChooseTags client:load />
                                 </div>
                             </div>
                         </div>

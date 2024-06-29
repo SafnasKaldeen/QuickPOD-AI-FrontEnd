@@ -42,7 +42,7 @@ const ProfileUpload = () => {
   };
 
   return (
-    <div className="col-span-3 rounded p-4">
+    <div className="col-span-3 rounded">
       <h1 className="text-3xl font-bold text-center text-gray-200">
         Select your Profile Image
       </h1>
@@ -73,7 +73,10 @@ const ProfileUpload = () => {
             className="w-40 h-40 rounded-full mt-4 object-cover object-center"
           />
         )}
-        <button type="submit" className="mt-4 px-4 py-2 bg-blue-500 rounded">
+        <button
+          type="submit"
+          className="mt-4 px-4 py-2 bg-sky-900 text-white rounded"
+        >
           Upload
         </button>
         <p
