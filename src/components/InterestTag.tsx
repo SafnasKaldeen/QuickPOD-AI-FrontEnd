@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 
 interface Interest {
   interest: string;
+  active: boolean;
 }
 
-const InterestItem: React.FC<Interest> = ({ interest }) => {
-  const [isActive, setIsActive] = useState(false);
+const InterestItem: React.FC<Interest> = ({ interest, active }) => {
+  const [isActive, setIsActive] = useState(active);
 
   const handleClick = () => {
     setIsActive(!isActive);
