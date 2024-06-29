@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 
+// Placeholder URL for default image
+const defaultImage = "/images/Undefined-avatar.png";
+
 const ProfileUpload = () => {
-  const [avatarPreview, setAvatarPreview] = useState(
-    "/images/Undefined-avatar.png"
-  );
+  const [avatarPreview, setAvatarPreview] = useState(defaultImage);
   const [uploadStatus, setUploadStatus] = useState("");
+  const [uploadedFileName, setUploadedFileName] = useState("");
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -28,6 +30,8 @@ const ProfileUpload = () => {
       });
 
       if (response.ok) {
+        const { fileName } = await response.json(); // Assuming the server returns the file name after successful upload
+        setUploadedFileName(fileName);
         setUploadStatus("Upload successful!");
       } else {
         setUploadStatus("Upload failed. Please try again.");
@@ -52,9 +56,15 @@ const ProfileUpload = () => {
           type="file"
           id="avatar"
           name="avatar"
-          className="form-input w-full px-4 py-2 mt-4 border border-gray-300 rounded text-white bg-sky-900/30"
+          className="hidden"
           onChange={handleFileChange}
         />
+        <label
+          htmlFor="avatar"
+          className="relative cursor-pointer mt-4 w-full px-4 py-2 border border-gray-300 rounded text-center text-white bg-sky-900/30 hover:bg-sky-900 transition duration-300 ease-in-out"
+        >
+          {uploadedFileName ? uploadedFileName : "Choose File"}
+        </label>
         {avatarPreview && (
           <img
             id="avatarPreview"
