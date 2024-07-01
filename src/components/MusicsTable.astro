@@ -1,9 +1,9 @@
 ---
 import { Icon } from "astro-icon";
 import { songs } from "../lib/data";
-import PureInlineArtists from "./PureInlineArtists.astro";
+import PureInlineArtists from "./PureInlineArtists.jsx";
 import InlineArtists from "./InlineArtists.astro";
-import PlayButton from "./PlayButton.astro"
+import PlayButton from "./PlayButton.jsx";
 
 interface Props {
   category: string;
@@ -17,7 +17,9 @@ const category = Astro.props.category;
     <tr class="text-gray-300">
       <th class="font-normal px-4 py-2 whitespace-nowrap">#</th>
       <th class="font-normal px-4 py-2 whitespace-nowrap">Title</th>
-      <th class="font-normal px-4 py-2 whitespace-nowrap"><Icon name="carbon:play" class="inline-block h-5 w-5" /></th>
+      <th class="font-normal px-4 py-2 whitespace-nowrap"
+        ><Icon name="carbon:play" class="inline-block h-5 w-5" /></th
+      >
       <th class="font-normal px-4 py-2 whitespace-nowrap text-right">
         <Icon name="carbon:time" class="inline-block h-5 w-5" />
       </th>
@@ -45,7 +47,7 @@ const category = Astro.props.category;
                 href={`/podcast/${encodeURIComponent(song.title)}`}
                 class="text-gray-300 group-hover:text-white"
               >
-                <PlayButton />
+                <PlayButton client:load />
               </a>
             </td>
             <td class="whitespace-nowrap px-4 py-2 text-right">

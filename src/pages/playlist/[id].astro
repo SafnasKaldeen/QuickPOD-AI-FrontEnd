@@ -6,7 +6,6 @@ import InlineArtists from "../../components/InlineArtists.astro";
 import LikeButton from "../../components/LikeButton.astro";
 import MusicsTable from "../../components/MusicsTable.astro";
 import PageHeader from "../../components/PageHeader.astro";
-import PlayButton from "../../components/PlayButton.astro";
 import Layout from "../../layouts/Layout.astro";
 import { allPlaylists } from "../../lib/data";
 import SideMenu from "../../components/Side/SideMenu.astro";
@@ -24,7 +23,7 @@ const playlist = allPlaylists.find((playlist) => playlist.id === id);
 
 <div class="relative h-screen gap-2 flex items-stretch">
   <div class="w-[350px] flex-col hidden lg:flex overflow-y-auto">
-    <SideMenu />
+    <SideMenu client:load />
   </div>
   <div class="rounded-lg bg-zinc-900 flex-1 mx-auto overflow-y-auto">
     <Layout image={playlist?.cover} title={playlist?.title || "404"}>

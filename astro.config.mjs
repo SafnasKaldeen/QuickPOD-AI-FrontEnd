@@ -7,4 +7,5 @@ import svelte from "@astrojs/svelte";
 export default defineConfig({
   root: "./src",
   integrations: [tailwind(), svelte(), react()],
+  output: "hybrid",
 });

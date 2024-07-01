@@ -1,10 +1,7 @@
----
-import React from "react";
-import SideMenuItem from "./SideMenuItem.jsx";
-import Search from "./Search.jsx";
-import PlaylistCardSide from "../PlaylistCardSide.jsx";
+import React, { Component } from "react";
+import PlaylistCard from "./PlaylistCard.jsx";
 
-const allPlaylists = [
+const morePlaylists = [
   {
     id: 1,
     title:
@@ -138,27 +135,19 @@ const allPlaylists = [
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSda-jBYayuzXkoMiOjq2zcm8y7F9n5Vds4LJwClXNeQJ1QUtk6-rV_Y4mTvlg&s",
   },
 ];
----
 
-<div class="flex flex-col flex-1 gap-2">
-  <div class="bg-zinc-900 rounded-lg py-2">
-    <ul>
-      <SideMenuItem IconName="home" client:load />
-      <Search title="Take Me - DJ Jay Sudo" src="/Audio/1.mp3" client:load />
-    </ul>
-  </div>
-  <div class="bg-zinc-900 rounded-lg flex-1">
-    <ul>
-      <SideMenuItem IconName="podcast" client:load />
-      <div class="flex flex-col gap-4 items-center justify-between mx-4">
-        {
-          allPlaylists.map((playlist) => (
-            <a href={playlist.link} class="flex items-center gap-4">
-              <PlaylistCardSide song={playlist} client:load />
-            </a>
-          ))
-        }
-      </div>
-    </ul>
-  </div>
-</div>
+class HotNews extends Component {
+  render() {
+    return (
+      <React.Fragment>
+        <React.Fragment>
+          {morePlaylists.map((song) => (
+            <PlaylistCard song={song} client:load id={song.id} key={song.id} />
+          ))}
+        </React.Fragment>
+      </React.Fragment>
+    );
+  }
+}
+
+export default HotNews;

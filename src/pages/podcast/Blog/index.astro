@@ -3,14 +3,14 @@ const query = Astro.params.query;
 
 import GreetingTitle from "../../../components/GreetingTitle.svelte";
 import PageHeader from "../../../components/PageHeader.astro";
-import PlaylistCard from "../../../components/PlaylistCard.astro";
+import PlaylistCard from "../../../components/PlaylistCard.jsx";
 import PlaylistItemCard from "../../../components/PlaylistItemCard.astro";
 import Layout from "../../../layouts/Layout.astro";
 import { playlists, morePlaylists } from "../../../lib/data";
 import SideMenu from "../../../components/Side/SideMenu.astro";
 import Markup from "../../../components/markup.jsx";
 
-const Blog =`# Overview of Sri Lankan Cricket
+const Blog = `# Overview of Sri Lankan Cricket
 
 ## Introduction
 
@@ -74,36 +74,49 @@ Sri Lankan cricket continues to captivate audiences worldwide with its flair, re
 
 <div class="relative h-screen gap-2 flex items-stretch">
   <div class="w-[350px] flex-col hidden lg:flex overflow-y-auto">
-    <SideMenu />
+    <SideMenu client:load />
   </div>
   <div class="rounded-lg bg-zinc-900 flex-1 mx-auto overflow-y-auto">
     <Layout title="Home">
-      <div id="playlist-container" class="relative transition-all duration-1000 bg-context h-1/2"
-        style="background-image: url('/images/cover/SriLanka.webp'); background-size: cover; background-position: center;">
+      <div
+        id="playlist-container"
+        class="relative transition-all duration-1000 bg-context h-1/2"
+        style="background-image: url('/images/cover/SriLanka.webp'); background-size: cover; background-position: center;"
+      >
         <PageHeader />
         <div class="relative z-10 px-6">
           <span>
             <h1 class="text-9xl font-bold">Cricket</h1>
           </span>
-          <div class="grid gap-y-4 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 mt-6">
+          <div
+            class="grid gap-y-4 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 mt-6"
+          >
           </div>
         </div>
-        <div class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80"></div>
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80"
+        >
+        </div>
       </div>
       <div class="px-6 relative z-10 mt-4">
         <div class="flex flex-wrap mt-6 gap-4">
-            <Markup client:load markdownContent={Blog}/>
+          <Markup client:load markdownContent={Blog} />
         </div>
       </div>
     </Layout>
   </div>
 </div>
 
-
-
-<div id="not-support" class="fixed hidden bg-red-700 bottom-0 inset-x-0 rounded-t-md text-center py-2 lg:py-4 z-50 font-semibold">
+<div
+  id="not-support"
+  class="fixed hidden bg-red-700 bottom-0 inset-x-0 rounded-t-md text-center py-2 lg:py-4 z-50 font-semibold"
+>
   It seems your browser does not support view transitions yet :( try it using
-  chrome or edge <a class="underline" href="https://github.com/igorm84/spotify-astro-transitions">(see docs here)</a>
+  chrome or edge <a
+    class="underline"
+    href="https://github.com/igorm84/spotify-astro-transitions"
+    >(see docs here)</a
+  >
 </div>
 
 <script>
