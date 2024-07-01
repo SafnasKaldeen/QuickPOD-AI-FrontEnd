@@ -42,7 +42,7 @@ class ChooseTags extends Component {
 
     return (
       <React.Fragment>
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap justify-center items-center">
           {tags.map((tag) => (
             <Tags key={tag.name} interest={tag.name} active={tag.active} />
           ))}
