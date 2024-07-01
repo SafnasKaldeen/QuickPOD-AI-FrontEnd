@@ -45,6 +45,9 @@ class ChooseTags extends Component {
 
     return (
       <React.Fragment>
+        <h2 class="text-2xl font-bold px-6 relative z-10 mt-4">
+          Choose your Interests
+        </h2>
         <div class="px-6 relative z-10 mt-4">
           <div class="flex flex-wrap mt-6 gap-4 justify-between">
             <div class="flex flex-wrap justify-center gap-y-4 gap-x-6">
@@ -72,6 +75,17 @@ class ChooseTags extends Component {
                   Add Tag
                 </button>
               </div>
+            </div>
+          </div>
+        </div>
+        <div class="relative items-center justify-center">
+          <div class="text-center mx-auto">
+            <div class="justify-center">
+              <a href="/Dashboard">
+                <button class="bg-purple-700 text-white text-xs uppercase font-semibold px-5 py-3 rounded-lg border border-transparent my-5 cursor-pointer">
+                  Finish Registration
+                </button>
+              </a>
             </div>
           </div>
         </div>
