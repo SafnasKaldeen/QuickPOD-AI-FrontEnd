@@ -153,7 +153,11 @@ const allPlaylists = [
       <div class="flex flex-col gap-4 items-center justify-between mx-4">
         {
           allPlaylists.map((playlist) => (
-            <a href={playlist.link} class="flex items-center gap-4">
+            <a
+              href={playlist.link}
+              class="flex items-center gap-4"
+              target="_blank"
+            >
               <PlaylistCardSide song={playlist} client:load />
             </a>
           ))
