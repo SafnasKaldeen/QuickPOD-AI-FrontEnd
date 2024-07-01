@@ -50,6 +50,37 @@ const AuthForm = ({ FormType }) => {
     window.location.href = "/Register/Avatar";
   };
 
+  const handleFormSubmitLogin = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+
+    const requestBody = {
+      email: formData.get("email"),
+      password: formData.get("password"),
+    };
+
+    try {
+      const response = await axios.post(
+        "http://Localhost:8000/login",
+        requestBody,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        }
+      );
+
+      // Assuming a successful response is handled here
+      alert("Login successful:", response.data);
+    } catch (error) {
+      // Handle login failure here (e.g., show an error message)
+      alert("Login failed:", error.message);
+    }
+    // Redirect to /Dashboard after successful login
+    window.location.href = "/Dashboard";
+  };
+
   const containerClass = isActive ? "container active" : "container";
 
   return (
@@ -122,7 +153,7 @@ const AuthForm = ({ FormType }) => {
       </div>
 
       <div className="form-container sign-in">
-        <form>
+        <form onSubmit={handleFormSubmitLogin}>
           <h1 className="font-bold">Sign In</h1>
           <span>or use your email password</span>
           <input className="text-black" type="email" placeholder="Email" />
