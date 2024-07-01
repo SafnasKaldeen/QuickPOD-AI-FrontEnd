@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { FaLink, FaPlay, FaSearch } from "react-icons/fa";
+import PlayButton from "./PlayButton";
 
 class SearchHotTopic extends Component {
   constructor(props) {
@@ -72,7 +73,9 @@ class SearchHotTopic extends Component {
                 <div
                   className="absolute right-2 bottom-2 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all"
                   transition-name={`playlist ${content.id} play`}
-                ></div>
+                >
+                  <PlayButton client:load />
+                </div>
               </div>
               <div className="pt-2">
                 <div
