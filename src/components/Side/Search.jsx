@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { FaPlay, FaSearch } from "react-icons/fa";
+import SideMenuItem from "./SideMenuItem";
 
 class Search extends Component {
   constructor(props) {
@@ -38,6 +39,7 @@ class Search extends Component {
 
     return (
       <React.Fragment>
+        <SideMenuItem IconName="Customize" client:load />
         <form className="flex flex-col" onSubmit={this.handleSubmit}>
           <div className="flex items-center pb-3">
             <input
@@ -54,7 +56,6 @@ class Search extends Component {
             </button>
           </div>
         </form>
-
         {content && (
           <a href={content.link} target="_blank" rel="noreferrer">
             <div className="flex flex-col gap-4 items-center justify-between mx-4">
