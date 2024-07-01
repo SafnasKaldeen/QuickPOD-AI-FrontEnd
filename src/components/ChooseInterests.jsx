@@ -63,7 +63,7 @@ class ChooseTags extends Component {
               <div className="content-center flex items-center">
                 <input
                   type="text"
-                  placeholder="Add more tags"
+                  placeholder="Add more interests"
                   value={newTag}
                   onChange={this.handleChange}
                   className="p-2 bg-sky-900 text-white rounded border border-gray-400 flex-1 mr-2"
@@ -72,7 +72,7 @@ class ChooseTags extends Component {
                   className="p-2 text-white rounded bg-green-500"
                   onClick={this.handleAddTag}
                 >
-                  Add Tag
+                  Add Interest
                 </button>
               </div>
             </div>
