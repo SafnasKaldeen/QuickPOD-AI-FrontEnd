@@ -1,9 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import PlayButton from "./PlayButton.jsx";
-import PureInlineArtists from "./PureInlineArtists.jsx";
-import { Icon } from "@iconify/react";
-import { FaPlay } from "react-icons/fa";
+import { FaLink } from "react-icons/fa6";
 
 const PlaylistCardSide = ({ song }) => {
   return (
@@ -20,7 +17,7 @@ const PlaylistCardSide = ({ song }) => {
           transition-name={`playlist ${song.id} play`}
         >
           <span className="bg-primary hover:scale-105 shadow-md shadow-black/40 rounded-full flex items-center justify-center text-black h-10 w-10">
-            <FaPlay className="text-white" />
+            <FaLink className="text-white" />
           </span>
         </div>
       </div>

@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { FaLink, FaPlay, FaSearch } from "react-icons/fa";
-import SideMenuItem from "./SideMenuItem";
 
-class Search extends Component {
+class SearchHotTopic extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -43,7 +42,7 @@ class Search extends Component {
           <div className="flex items-center pb-3">
             <input
               type="text"
-              placeholder="Search..."
+              placeholder="Search the topic you want to generate blogcast..."
               name="search"
               className="flex-1 p-2 rounded-md bg-zinc-800 text-white ml-5"
               value={search}
@@ -56,33 +55,31 @@ class Search extends Component {
           </div>
         </form>
         {content && (
-          <a href={content.link} target="_blank" rel="noreferrer">
-            <div className="flex flex-col gap-4 items-center justify-between mx-4">
-              <div className="w-80 my-2 border border-secondary rounded-md p-2 items-center">
-                <div className="relative group mx-auto h-40 w-full flex-none shadow-lg">
-                  <img
-                    src={content.imageUrl}
-                    alt={content.title}
-                    className="object-cover h-full w-full rounded-md shadow-[5px_0_30px_0px_rgba(0,0,0,0.3)]"
-                    transition-name={`playlist ${content.id} image`}
-                  />
-                  <div
-                    className="absolute right-2 bottom-2 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all"
-                    transition-name={`playlist ${content.id} play`}
-                  >
-                    <span className="bg-primary hover:scale-105 shadow-md shadow-black/40 rounded-full flex items-center justify-center text-black h-10 w-10">
-                      <FaLink className="text-white" />
-                    </span>
-                  </div>
-                </div>
-                <div className="pt-2">
-                  <p
-                    className="font-bold block truncate hover:overflow-visible hover:whitespace-normal"
-                    transition-name={`playlist ${content.id} title`}
-                    id={content.id}
-                  >
-                    {content.title}
-                  </p>
+          <a
+            href={`/podcast/${content.id}`}
+            className="playlist-card p-4 flex flex-col items-center justify-center group relative transition-all duration-300 overflow-hidden gap-5 rounded-md shadow-lg hover:shadow-xl outline-none bg-zinc-500/5 hover:bg-zinc-500/20 focus:bg-zinc-500/20"
+            data-color={"colors.teal.dark"}
+            transition-name={`playlist ${content.id} box`}
+          >
+            <div className="w-40">
+              <div className="relative group mx-auto h-40 w-full flex-none shadow-lg">
+                <img
+                  src={content.imageUrl}
+                  alt={content.title}
+                  className="object-cover h-full w-full rounded-md shadow-[5px_0_30px_0px_rgba(0,0,0,0.3)]"
+                  transition-name={`playlist ${content.id} image`}
+                />
+                <div
+                  className="absolute right-2 bottom-2 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all"
+                  transition-name={`playlist ${content.id} play`}
+                ></div>
+              </div>
+              <div className="pt-2">
+                <div
+                  className="font-bold block truncate"
+                  transition-name={`playlist ${content.id} title`}
+                >
+                  {content.title}
                 </div>
               </div>
             </div>
@@ -93,4 +90,4 @@ class Search extends Component {
   }
 }
 
-export default Search;
+export default SearchHotTopic;

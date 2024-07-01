@@ -39,7 +39,7 @@ const AuthForm = ({ FormType }) => {
           },
         }
       );
-
+      console.log(response.data.access_token);
       // Assuming a successful response is handled here
       alert("Registration successful:", response.data);
     } catch (error) {

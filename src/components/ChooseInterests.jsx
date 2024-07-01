@@ -46,7 +46,7 @@ class ChooseTags extends Component {
     return (
       <React.Fragment>
         <h2 class="text-2xl font-bold px-6 relative z-10 mt-4">
-          Choose your Interests
+          Choose your Interests to generate Blogcasts
         </h2>
         <div class="px-6 relative z-10 mt-4">
           <div class="flex flex-wrap mt-6 gap-4 justify-between">
