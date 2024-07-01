@@ -83,7 +83,7 @@ class ChooseTags extends Component {
             <div class="justify-center">
               <a href="/Dashboard">
                 <button class="bg-purple-700 text-white text-xs uppercase font-semibold px-5 py-3 rounded-lg border border-transparent my-5 cursor-pointer">
-                  Finish Registration
+                  Generate Podcasts
                 </button>
               </a>
             </div>
