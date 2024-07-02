@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { FaLink, FaPlay, FaSearch } from "react-icons/fa";
+import { FaPlay, FaSearch } from "react-icons/fa";
 
 class Search extends Component {
   constructor(props) {
@@ -54,42 +54,71 @@ class Search extends Component {
             </button>
           </div>
         </form>
+
         {content && (
-          <a href={content.link} target="_blank" rel="noreferrer">
-            <div className="flex flex-col gap-4 items-center justify-between mx-4">
-              <div className="w-80 my-2 border border-secondary rounded-md p-2 items-center">
-                <div className="relative group mx-auto h-40 w-full flex-none shadow-lg">
-                  <img
-                    src={content.imageUrl}
-                    alt={content.title}
-                    className="object-cover h-full w-full rounded-md shadow-[5px_0_30px_0px_rgba(0,0,0,0.3)]"
-                    transition-name={`playlist ${content.id} image`}
-                  />
-                  <div
-                    className="absolute right-2 bottom-2 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all"
-                    transition-name={`playlist ${content.id} play`}
-                  >
-                    <span className="bg-primary hover:scale-105 shadow-md shadow-black/40 rounded-full flex items-center justify-center text-black h-10 w-10">
-                      <FaLink className="text-white" />
-                    </span>
-                  </div>
-                </div>
-                <div className="pt-2">
-                  <p
-                    className="font-bold block truncate hover:overflow-visible hover:whitespace-normal"
-                    transition-name={`playlist ${content.id} title`}
-                    id={content.id}
-                  >
-                    {content.title}
-                  </p>
+          <div className="flex flex-col gap-4 items-center justify-between mx-4">
+            <div className="w-80 my-2 border border-secondary rounded-md p-2 items-center">
+              <div className="relative group mx-auto h-40 w-full flex-none shadow-lg">
+                <img
+                  src={content.imageUrl}
+                  alt={content.title}
+                  className="object-cover h-full w-full rounded-md shadow-[5px_0_30px_0px_rgba(0,0,0,0.3)]"
+                  transition-name={`playlist ${content.id} image`}
+                />
+                <div
+                  className="absolute right-2 bottom-2 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all"
+                  transition-name={`playlist ${content.id} play`}
+                >
+                  <span className="bg-primary hover:scale-105 shadow-md shadow-black/40 rounded-full flex items-center justify-center text-black h-10 w-10">
+                    <FaPlay className="text-white" />
+                  </span>
                 </div>
               </div>
+              <div className="pt-2">
+                <p
+                  className="font-bold block truncate hover:overflow-visible hover:whitespace-normal"
+                  transition-name={`playlist ${content.id} title`}
+                  id={content.id}
+                >
+                  {content.title}
+                </p>
+              </div>
             </div>
-          </a>
+          </div>
         )}
       </React.Fragment>
     );
   }
+}
+
+{
+  /* 
+<div className="w-80 my-2 border border-secondary rounded-md p-2 items-center">
+  <div className="relative group mx-auto h-40 w-full flex-none shadow-lg">
+    <img
+      src={content.imageUrl}
+      alt={content.title}
+      className="object-cover h-full w-full rounded-md shadow-[5px_0_30px_0px_rgba(0,0,0,0.3)]"
+      transition-name={`playlist ${content.id} image`}
+    />
+    <div
+      className="absolute right-2 bottom-2 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all"
+      transition-name={`playlist ${content.id} play`}
+    >
+      <PlayButton client:load />
+    </div>
+  </div>
+  <div className="pt-2">
+    <p
+      className="font-bold block truncate hover:overflow-visible hover:whitespace-normal"
+      transition-name={`playlist ${content.id} title`}
+      id={content.id}
+    >
+      {content.title}
+    </p>
+  </div>
+</div>
+</div> */
 }
 
 export default Search;

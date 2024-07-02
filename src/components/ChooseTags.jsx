@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Tags from "./InterestTag.tsx";
+import axios from "axios";
 
 const TagArray = [
   { name: "React", active: false },
@@ -42,7 +43,7 @@ class ChooseTags extends Component {
 
     return (
       <React.Fragment>
-        <div className="flex flex-wrap justify-center items-center">
+        <div className="flex flex-wrap">
           {tags.map((tag) => (
             <Tags key={tag.name} interest={tag.name} active={tag.active} />
           ))}

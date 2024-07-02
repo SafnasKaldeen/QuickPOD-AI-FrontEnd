@@ -136,34 +136,15 @@ const morePlaylists = [
   },
 ];
 
-const Interests = [
-  "Sports",
-  "Politics",
-  "Music",
-  "Technology",
-  "Science",
-  "Health",
-];
-
 class HotNews extends Component {
   render() {
     return (
       <React.Fragment>
-        <div class="px-6 relative z-10 mt-4">
-          <h2 class="text-2xl font-bold">
-            Select the Hot News to generate Blogcasts
-          </h2>
-          <div class="flex flex-wrap mt-6 gap-4">
-            {morePlaylists.map((song) => (
-              <PlaylistCard
-                song={song}
-                client:load
-                id={song.id}
-                key={song.id}
-              />
-            ))}
-          </div>
-        </div>
+        <React.Fragment>
+          {morePlaylists.map((song) => (
+            <PlaylistCard song={song} client:load id={song.id} key={song.id} />
+          ))}
+        </React.Fragment>
       </React.Fragment>
     );
   }

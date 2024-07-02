@@ -1,5 +1,5 @@
 ---
-import ProfileUpload from './ProfileUpload.jsx';
+import ProfileUpload from "./ProfileUpload.jsx";
 ---
 
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -7,8 +7,10 @@ import ProfileUpload from './ProfileUpload.jsx';
     <ProfileUpload client:load />
   </div>
   <div class="lg:col-span-1 p-4">
-    <h1 class="text-3xl font-bold text-center text-gray-200">Select your AI Voice</h1>
-    
+    <h1 class="text-3xl font-bold text-center text-gray-200">
+      Select your AI Voice
+    </h1>
+
     <select
       id="voiceSelect"
       class="form-select w-full px-4 py-2 mt-4 border border-gray-300 rounded text-white bg-sky-900/30"
@@ -21,61 +23,67 @@ import ProfileUpload from './ProfileUpload.jsx';
       <option value="nova">Nova: Female</option>
       <option value="shimmer">Shimmer: Female</option>
     </select>
-    <img id="AI-img" src="/images/Ai.gif" alt="AI" class="w-1/2 h-1/2 object-cover rounded-full mx-auto mt-4 cursor-pointer opacity-20" />
+    <img
+      id="AI-img"
+      src="/images/Ai.gif"
+      alt="AI"
+      class="w-1/2 h-1/2 object-cover rounded-full mx-auto mt-4 cursor-pointer opacity-20"
+    />
     <form class="flex items-center justify-center mt-4">
-        <input
-            type="text"
-            class="form-input px-4 py-2 border border-gray-300 rounded text-white bg-sky-900 overflow-hidden"
-            placeholder="Name your Bot"
-        />
+      <input
+        type="text"
+        class="form-input px-4 py-2 border border-gray-300 rounded text-white bg-sky-900 overflow-hidden"
+        placeholder="Name your Bot"
+      />
+    </form>
+
+    <!-- Audio Element for Playing Selected Voice -->
+    <audio id="voiceAudio" src=""></audio>
+
+    <!-- JavaScript to Play Audio Based on Selected Option -->
+    <script>
+      document
+        .getElementById("voiceSelect")
+        .addEventListener("change", function () {
+          const selectedValue = this.value;
+          const audioElement = document.getElementById("voiceAudio");
+          const Gif = document.getElementById("AI-img");
+          let audioSrc = "";
+
+          switch (selectedValue) {
+            case "alloy":
+              audioSrc = "/Audio/AI-Voices/alloy.wav";
+              break;
+            case "echo":
+              audioSrc = "/Audio/AI-Voices/echo.wav";
+              break;
+            case "fable":
+              audioSrc = "/Audio/AI-Voices/fable.wav";
+              break;
+            case "onyx":
+              audioSrc = "/Audio/AI-Voices/onyx.wav";
+              break;
+            case "nova":
+              audioSrc = "/Audio/AI-Voices/nova.wav";
+              break;
+            case "shimmer":
+              audioSrc = "/Audio/AI-Voices/shimmer.wav";
+              break;
+            default:
+              audioSrc = "";
+          }
+
+          if (audioSrc) {
+            audioElement.src = audioSrc;
+            Gif.classList.remove("opacity-20");
+            audioElement.play();
+
+            // Re-add the class once the audio is finished playing
+            audioElement.addEventListener("ended", function () {
+              Gif.classList.add("opacity-20");
+            });
+          }
+        });
+    </script>
   </div>
-  
-  <!-- Audio Element for Playing Selected Voice -->
-  <audio id="voiceAudio" src=""></audio>
-
-  <!-- JavaScript to Play Audio Based on Selected Option -->
-  <script>
-    document
-      .getElementById("voiceSelect")
-      .addEventListener("change", function () {
-        const selectedValue = this.value;
-        const audioElement = document.getElementById("voiceAudio");
-        const Gif = document.getElementById("AI-img");
-        let audioSrc = "";
-
-        switch (selectedValue) {
-          case "alloy":
-            audioSrc = "/Audio/AI-Voices/alloy.wav";
-            break;
-          case "echo":
-            audioSrc = "/Audio/AI-Voices/echo.wav";
-            break;
-          case "fable":
-            audioSrc = "/Audio/AI-Voices/fable.wav";
-            break;
-          case "onyx":
-            audioSrc = "/Audio/AI-Voices/onyx.wav";
-            break;
-          case "nova":
-            audioSrc = "/Audio/AI-Voices/nova.wav";
-            break;
-          case "shimmer":
-            audioSrc = "/Audio/AI-Voices/shimmer.wav";
-            break;
-          default:
-            audioSrc = "";
-        }
-
-        if (audioSrc) {
-          audioElement.src = audioSrc;
-          Gif.classList.remove("opacity-20");
-          audioElement.play();
-
-          // Re-add the class once the audio is finished playing
-          audioElement.addEventListener("ended", function () {
-            Gif.classList.add("opacity-20");
-          });
-        }
-      });
-  </script>
 </div>

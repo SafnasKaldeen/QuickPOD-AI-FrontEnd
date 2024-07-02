@@ -14,4 +14,4 @@
   }
 </script>
 
-<h1 class="text-3xl font-bold m-8">{greeting}</h1>
+<h1 class="text-3xl font-bold">{greeting}</h1>

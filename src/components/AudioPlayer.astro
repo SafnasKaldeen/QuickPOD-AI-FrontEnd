@@ -1,0 +1,39 @@
+---
+export interface Props {
+  audioSrc?: string;
+}
+
+const { audioSrc } = Astro.props;
+---
+
+<div class="audio-player">
+    <audio controls volume preload src={audioSrc}></audio>  <!-- Supported tag attributes - loop , autoplay , preload -->
+</div>
+
+<style>
+  .audio-player {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .play-button {
+    background-color: rgb(143, 51, 233); /* Purple color */
+    color: #fff;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+
+  .play-button:hover {
+    background-color: rgb(123, 41, 213); /* Darker purple color */
+  }
+
+  .hidden {
+    display: none;
+  }
+</style>
