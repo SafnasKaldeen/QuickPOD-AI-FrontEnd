@@ -15,20 +15,18 @@ import ChooseInterests from "../../components/ChooseInterests.jsx";
   </div>
   <div class="rounded-lg bg-zinc-900 flex-1 mx-auto overflow-y-auto">
     <Layout title="Home">
-      <div class="bg-zinc-900">
+      <div class="bg-zinc-900 h-full">
         <div
           id="playlist-container"
           class="relative transition-all duration-1000 bg-context border-b-4 border-black"
-          style="min-height:300px;--context-color:#134e4a;"
+          style="min-height:200px;--context-color:#134e4a;"
         >
           <PageHeader />
-          <div class="relative z-10 px-6">
-            <span>
+          <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between lg:justify-between w-full">
+            <span class="mb-4 lg:mb-0 lg:mr-auto">
               <GreetingTitle client:visible />
             </span>
-            <div
-              class="grid gap-y-4 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 mt-6 mb-4"
-            >
+            <span class="mb-4 lg:mb-0 lg:ml-2">
               <div class="toggle">
                 <input type="checkbox" id="btn" />
                 <label for="btn">
@@ -39,14 +37,14 @@ import ChooseInterests from "../../components/ChooseInterests.jsx";
                   <span class="light-on"></span>
                 </div>
               </div>
-              <!-- text-white text-center text-4xl flex items-center justify-center h-full -->
-              <!-- <h1 id = "news" class="text-center text-2xl font-bold text-gray-800 dark:text-white md:text-4xl m-8 text-secondary">News Section</h1> -->
-              <!-- <h1 id = "General" class="text-white text-center justify-center items-center m-10 text-4xl">General Section</h1> -->
+            </span>
+            <div class="grid gap-y-4 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 mt-6 mb-4">
+              <!-- Additional content can go here -->
             </div>
           </div>
           <div class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80"></div>
         </div>
-        <div id="General-section" class="hidden opacity-0 transition-opacity duration-1000">
+        <div id="General-section" class="hidden opacity-0 transition-opacity duration-1000 ">
           <h1 id="General" class="text-center text-2xl font-bold dark:text-green-400 md:text-4xl m-8 text-green-400">General Section</h1>
           <ChooseInterests client:load />
         </div>
@@ -115,7 +113,7 @@ import ChooseInterests from "../../components/ChooseInterests.jsx";
 <style>
   /*** IN PROGRESS ***/
 :root {
-  --sz: 10vmin;
+  --sz: 3vmin;
   --on: #99dc39;
   --of: #F44336;
   --lg: var(--of);
@@ -170,8 +168,6 @@ label[for=btn]:before {
   margin-top: calc(calc( var(--sz) / 10) + calc(var(--sz) / -7));
   left: calc(calc( var(--sz) / 10) + calc(var(--sz) / -30));
   background: 
-
-    /* radial-gradient( #fff0 0 calc(var(--sz) / 3.5), var(--lg) calc(calc(var(--sz) / 3) + 1px) calc(var(--sz) / 2.75), #fff0 calc(var(--sz) / 1.15)), */
     linear-gradient(0deg, #212121, #fff0 35% 65%, #474747), 
     radial-gradient( #fff0 0 calc(var(--sz) / 3), #393939 calc(calc(var(--sz) / 3) + 1px) calc(var(--sz) / 1), #474747);
   border-radius: var(--sz);

@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import PlayButton from "./PlayButton.jsx";
-import PureInlineArtists from "./PureInlineArtists.jsx";
 
 const keyWords = [
   "String theory",
@@ -43,9 +42,6 @@ const PlaylistCard = ({ song }) => {
           >
             {song.title}
           </div>
-          {/* <div className="text-gray-400 text-xs">
-            <PureInlineArtists artists={song.artists} />
-          </div> */}
         </div>
       </div>
     </a>

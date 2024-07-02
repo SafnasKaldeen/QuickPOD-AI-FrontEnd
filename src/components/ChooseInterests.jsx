@@ -2,22 +2,21 @@ import React, { Component } from "react";
 import Tags from "./InterestTag.tsx";
 
 const InterestsArray = [
-  { name: "Sports", active: false },
-  { name: "Music", active: false },
-  { name: "Politics", active: false },
-  { name: "Technology", active: false },
-  { name: "Science", active: false },
-  { name: "Health", active: false },
-  { name: "Fashion", active: false },
-  { name: "Food", active: false },
-  { name: "Travel", active: false },
-  { name: "Art", active: false },
-  { name: "Film", active: false },
-  { name: "Books", active: false },
-  { name: "History", active: false },
-  { name: "Business", active: false },
-  { name: "Education", active: false },
-  { name: "Anime", active: false },
+  { name: "General Topic 1", active: false },
+  { name: "General Topic 2", active: false },
+  { name: "General Topic 3", active: false },
+  { name: "General Topic 4", active: false },
+  { name: "General Topic 5", active: false },
+  { name: "General Topic 6", active: false },
+  { name: "General Topic 7", active: false },
+  { name: "General Topic 8", active: false },
+  { name: "General Topic 9", active: false },
+  { name: "General Topic 10", active: false },
+  { name: "General Topic 11", active: false },
+  { name: "General Topic 12", active: false },
+  { name: "General Topic 13", active: false },
+  { name: "General Topic 14", active: false },
+  { name: "General Topic 15", active: false },
 ];
 
 class ChooseTags extends Component {
@@ -46,7 +45,7 @@ class ChooseTags extends Component {
     return (
       <React.Fragment>
         <h2 class="text-2xl font-bold px-6 relative z-10 mt-4">
-          Choose your Interests to generate Blogcasts
+          Choose your general topic to generate Blogcasts
         </h2>
         <div class="px-6 relative z-10 mt-4">
           <div class="flex flex-wrap mt-6 gap-4 justify-between">
@@ -63,7 +62,7 @@ class ChooseTags extends Component {
               <div className="content-center flex items-center">
                 <input
                   type="text"
-                  placeholder="Add more interests"
+                  placeholder="Add your General topic"
                   value={newTag}
                   onChange={this.handleChange}
                   className="p-2 bg-sky-900 text-white rounded border border-gray-400 flex-1 mr-2"
@@ -72,7 +71,7 @@ class ChooseTags extends Component {
                   className="p-2 text-white rounded bg-green-500"
                   onClick={this.handleAddTag}
                 >
-                  Add Interest
+                  Add Topic
                 </button>
               </div>
             </div>
@@ -83,7 +82,7 @@ class ChooseTags extends Component {
             <div class="justify-center">
               <a href="/Dashboard">
                 <button class="bg-purple-700 text-white text-xs uppercase font-semibold px-5 py-3 rounded-lg border border-transparent my-5 cursor-pointer">
-                  Generate Podcasts
+                  Generate Blogcasts
                 </button>
               </a>
             </div>

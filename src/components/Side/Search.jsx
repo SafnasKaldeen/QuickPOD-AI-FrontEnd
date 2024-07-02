@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { FaLink, FaPlay, FaSearch } from "react-icons/fa";
-import SideMenuItem from "./SideMenuItem";
 
 class Search extends Component {
   constructor(props) {
