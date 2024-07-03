@@ -3,9 +3,10 @@ import React, { useState } from 'react';
 interface Interest {
   interest: string;
   active: boolean;
+  onClick: () => void;
 }
 
-const InterestItem: React.FC<Interest> = ({ interest, active }) => {
+const InterestItem: React.FC<Interest> = ({ interest, active , onClick }) => {
   const [isActive, setIsActive] = useState(active);
 
   const handleClick = () => {
@@ -14,8 +15,8 @@ const InterestItem: React.FC<Interest> = ({ interest, active }) => {
 
   return (
     <div
-      className={`border-2 m-3 text-sky-500 border-gray-300 p-2 rounded-lg hover:border-sky-500 cursor-pointer interest-item ${isActive ? 'bg-green-500 text-white' : ''}`}
-      onClick={handleClick}
+      className={`border-2 m-3 text-sky-500 border-gray-300 p-2 rounded-lg hover:border-sky-500 cursor-pointer interest-item ${active ? 'bg-green-500 text-white' : ''}`}
+      onClick={onClick}
     >
       <div className="flex items-center space-x-2">
         <span className="icon">

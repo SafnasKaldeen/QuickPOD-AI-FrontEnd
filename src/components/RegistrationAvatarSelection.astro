@@ -2,11 +2,79 @@
 import ProfileUpload from "./ProfileUpload.jsx";
 ---
 
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-  <div class="lg:col-span-1 p-4">
+<script>
+  // Function to fetch and update profile data on page load
+  document.addEventListener("DOMContentLoaded", async () => {
+    try {
+      const response = await fetch("http://127.0.0.1:8000/profile", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYWZuYXN0aGVncmVhdEBnbWFpbC5jb20iLCJleHAiOjE3MjAwMTY4Njd9.IDf0WPCtQ6YzVd2D2-rmXa44e3RpHhGHJQRlXJayTmQ",
+        },
+      });
+
+      if (response.ok) {
+        const profileData = await response.json();
+        // Optionally alert specific profile fields
+      } else {
+        console.error("Failed to fetch profile data:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error fetching profile data:", error);
+    }
+  });
+
+  // Function to send updated profile data to the API
+  const SaveChanges = document.getElementById("saveChanges");
+  SaveChanges.addEventListener("click", updateProfileData);
+
+  async function updateProfileData() {
+    const botName = document.getElementById("botName").value;
+    const voiceSelect = document.getElementById("voiceSelect").value;
+
+    const data = {
+      avatar_name: botName,
+      avatar_voice: voiceSelect,
+    };
+
+    console.log(data);
+
+    try {
+      const response = await fetch("http://127.0.0.1:8000/profile/avatar", {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYWZuYXN0aGVncmVhdEBnbWFpbC5jb20iLCJleHAiOjE3MjAwMTY4Njd9.IDf0WPCtQ6YzVd2D2-rmXa44e3RpHhGHJQRlXJayTmQ",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        console.log(
+          "Profile data updated successfully:",
+          await response.json()
+        );
+        alert("Profile data updated successfully!");
+        // Optionally display a success message or perform further actions
+      } else {
+        console.error("Failed to update profile data:", response.statusText);
+        // Optionally handle error cases
+      }
+    } catch (error) {
+      console.error("Error updating profile data:", error);
+    }
+  }
+</script>
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-5">
+  <div class="lg:col-span-1 p-4 border border-white">
     <ProfileUpload client:load />
   </div>
-  <div class="lg:col-span-1 p-4">
+  <div class="lg:col-span-1 p-4 border border-white">
     <h1 class="text-3xl font-bold text-center text-gray-200">
       Select your AI Voice
     </h1>
@@ -31,59 +99,21 @@ import ProfileUpload from "./ProfileUpload.jsx";
     />
     <form class="flex items-center justify-center mt-4">
       <input
+        id="botName"
         type="text"
         class="form-input px-4 py-2 border border-gray-300 rounded text-white bg-sky-900 overflow-hidden"
         placeholder="Name your Bot"
       />
+
+      <!-- Add additional input fields for other profile data -->
+      <!-- Example: -->
+      <!-- Ensure each input field has a unique ID and matches the field names in your data object -->
     </form>
-
-    <!-- Audio Element for Playing Selected Voice -->
-    <audio id="voiceAudio" src=""></audio>
-
-    <!-- JavaScript to Play Audio Based on Selected Option -->
-    <script>
-      document
-        .getElementById("voiceSelect")
-        .addEventListener("change", function () {
-          const selectedValue = this.value;
-          const audioElement = document.getElementById("voiceAudio");
-          const Gif = document.getElementById("AI-img");
-          let audioSrc = "";
-
-          switch (selectedValue) {
-            case "alloy":
-              audioSrc = "/Audio/AI-Voices/alloy.wav";
-              break;
-            case "echo":
-              audioSrc = "/Audio/AI-Voices/echo.wav";
-              break;
-            case "fable":
-              audioSrc = "/Audio/AI-Voices/fable.wav";
-              break;
-            case "onyx":
-              audioSrc = "/Audio/AI-Voices/onyx.wav";
-              break;
-            case "nova":
-              audioSrc = "/Audio/AI-Voices/nova.wav";
-              break;
-            case "shimmer":
-              audioSrc = "/Audio/AI-Voices/shimmer.wav";
-              break;
-            default:
-              audioSrc = "";
-          }
-
-          if (audioSrc) {
-            audioElement.src = audioSrc;
-            Gif.classList.remove("opacity-20");
-            audioElement.play();
-
-            // Re-add the class once the audio is finished playing
-            audioElement.addEventListener("ended", function () {
-              Gif.classList.add("opacity-20");
-            });
-          }
-        });
-    </script>
+    <button
+      class="mt-4 px-4 py-2 bg-sky-900 text-white rounded hover:bg-sky-700 hover:border-sky-700 transition duration-300 ease-in-out"
+      id="saveChanges"
+    >
+      Upload Avatar
+    </button>
   </div>
 </div>

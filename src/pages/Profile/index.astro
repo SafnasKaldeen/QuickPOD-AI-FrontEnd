@@ -8,22 +8,22 @@ import AvatarCard from "../../components/AvatarCard.astro";
 import ProfileForm from "../../components/ProfileForm.astro";
 import Details from "../../components/Details.astro";
 import Interests from "../../components/Interests.astro";
-
-const interests = [
-  "Sports",
-  "Cricket",
-  "Football",
-  "Basketball",
-  "Wrestling",
-  "Politics",
-  "Business",
-  "Tech",
-  "Korean",
-  "Music",
-  "Bollywood",
-];
+import ChooseTagsProfile from "../../components/ChooseTagsProfile.jsx";
 ---
 
+<script>
+  import Cookies from "js-cookie";
+
+  const token = Cookies.get("access_token");
+
+  if (!token) {
+    location.href = "/Login";
+    alert("Unauthorized access. Redirecting to login page.");
+  } else {
+    console.log("Token exists");
+    // alert(token);
+  }
+</script>
 <div class="relative h-screen gap-2 flex items-stretch">
   <div class="w-[350px] flex-col hidden lg:flex overflow-y-auto">
     <div class="flex flex-col flex-1 gap-2">
@@ -49,12 +49,8 @@ const interests = [
           <span>
             <GreetingTitle client:visible />
           </span>
-          <!-- <h2 class="text-2xl font-bold">Select your Interests in</h2> -->
-          <div
-            class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 m-8"
-          >
-            {interests.map((interest) => <Interests interest={interest} />)}
-          </div>
+
+          <ChooseTagsProfile client:load />
         </div>
         <div
           class="grid gap-y-4 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 mt-6"
@@ -86,6 +82,7 @@ const interests = [
     >(see docs here)</a
   >
 </div>
+
 <script is:inline defer>
   function setContainerColor(dataColor) {
     const playlistContainer = document.getElementById("playlist-container");

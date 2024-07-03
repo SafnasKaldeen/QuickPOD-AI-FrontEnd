@@ -70,14 +70,14 @@ const ProfileUpload = () => {
             id="avatarPreview"
             src={avatarPreview}
             alt="Image Preview"
-            className="w-40 h-40 rounded-full mt-4 object-cover object-center"
+            className="w-47 h-47 rounded-full mt-4 object-cover object-center"
           />
         )}
         <button
           type="submit"
           className="mt-4 px-4 py-2 bg-sky-900 text-white rounded hover:bg-sky-700 hover:border-sky-700 transition duration-300 ease-in-out"
         >
-          Upload
+          Upload Image
         </button>
         <p
           id="uploadStatus"

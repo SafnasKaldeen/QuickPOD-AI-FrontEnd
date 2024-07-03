@@ -1,40 +1,45 @@
 <script>
-  async function fetchProfileDetails() {
-    const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYWZuYXN0aGVncmVhdEBnbWFpbC5jb20iLCJleHAiOjE3MTk5MzIwODV9.8c9cvMZPD41XAQWqkcij3b1mKrCLW44kcsjarYqxSqw";
-    const url = "http://127.0.0.1:8000/profile";
-
+  import Cookies from "js-cookie";
+  // Function to fetch profile data from API
+  async function fetchProfileData() {
     try {
-      const response = await fetch(url, {
+      const response = await fetch("http://127.0.0.1:8000/profile", {
         headers: {
           Accept: "application/json",
-          Authorization: `Bearer ${token}`,
+          Authorization: "Bearer " + Cookies.get("access_token"),
         },
       });
-
-      console.log(response);
-
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
       const data = await response.json();
-
-      // Update HTML with fetched profile details
-      document.getElementById("full-name").textContent = data.full_name;
-      document.getElementById("email").innerHTML =
-        `<a href="/cdn-cgi/l/email-protection" class="__cf_email__ text-blue-500">${data.email}</a>`;
-      document.getElementById("language").textContent = data.language;
-      document.getElementById("gender").textContent = data.gender;
-      document.getElementById("country").textContent = data.country;
-      document.getElementById("bot-name").textContent = data.bot_name;
+      return data;
     } catch (error) {
-      console.error("Error fetching profile details:", error);
+      console.error("Error fetching profile data:", error);
+      return null;
     }
   }
 
-  // Fetch profile details when the script is executed
-  fetchProfileDetails();
+  // Function to render profile details into HTML
+  async function renderProfileDetails() {
+    const data = await fetchProfileData();
+    if (!data) return;
+
+    // Update the HTML with the profile details
+    document.getElementById("Full_Name").textContent =
+      data.first_name + " " + data.last_name;
+    document.getElementById("Email").innerHTML =
+      `<a href="mailto:${data.email}" class="__cf_email__ text-blue-500">[email&#160;protected]</a>`;
+    document.getElementById("Language").textContent = data.lang_code;
+    document.getElementById("Gender").textContent = data.gender;
+    document.getElementById("Country").textContent = data.country;
+    document.getElementById("Bot_Name").textContent = data.avatar_name;
+  }
+
+  // Call the render function when the script runs
+
+  renderProfileDetails();
 </script>
 
 <div class="card-body p-4">
@@ -42,41 +47,41 @@
     <div class="col-sm-3">
       <h6 class="mb-0">Full Name</h6>
     </div>
-    <div class="col-sm-9 text-gray-500" id="full-name">Loading...</div>
+    <div id="Full_Name" class="col-sm-9 text-gray-500">Loading...</div>
   </div>
   <hr class="my-2" />
   <div class="row">
     <div class="col-sm-3">
       <h6 class="mb-0">Email</h6>
     </div>
-    <div class="col-sm-9 text-gray-500" id="email">Loading...</div>
+    <div id="Email" class="col-sm-9 text-gray-500">Loading...</div>
   </div>
   <hr class="my-2" />
   <div class="row">
     <div class="col-sm-3">
       <h6 class="mb-0">Language</h6>
     </div>
-    <div class="col-sm-9 text-gray-500" id="language">Loading...</div>
+    <div id="Language" class="col-sm-9 text-gray-500">Loading...</div>
   </div>
   <hr class="my-2" />
   <div class="row">
     <div class="col-sm-3">
       <h6 class="mb-0">Gender</h6>
     </div>
-    <div class="col-sm-9 text-gray-500" id="gender">Loading...</div>
+    <div id="Gender" class="col-sm-9 text-gray-500">Loading...</div>
   </div>
   <hr class="my-2" />
   <div class="row">
     <div class="col-sm-3">
       <h6 class="mb-0">Country</h6>
     </div>
-    <div class="col-sm-9 text-gray-500" id="country">Loading...</div>
+    <div id="Country" class="col-sm-9 text-gray-500">Loading...</div>
   </div>
   <hr class="my-2" />
   <div class="row">
     <div class="col-sm-3">
       <h6 class="mb-0">Bot Name</h6>
     </div>
-    <div class="col-sm-9 text-gray-500" id="bot-name">Loading...</div>
+    <div id="Bot_Name" class="col-sm-9 text-gray-500">Loading...</div>
   </div>
 </div>

@@ -14,39 +14,6 @@ const AuthForm = ({ FormType }) => {
     setIsActive(false);
   };
 
-  const handleFormSubmitLogin = async (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-
-    const requestBody = {
-      grant_type: "",
-      username: formData.get("email"),
-      password: formData.get("password"),
-      scope: "",
-      client_id: "",
-      client_secret: "",
-    };
-
-    try {
-      const response = await axios.post(
-        "http://127.0.0.1:8000/token",
-        new URLSearchParams(requestBody).toString(),
-        {
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-            Accept: "application/json",
-          },
-        }
-      );
-
-      const accessToken = response.data.access_token;
-      Cookies.set("access_token", accessToken);
-      window.location.href = "/Dashboard";
-    } catch (error) {
-      alert("Login failed:", error.message);
-    }
-  };
-
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -65,7 +32,7 @@ const AuthForm = ({ FormType }) => {
     try {
       const response = await axios.post(
         "http://127.0.0.1:8000/register",
-        JSON.stringify(requestBody),
+        requestBody,
         {
           headers: {
             "Content-Type": "application/json",
@@ -74,23 +41,48 @@ const AuthForm = ({ FormType }) => {
         }
       );
 
-      if (response.data.access_token) {
-        const { access_token } = response.data;
-
-        // Store the access token in cookies
-        Cookies.set("access_token", access_token, { expires: 7 }); // Example: set cookie to expire in 7 days
-
-        console.log("Registration successful. Access token:", access_token);
-
-        // Redirect to /Register/Avatar after successful registration
-        window.location.href = "/Register/Avatar";
-      } else {
-        console.error("Access token not found in response:", response.data);
-        alert("Registration failed. Please try again.");
-      }
+      alert("Registration successful:", response.data);
+      window.location.href = "/Register/Avatar";
     } catch (error) {
-      console.error("Registration failed:", error.message);
+      // Handle registration failure here (e.g., show an error message)
       alert("Registration failed:", error.message);
+    }
+  };
+
+  const handleFormSubmitLogin = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+
+    const requestBody = new URLSearchParams();
+    requestBody.append("grant_type", "");
+    requestBody.append("username", formData.get("email"));
+    requestBody.append("password", formData.get("password"));
+    requestBody.append("scope", "");
+    requestBody.append("client_id", "");
+    requestBody.append("client_secret", "");
+    // alert(requestBody);
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:8000/token",
+        requestBody.toString(),
+        {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            Accept: "application/json",
+          },
+        }
+      );
+      console.log(response.data.access_token);
+      const accessToken = response.data.access_token;
+      Cookies.set("access_token", accessToken, { expires: 1 });
+
+      // Assuming a successful response is handled here
+      // alert("Login successful:", response.data);
+      // Redirect to /Dashboard after successful login
+      window.location.href = "/Dashboard";
+    } catch (error) {
+      // Handle login failure here (e.g., show an error message)
+      alert("Login failed:", error.message);
     }
   };
 
@@ -172,14 +164,16 @@ const AuthForm = ({ FormType }) => {
           <input
             className="text-black"
             type="email"
-            placeholder="Email"
             name="email"
+            placeholder="Email"
+            required
           />
           <input
             className="text-black"
             type="password"
-            placeholder="Password"
             name="password"
+            placeholder="Password"
+            required
           />
           <button type="submit">Sign In</button>
         </form>
