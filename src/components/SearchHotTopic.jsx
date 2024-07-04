@@ -22,14 +22,30 @@ class SearchHotTopic extends Component {
   handleSubmit(e) {
     e.preventDefault();
     // Simulate setting content based on search result
+
     this.setState({
       content: {
-        id: 16,
-        title:
-          "People not voting in general election blame distrust in politicians",
-        link: "https://www.bbc.com/news/articles/c28ed9j2d28o",
-        imageUrl:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdhw80X-qYrwoxY1hJ-2RBj8isoJLwkYBe8EFVoFCHP7ABkGcK5hD8h2d5dg&s",
+        blog: {
+          markdown:
+            "# The Rise of AI\nArtificial Intelligence is transforming industries...",
+          title: "The Rise of AI",
+          blog_img_url:
+            "https://images.unsplash.com/photo-1568605114967-8130f3a36994",
+        },
+        podcast: {
+          audio_url:
+            "https://www.sample-videos.com/audio/mp3/crowd-cheering.mp3",
+          thumbnail_url:
+            "https://images.unsplash.com/photo-1580927752452-5d1b75d4e0d7",
+          transcript: {
+            title: "AI Podcast Episode 1",
+            content:
+              "Welcome to our podcast on AI. Today we discuss the impact of artificial intelligence on various industries...",
+          },
+        },
+        keywords: ["AI", "technology", "future"],
+        type: "technology",
+        id: 5,
       },
     });
   }
@@ -65,8 +81,8 @@ class SearchHotTopic extends Component {
             <div className="w-40">
               <div className="relative group mx-auto h-40 w-full flex-none shadow-lg">
                 <img
-                  src={content.imageUrl}
-                  alt={content.title}
+                  src={content.podcast.thumbnail_url}
+                  alt={content.podcast.transcript.title}
                   className="object-cover h-full w-full rounded-md shadow-[5px_0_30px_0px_rgba(0,0,0,0.3)]"
                   transition-name={`playlist ${content.id} image`}
                 />
@@ -82,7 +98,7 @@ class SearchHotTopic extends Component {
                   className="font-bold block truncate"
                   transition-name={`playlist ${content.id} title`}
                 >
-                  {content.title}
+                  {content.blog.title}
                 </div>
               </div>
             </div>
