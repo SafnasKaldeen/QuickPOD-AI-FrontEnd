@@ -368,7 +368,7 @@ const POD = allPlaylists.find((playlist) => playlist.id == id);
                     <AudioPlayer
                       title={POD?.podcast.transcript.title}
                       src="https://parse-server-ff.s3.amazonaws.com/ae5992f0f5bb1f259bafa41b3771e3bb_call12565815456dwwwwww795896232www-01b59bd3.mp3"
-                      client:visible
+                      client:load
                     />
                   </div>
                   <Transcript Transcript={POD?.podcast.transcript.content} />
@@ -404,7 +404,7 @@ const POD = allPlaylists.find((playlist) => playlist.id == id);
           <PageHeader />
           <div class="relative z-10 px-6">
             <span>
-              <h1 class="text-5xl font-bold sm:text-6xl">
+              <h1 class="text-5xl font-bold sm:text-1xl">
                 {POD?.blog.title ? POD.blog.title : 'Default Title'}
               </h1>
               <a
