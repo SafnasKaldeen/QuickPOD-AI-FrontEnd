@@ -7,6 +7,182 @@ import SideMenu from "../../components/Side/SideMenu.astro";
 import SearchHotTopic from "../../components/SearchHotTopic.jsx";
 import HotNews from "../../components/HotNews.jsx";
 import ChooseInterests from "../../components/ChooseInterests.jsx";
+import MusicsTable from "../../components/MusicsTable.jsx";
+
+const data = [
+  {
+    blog: {
+      markdown:
+        "# The Rise of AI\nArtificial Intelligence is transforming industries...",
+      title: "The Rise of AI",
+      blog_img_url:
+        "https://images.unsplash.com/photo-1568605114967-8130f3a36994",
+    },
+    podcast: {
+      audio_url: "https://www.sample-videos.com/audio/mp3/crowd-cheering.mp3",
+      thumbnail_url:
+        "https://images.unsplash.com/photo-1580927752452-5d1b75d4e0d7",
+      transcript: {
+        title: "AI Podcast Episode 1",
+        content:
+          "Welcome to our podcast on AI. Today we discuss the impact of artificial intelligence on various industries...",
+      },
+    },
+    keywords: ["AI", "technology", "future"],
+    type: "technology",
+    id: 1,
+  },
+  {
+    blog: {
+      markdown:
+        "# Healthy Eating\nHealthy eating is essential for maintaining good health...",
+      title: "Healthy Eating",
+      blog_img_url: "https://images.unsplash.com/photo-1556911220-e15b30d91438",
+    },
+    podcast: {
+      audio_url: "https://www.sample-videos.com/audio/mp3/wave.mp3",
+      thumbnail_url:
+        "https://images.unsplash.com/photo-1574672282324-e142b5f11f43",
+      transcript: {
+        title: "Healthy Eating Podcast",
+        content:
+          "In today's episode, we talk about the benefits of healthy eating and how to incorporate it into your daily routine...",
+      },
+    },
+    keywords: ["health", "nutrition", "wellness"],
+    type: "health",
+    id: 2,
+  },
+  {
+    blog: {
+      markdown:
+        "# The Rise of AI\nArtificial Intelligence is transforming industries...",
+      title: "The Rise of AI",
+      blog_img_url:
+        "https://images.unsplash.com/photo-1568605114967-8130f3a36994",
+    },
+    podcast: {
+      audio_url: "https://www.sample-videos.com/audio/mp3/crowd-cheering.mp3",
+      thumbnail_url:
+        "https://images.unsplash.com/photo-1580927752452-5d1b75d4e0d7",
+      transcript: {
+        title: "AI Podcast Episode 1",
+        content:
+          "Welcome to our podcast on AI. Today we discuss the impact of artificial intelligence on various industries...",
+      },
+    },
+    keywords: ["AI", "technology", "future"],
+    type: "technology",
+    id: 3,
+  },
+  {
+    blog: {
+      markdown:
+        "# Healthy Eating\nHealthy eating is essential for maintaining good health...",
+      title: "Healthy Eating",
+      blog_img_url: "https://images.unsplash.com/photo-1556911220-e15b30d91438",
+    },
+    podcast: {
+      audio_url: "https://www.sample-videos.com/audio/mp3/wave.mp3",
+      thumbnail_url:
+        "https://images.unsplash.com/photo-1574672282324-e142b5f11f43",
+      transcript: {
+        title: "Healthy Eating Podcast",
+        content:
+          "In today's episode, we talk about the benefits of healthy eating and how to incorporate it into your daily routine...",
+      },
+    },
+    keywords: ["health", "nutrition", "wellness"],
+    type: "health",
+    id: 4,
+  },
+  {
+    blog: {
+      markdown:
+        "# The Rise of AI\nArtificial Intelligence is transforming industries...",
+      title: "The Rise of AI",
+      blog_img_url:
+        "https://images.unsplash.com/photo-1568605114967-8130f3a36994",
+    },
+    podcast: {
+      audio_url: "https://www.sample-videos.com/audio/mp3/crowd-cheering.mp3",
+      thumbnail_url:
+        "https://images.unsplash.com/photo-1580927752452-5d1b75d4e0d7",
+      transcript: {
+        title: "AI Podcast Episode 1",
+        content:
+          "Welcome to our podcast on AI. Today we discuss the impact of artificial intelligence on various industries...",
+      },
+    },
+    keywords: ["AI", "technology", "future"],
+    type: "technology",
+    id: 5,
+  },
+  {
+    blog: {
+      markdown:
+        "# Healthy Eating\nHealthy eating is essential for maintaining good health...",
+      title: "Healthy Eating",
+      blog_img_url: "https://images.unsplash.com/photo-1556911220-e15b30d91438",
+    },
+    podcast: {
+      audio_url: "https://www.sample-videos.com/audio/mp3/wave.mp3",
+      thumbnail_url:
+        "https://images.unsplash.com/photo-1574672282324-e142b5f11f43",
+      transcript: {
+        title: "Healthy Eating Podcast",
+        content:
+          "In today's episode, we talk about the benefits of healthy eating and how to incorporate it into your daily routine...",
+      },
+    },
+    keywords: ["health", "nutrition", "wellness"],
+    type: "health",
+    id: 6,
+  },
+  {
+    blog: {
+      markdown:
+        "# The Rise of AI\nArtificial Intelligence is transforming industries...",
+      title: "The Rise of AI",
+      blog_img_url:
+        "https://images.unsplash.com/photo-1568605114967-8130f3a36994",
+    },
+    podcast: {
+      audio_url: "https://www.sample-videos.com/audio/mp3/crowd-cheering.mp3",
+      thumbnail_url:
+        "https://images.unsplash.com/photo-1580927752452-5d1b75d4e0d7",
+      transcript: {
+        title: "AI Podcast Episode 1",
+        content:
+          "Welcome to our podcast on AI. Today we discuss the impact of artificial intelligence on various industries...",
+      },
+    },
+    keywords: ["AI", "technology", "future"],
+    type: "technology",
+    id: 7,
+  },
+  {
+    blog: {
+      markdown:
+        "# Healthy Eating\nHealthy eating is essential for maintaining good health...",
+      title: "Healthy Eating",
+      blog_img_url: "https://images.unsplash.com/photo-1556911220-e15b30d91438",
+    },
+    podcast: {
+      audio_url: "https://www.sample-videos.com/audio/mp3/wave.mp3",
+      thumbnail_url:
+        "https://images.unsplash.com/photo-1574672282324-e142b5f11f43",
+      transcript: {
+        title: "Healthy Eating Podcast",
+        content:
+          "In today's episode, we talk about the benefits of healthy eating and how to incorporate it into your daily routine...",
+      },
+    },
+    keywords: ["health", "nutrition", "wellness"],
+    type: "health",
+    id: 8,
+  },
+];
 ---
 
 <script>
@@ -75,6 +251,12 @@ import ChooseInterests from "../../components/ChooseInterests.jsx";
             General Section
           </h1>
           <ChooseInterests client:load />
+        </div>
+        <div
+          id="customize-section"
+          class="transition-opacity duration-1000 hidden"
+        >
+          <MusicsTable client:visible data={data} />
         </div>
         <div id="news-section" class="transition-opacity duration-1000">
           <h1

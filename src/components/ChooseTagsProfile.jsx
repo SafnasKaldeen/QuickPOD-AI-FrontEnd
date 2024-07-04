@@ -78,7 +78,8 @@ class ChooseTags extends Component {
 
       if (response.ok) {
         console.log("Interests updated successfully");
-        alert("Interests updated successfully!");
+        alert("Interests updated successfully!" + selectedInterests);
+        location.reload(true);
         // Optionally, reset state or perform other actions upon successful update
       } else {
         throw new Error(`Failed to update interests: ${response.statusText}`);

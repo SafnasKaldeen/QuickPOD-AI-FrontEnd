@@ -1,20 +1,18 @@
 ---
-import Container from "../componentLandingPage/Container.astro"
-
 const { Transcript } = Astro.props;
 ---
 
 <style>
-    #content {
-      height: 300px;
-      overflow-y: scroll;
-    }
+  #content {
+    height: 300px;
+    overflow-y: scroll;
+  }
 </style>
 
 <div class="text-gray-600 dark:text-gray-300" id="reviews">
-      <div class="container-fluid min-vh-100 aspect-auto p-8 border mt-8 border-gray-100 rounded-3xl bg-white dark:bg-gray-800 dark:border-gray-700 shadow-2xl shadow-gray-600/10 dark:shadow-none">
-        <div class= "text-white" id="content">{Transcript}</div>
-      </div>   
+  <div
+    class="container-fluid min-vh-100 aspect-auto p-8 border mt-8 border-gray-100 rounded-3xl bg-white dark:bg-gray-800 dark:border-gray-700 shadow-2xl shadow-gray-600/10 dark:shadow-none"
+  >
+    <div class="text-white" id="content">{Transcript}</div>
+  </div>
 </div>
-
-    

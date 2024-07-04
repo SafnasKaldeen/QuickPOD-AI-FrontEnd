@@ -54,6 +54,17 @@
         }
 
         const profileData = await getResponse.json();
+        // alert(profileData.interests);
+
+        let Interests = [];
+
+        const interests = profileData.interests.map((interest) =>
+          Interests.push(interest.trim())
+        );
+
+        // alert(Interests);
+        console.log("Interests:", Interests);
+        console.log("Interests:", typeof Interests);
 
         const payload = {
           first_name: firstName || "",
@@ -62,7 +73,7 @@
           dob: "2000-04-30", // Make sure to include the 'dob' field as per your curl command
           country: country || "",
           lang_code: language || "",
-          interest: profileData.interests || ["empty"], // If interests are empty, default to ["string"]
+          interest: Interests || ["empty"], // If interests are empty, default to ["string"]
           avatar_name: botName || "",
           avatar_voice: voice || "",
         };

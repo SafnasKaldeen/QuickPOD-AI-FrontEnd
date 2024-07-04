@@ -1,11 +1,12 @@
 ---
 const gender = "Male"; // Change to "Male" , "Female" or undefined to test different scenarios
 
-const avatarSrc = gender === "Male"
-  ? "/images/Male-avatar.png"
-  : gender === "Female"
-  ? "/images/Female-avatar.png"
-  : "/images/Undefined-avatar.png";
+const avatarSrc =
+  gender === "Male"
+    ? "/images/Male-avatar.png"
+    : gender === "Female"
+      ? "/images/Female-avatar.png"
+      : "/images/Undefined-avatar.png";
 ---
 
 <div class="card-body p-4">
@@ -20,34 +21,33 @@ const avatarSrc = gender === "Male"
       <h4>Safnas Kaldeen</h4>
       <p class="text-gray-500 mb-1">Full Stack Developer</p>
       <p class="text-gray-400 text-sm">Rajagiriya, Colombo, Sri Lanka</p>
-      <button id="changeAvatarButton" 
+      <button
+        id="changeAvatarButton"
         class="btn btn-outline-primary border border-blue-500 text-blue-500 px-4 py-2 rounded mt-2 hover:bg-blue-500 hover:text-white"
         >Change</button
       >
-      <input
-      type="file"
-      id="avatarInput"
-      accept="image/*"
-      class="hidden"
-    />
+      <input type="file" id="avatarInput" accept="image/*" class="hidden" />
     </div>
   </div>
 </div>
 
 <script>
-  document.getElementById("changeAvatarButton").addEventListener("click", function () {
-    document.getElementById("avatarInput").click();
-  });
+  document
+    .getElementById("changeAvatarButton")
+    .addEventListener("click", function () {
+      document.getElementById("avatarInput").click();
+    });
 
-  document.getElementById("avatarInput").addEventListener("change", function () {
-    const file = this.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        document.getElementById("avatarImage").src = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    }
-  });
+  document
+    .getElementById("avatarInput")
+    .addEventListener("change", function () {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          document.getElementById("avatarImage").src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
 </script>
-
