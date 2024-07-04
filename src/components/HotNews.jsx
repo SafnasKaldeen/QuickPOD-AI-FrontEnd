@@ -39,6 +39,7 @@ class HotNews extends Component {
       })
       .then((data) => {
         this.setState({ playlists: data.hot_news, loading: false });
+        Cookies.set("hot_news", JSON.stringify(data));
       })
       .catch((error) => {
         this.setState({ error: error.message, loading: false });

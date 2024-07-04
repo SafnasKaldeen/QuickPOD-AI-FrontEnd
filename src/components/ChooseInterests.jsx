@@ -15,7 +15,8 @@ class ChooseTags extends Component {
   }
 
   fetchInterests = () => {
-    const apiUrl = "http://127.0.0.1:8000/generate_user_interests";
+    const apiUrl =
+      "http://127.0.0.1:8000/generate_general_blogcast_suggestions";
 
     this.setState({ loading: true });
 
@@ -41,7 +42,7 @@ class ChooseTags extends Component {
           active: false, // Assuming initial state for active
           id: index + 1, // You can generate unique IDs if needed
         }));
-        this.setState({ tags, loading: false });
+        this.setState({ tags, loading: true });
       })
       .catch((error) => {
         this.setState({ error: error.message, loading: false });

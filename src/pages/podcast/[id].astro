@@ -11,6 +11,11 @@ import Transcript from "../../components/Transcript.astro";
 import BlogButton from "../../components/BlogButton.astro";
 import Blog from "../../components/Blog";
 import Markup from "../../components/markup.jsx";
+import Cookies from "js-cookie";
+
+const Hot_news = Cookies.get("hot_news");
+console.log(Hot_news);
+
 interface Song {
   blog: {
     markdown: string;
@@ -281,6 +286,7 @@ const POD = allPlaylists.find((playlist) => playlist.id == id);
   import Cookies from "js-cookie";
 
   const token = Cookies.get("access_token");
+  
 
   if (!token) {
     alert("Unauthorized access. Redirecting to login page.");
@@ -288,6 +294,10 @@ const POD = allPlaylists.find((playlist) => playlist.id == id);
   } else {
     console.log("Token exists");
     // alert(token);
+  }
+
+  if (Hot_news) {
+    alert("Hot news: " + Hot_news);
   }
 </script>
 
