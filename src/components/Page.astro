@@ -1,0 +1,284 @@
+---
+import PageHeader from "./PageHeader.astro";
+import AudioPlayer from "./Player/AudioPlayer.jsx";
+import Transcript from "./Transcript.astro";
+
+interface Song {
+  blog: {
+    markdown: string;
+    title: string;
+    blog_img_url: string;
+  };
+  podcast: {
+    audio_url: string;
+    thumbnail_url: string;
+    transcript: {
+      title: string;
+      content: string;
+    };
+  };
+  keywords: string[];
+  type: string;
+  id: number;
+}
+
+export const allPlaylists: Song[] = [
+  {
+    blog: {
+      markdown:
+        "# The Rise of AI\nArtificial Intelligence is transforming industries...",
+      title: "The Rise of AI",
+      blog_img_url:
+        "https://images.unsplash.com/photo-1568605114967-8130f3a36994",
+    },
+    podcast: {
+      audio_url: "https://www.sample-videos.com/audio/mp3/crowd-cheering.mp3",
+      thumbnail_url:
+        "https://images.unsplash.com/photo-1580927752452-5d1b75d4e0d7",
+      transcript: {
+        title: "AI Podcast Episode 1",
+        content:
+          "Welcome to our podcast on AI. Today we discuss the impact of artificial intelligence on various industries...",
+      },
+    },
+    keywords: ["AI", "technology", "future"],
+    type: "technology",
+    id: 1,
+  },
+  {
+    blog: {
+      markdown:
+        "# Healthy Eating\nHealthy eating is essential for maintaining good health...",
+      title: "Healthy Eating",
+      blog_img_url: "https://images.unsplash.com/photo-1556911220-e15b30d91438",
+    },
+    podcast: {
+      audio_url: "https://www.sample-videos.com/audio/mp3/wave.mp3",
+      thumbnail_url:
+        "https://images.unsplash.com/photo-1574672282324-e142b5f11f43",
+      transcript: {
+        title: "Healthy Eating Podcast",
+        content:
+          "In today's episode, we talk about the benefits of healthy eating and how to incorporate it into your daily routine...",
+      },
+    },
+    keywords: ["health", "nutrition", "wellness"],
+    type: "health",
+    id: 2,
+  },
+  {
+    blog: {
+      markdown:
+        "# The Rise of AI\nArtificial Intelligence is transforming industries...",
+      title: "The Rise of AI",
+      blog_img_url:
+        "https://images.unsplash.com/photo-1568605114967-8130f3a36994",
+    },
+    podcast: {
+      audio_url: "https://www.sample-videos.com/audio/mp3/crowd-cheering.mp3",
+      thumbnail_url:
+        "https://images.unsplash.com/photo-1580927752452-5d1b75d4e0d7",
+      transcript: {
+        title: "AI Podcast Episode 1",
+        content:
+          "Welcome to our podcast on AI. Today we discuss the impact of artificial intelligence on various industries...",
+      },
+    },
+    keywords: ["AI", "technology", "future"],
+    type: "technology",
+    id: 3,
+  },
+  {
+    blog: {
+      markdown:
+        "# Healthy Eating\nHealthy eating is essential for maintaining good health...",
+      title: "Healthy Eating",
+      blog_img_url: "https://images.unsplash.com/photo-1556911220-e15b30d91438",
+    },
+    podcast: {
+      audio_url: "https://www.sample-videos.com/audio/mp3/wave.mp3",
+      thumbnail_url:
+        "https://images.unsplash.com/photo-1574672282324-e142b5f11f43",
+      transcript: {
+        title: "Healthy Eating Podcast",
+        content:
+          "In today's episode, we talk about the benefits of healthy eating and how to incorporate it into your daily routine...",
+      },
+    },
+    keywords: ["health", "nutrition", "wellness"],
+    type: "health",
+    id: 4,
+  },
+  {
+    blog: {
+      markdown:
+        "# The Rise of AI\nArtificial Intelligence is transforming industries...",
+      title: "The Rise of AI",
+      blog_img_url:
+        "https://images.unsplash.com/photo-1568605114967-8130f3a36994",
+    },
+    podcast: {
+      audio_url: "https://www.sample-videos.com/audio/mp3/crowd-cheering.mp3",
+      thumbnail_url:
+        "https://images.unsplash.com/photo-1580927752452-5d1b75d4e0d7",
+      transcript: {
+        title: "AI Podcast Episode 1",
+        content:
+          "Welcome to our podcast on AI. Today we discuss the impact of artificial intelligence on various industries...",
+      },
+    },
+    keywords: ["AI", "technology", "future"],
+    type: "technology",
+    id: 5,
+  },
+  {
+    blog: {
+      markdown:
+        "# Healthy Eating\nHealthy eating is essential for maintaining good health...",
+      title: "Healthy Eating",
+      blog_img_url: "https://images.unsplash.com/photo-1556911220-e15b30d91438",
+    },
+    podcast: {
+      audio_url: "https://www.sample-videos.com/audio/mp3/wave.mp3",
+      thumbnail_url:
+        "https://images.unsplash.com/photo-1574672282324-e142b5f11f43",
+      transcript: {
+        title: "Healthy Eating Podcast",
+        content:
+          "In today's episode, we talk about the benefits of healthy eating and how to incorporate it into your daily routine...",
+      },
+    },
+    keywords: ["health", "nutrition", "wellness"],
+    type: "health",
+    id: 6,
+  },
+  {
+    blog: {
+      markdown:
+        "# The Rise of AI\nArtificial Intelligence is transforming industries...",
+      title: "The Rise of AI",
+      blog_img_url:
+        "https://images.unsplash.com/photo-1568605114967-8130f3a36994",
+    },
+    podcast: {
+      audio_url: "https://www.sample-videos.com/audio/mp3/crowd-cheering.mp3",
+      thumbnail_url:
+        "https://images.unsplash.com/photo-1580927752452-5d1b75d4e0d7",
+      transcript: {
+        title: "AI Podcast Episode 1",
+        content:
+          "Welcome to our podcast on AI. Today we discuss the impact of artificial intelligence on various industries...",
+      },
+    },
+    keywords: ["AI", "technology", "future"],
+    type: "technology",
+    id: 7,
+  },
+  {
+    blog: {
+      markdown:
+        "# Healthy Eating\nHealthy eating is essential for maintaining good health...",
+      title: "Healthy Eating",
+      blog_img_url: "https://images.unsplash.com/photo-1556911220-e15b30d91438",
+    },
+    podcast: {
+      audio_url: "https://www.sample-videos.com/audio/mp3/wave.mp3",
+      thumbnail_url:
+        "https://images.unsplash.com/photo-1574672282324-e142b5f11f43",
+      transcript: {
+        title: "Healthy Eating Podcast",
+        content:
+          "In today's episode, we talk about the benefits of healthy eating and how to incorporate it into your daily routine...",
+      },
+    },
+    keywords: ["health", "nutrition", "wellness"],
+    type: "health",
+    id: 8,
+  },
+];
+
+const POD = allPlaylists.find((playlist) => playlist.id == 3);
+---
+
+<div
+  class="relative bg-zinc-900 min-h-full flex flex-col overflow-x-hidden rounded-lg"
+  transition:name={`playlist ${POD?.id} box`}
+>
+  <PageHeader />
+  <div
+    class="flex flex-col items-center md:flex-row md:items-stretch gap-8 px-6"
+  >
+    <div class="h-52 w-52 flex-none">
+      <img
+        src={POD?.podcast.thumbnail_url}
+        alt={POD?.blog.title}
+        class="object-cover h-full w-full shadow-[5px_0_30px_0px_rgba(0,0,0,0.3)]"
+        transition:name={`playlist ${POD?.id} image`}
+      />
+    </div>
+    <div class="flex flex-col justify-between">
+      <div>
+        <h1 class="title-clamp font-bold block text-4xl text-white">
+          {POD?.blog.title}
+          <span transition:name={`playlist ${POD?.id} title`}></span>
+        </h1>
+      </div>
+      <div class="flex-1 flex items-end">
+        <div class="text-sm">
+          <div class="relative space-y-8 py-3 px-3">
+            <div>
+              <!-- <h2 class="text-3xl font-bold text-gray-800 dark:text-gray-100">
+                  {Markdown}
+                </h2> -->
+              <a
+                class="text-xl font-semibold text-gray-700 dark:text-blue-400 transition flex items-center gap-1 relative group font-semibold hover:cursor-pointer"
+                id="blog-button"
+              >
+                <p
+                  class="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-blue-500 hover:text-green-500"
+                >
+                  <span>Click to Read the Blog</span>
+                  <span
+                    class="transition transform group-hover:translate-x-1 group-hover:ml-2"
+                    >-&gt;</span
+                  >
+                </p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-zinc-900/30 mt-6 flex-1 p-6 blur-100">
+    <div class="px-6 pt-4">
+      <main
+        class="flex min-h-screen flex-col items-center gap-20 py-20 px-4 md:px-24 md:py-24"
+      >
+        <div class="flex flex-col gap-4">
+          <AudioPlayer
+            title={POD?.podcast.transcript.title}
+            src="https://parse-server-ff.s3.amazonaws.com/ae5992f0f5bb1f259bafa41b3771e3bb_call12565815456dwwwwww795896232www-01b59bd3.mp3"
+            client:load
+          />
+        </div>
+        <Transcript Transcript={POD?.podcast.transcript.content} />
+      </main>
+    </div>
+  </div>
+  <div
+    class="absolute h-screen inset-0 z-[-1] bg-gradient-to-b from-context"
+    style={`--context-color:${POD?.blog.title}`}
+  >
+    <img
+      src={POD?.blog.blog_img_url}
+      alt={POD?.blog.title}
+      class="el-to-fade transition-all duration-500 z-[-1] absolute inset-0 mix-blend-overlay opacity-20 scale-90 w-full h-full object-cover blur-md"
+    />
+    <div
+      class="absolute inset-0 bg-gradient-to-t via-transparent from-zinc-900"
+    >
+    </div>
+  </div>
+</div>

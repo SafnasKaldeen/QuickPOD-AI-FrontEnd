@@ -3,7 +3,7 @@ import ReactMarkdown from "react-markdown";
 
 const MarkupComponent = ({ markdownContent }) => {
   return (
-    <div className="markup-container mb-10 p-5">
+    <div className="markup-container mb-10">
       {/* {markdownContent} */}
       <ReactMarkdown
         components={{

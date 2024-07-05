@@ -1,0 +1,55 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SideMenu from "../../components/Side/SideMenu.astro";
+import PlaylistPage from "../../components/PlaylistPage";
+import PODviewerpassing from "./PODviewerpassing.jsx";
+---
+
+<script>
+  import Cookies from "js-cookie";
+
+  const token = Cookies.get("access_token");
+
+  if (!token) {
+    alert("Unauthorized access. Redirecting to login page.");
+    location.href = "/Login";
+  } else {
+    console.log("Token exists");
+    // alert(token);
+  }
+</script>
+
+<div class="">
+  <Layout name="Player Page">
+    <div class="relative h-screen gap-2 flex items-stretch">
+      <div class="w-[350px] flex-col lg:flex overflow-y-auto">
+        <SideMenu />
+      </div>
+      <PODviewerpassing client:visible />
+      <div
+        id="not-support"
+        class="fixed hidden bg-red-700 bottom-0 inset-x-0 rounded-t-md text-center py-2 lg:py-4 z-50 font-semibold"
+      >
+        It seems your browser does not support view transitions yet :( try it
+        using chrome or edge <a
+          class="underline"
+          href="https://github.com/igorm84/spotify-astro-transitions"
+          >(see docs here)</a
+        >
+      </div>
+    </div>
+  </Layout>
+</div>
+
+<script>
+  document.getElementById("blog-button").addEventListener("click", function () {
+    BLG.classList.remove("hidden");
+    POD.classList.add("hidden");
+  });
+  document
+    .getElementById("audio-button")
+    .addEventListener("click", function () {
+      POD.classList.remove("hidden");
+      BLG.classList.add("hidden");
+    });
+</script>

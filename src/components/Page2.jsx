@@ -1,6 +1,7 @@
-import React from "react";
 import PageHeader from "../components/PageHeader.jsx";
+// import Layout from "../layouts/Layout.jsx";
 import Markup from "../components/markup.jsx";
+import React from "react";
 
 const Blog = `# Overview of Sri Lankan Cricket
 
@@ -63,34 +64,34 @@ Sri Lankan cricket continues to captivate audiences worldwide with its flair, re
 5. [Role of Domestic Cricket in Sri Lanka](https://example.com/sri-lanka-domestic-cricket)
 `;
 
-const BlogComponent = () => {
-  return (
-    <React.Fragment>
-      <div className="h-full flex flex-col overflow-auto">
-        <div
-          id="background-image"
-          className="h-full bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1568605114967-8130f3a36994')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        >
-          <PageHeader />
-
-          <div className="relative z-10 px-6 mb-40 mt-20">
-            <h1 className="text-5xl font-bold text-white">{Cricket}</h1>
-          </div>
-        </div>
-        <div className="px-6 relative z-10 flex-1">
-          <div className="flex flex-wrap mt-6 gap-4">
-            <Markup markdownContent={Blog.markdown} />
-          </div>
+const BlogPage = () => (
+  <React.Fragment>
+    <div
+      id="playlist-container"
+      className="relative transition-all duration-1000 bg-context h-1/2"
+      style={{
+        backgroundImage: "url('/images/cover/SriLanka.webp')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <PageHeader />
+      <div className="relative z-10 px-6">
+        <span>
+          <h1 className="text-9xl font-bold">Cricket</h1>
+        </span>
+        <div className="grid gap-y-4 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 mt-6">
+          {/* Any additional content grid items can be added here */}
         </div>
       </div>
-    </React.Fragment>
-  );
-};
+      <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80"></div>
+    </div>
+    <div className="px-6 relative z-10 mt-4">
+      <div className="flex flex-wrap mt-6 gap-4">
+        <Markup clientLoad markdownContent={Blog} />
+      </div>
+    </div>
+  </React.Fragment>
+);
 
-export default BlogComponent;
+export default BlogPage;
