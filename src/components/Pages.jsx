@@ -35,7 +35,7 @@ const PodcastDetail = () => {
           blog: {
             ...blogcast.blog,
             blog_img_url: blogcast.blog.blog_img_url.replace(
-              "E:\\UOM\\My-CODE_RUSH\\projects\\Quick Pod\\spotify-astro-transitions-main\\spotify-astro-transitions-main\\podcast-backend\\",
+              "E:\\UOM\\My-CODE_RUSH\\projects\\Quick Pod\\spotify-astro-transitions-main\\spotify-astro-transitions-main\\podcast-frontend\\public",
               ""
             ),
           },
@@ -78,7 +78,16 @@ const PodcastDetail = () => {
       <div
         className="relative transition-all duration-1000 bg-context h-1/2"
         style={{
-          backgroundImage: `url("/${POD?.blog.blog_img_url.replace(/\\/g, "/")}")`,
+          backgroundImage: `url("/${POD?.blog.blog_img_url
+            .replace(/\\/g, "/")
+            .replace(
+              "E://UOM//My-CODE_RUSH//projects//Quick Pod//spotify-astro-transitions-main//spotify-astro-transitions-main//podcast-frontend//public//",
+              ""
+            )
+            .replace(
+              "E:/UOM/My-CODE_RUSH/projects/Quick Pod/spotify-astro-transitions-main/spotify-astro-transitions-main/podcast-backend/",
+              ""
+            )}")`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -118,19 +127,39 @@ const PodcastDetail = () => {
           <div className="px-6 pt-4">
             <main className="flex min-h-screen flex-col items-center gap-20 py-20 px-4 md:px-24 md:py-24">
               <div className="flex flex-col gap-4">
-                {/* <p>{"/" + POD?.blog.blog_img_url.replace("\\", "/")}</p> */}
                 {/* <p>
-                  {POD?.podcast.audio_url.replace(
-                    "E:\\UOM\\My-CODE_RUSH\\projects\\Quick Pod\\spotify-astro-transitions-main\\spotify-astro-transitions-main\\podcast-backend\\",
-                    ""
-                  )}
+                  {`url("/${POD?.blog.blog_img_url
+                    .replace(/\\/g, "/")
+                    .replace(
+                      "E://UOM//My-CODE_RUSH//projects//Quick Pod//spotify-astro-transitions-main//spotify-astro-transitions-main//podcast-frontend//public//",
+                      ""
+                    )
+                    .replace(
+                      "E:/UOM/My-CODE_RUSH/projects/Quick Pod/spotify-astro-transitions-main/spotify-astro-transitions-main/podcast-backend/",
+                      ""
+                    )}")`}
+                </p>
+                <p>
+                  {"/" +
+                    POD?.podcast.audio_url
+                      .replace(/\\/g, "/")
+                      .replace(
+                        "E://UOM//My-CODE_RUSH//projects//Quick Pod//spotify-astro-transitions-main//spotify-astro-transitions-main//podcast-frontend//public//",
+                        ""
+                      )}
                 </p> */}
                 <AudioPlayer
                   title={POD?.podcast.transcript.title}
-                  src={POD?.podcast.audio_url.replace(
-                    "E:\\UOM\\My-CODE_RUSH\\projects\\Quick Pod\\spotify-astro-transitions-main\\spotify-astro-transitions-main\\podcast-backend\\",
-                    ""
-                  )}
+                  src={
+                    "/" +
+                    POD?.podcast.audio_url
+                      .replace(/\\/g, "/")
+                      .replace(
+                        "E://UOM//My-CODE_RUSH//projects//Quick Pod//spotify-astro-transitions-main//spotify-astro-transitions-main//podcast-frontend//public//",
+                        ""
+                      )
+                  }
+                  // src="/audio_files/podcast_with_bgm_20240706192006.mp3"
                 />
               </div>
               <Transcript Transcript={POD?.podcast.transcript.content} />
@@ -143,7 +172,16 @@ const PodcastDetail = () => {
           style={{ "--context-color": POD?.blog.title }}
         >
           <img
-            src={POD?.blog.blog_img_url}
+            src={POD?.blog.blog_img_url
+              .replace(/\\/g, "/")
+              .replace(
+                "E://UOM//My-CODE_RUSH//projects//Quick Pod//spotify-astro-transitions-main//spotify-astro-transitions-main//podcast-frontend//public//",
+                ""
+              )
+              .replace(
+                "E:/UOM/My-CODE_RUSH/projects/Quick Pod/spotify-astro-transitions-main/spotify-astro-transitions-main/podcast-backend/",
+                ""
+              )}
             alt={POD?.blog.title}
             className="el-to-fade transition-all duration-500 z-[-1] absolute inset-0 mix-blend-overlay opacity-20 scale-90 w-full h-full object-cover blur-md"
           />

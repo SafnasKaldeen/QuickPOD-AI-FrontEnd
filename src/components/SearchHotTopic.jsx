@@ -29,15 +29,14 @@ class SearchHotTopic extends Component {
 
   handleClicked = async (song) => {
     console.log(song);
-    alert(song.id);
     try {
+      // alert(song.id);
       await Cookies.set("id", song.id);
-      alert(song.id);
-      console.log("Cookie : ");
-      alert(Cookies.get("id"));
-      // window.location.href = "/podcast";
+      console.log("Cookie : ", Cookies.get("id"));
+      window.location.href = "/podcast";
     } catch (error) {
       console.error("Error setting cookie:", error);
+      alert("Error setting cookie:" + error);
     }
   };
 
@@ -49,6 +48,19 @@ class SearchHotTopic extends Component {
     console.log("Making request to:", apiUrl); // Check if apiUrl is correct
 
     this.setState({ loading: true });
+
+    console.log(
+      "Body:",
+      JSON.stringify({
+        type: "user_defined",
+        topics: [
+          {
+            title: search,
+            link: `https://example.com/${encodeURIComponent(search)}`,
+          },
+        ],
+      })
+    );
 
     fetch(apiUrl, {
       method: "POST",
@@ -82,8 +94,8 @@ class SearchHotTopic extends Component {
       })
       .then((data) => {
         console.log("Fetched data:", data); // Check the fetched data
-        if (data && data.length > 0) {
-          const firstResult = data[0];
+        if (data) {
+          const firstResult = data;
           this.setState({
             content: firstResult,
             loading: false,
@@ -108,64 +120,40 @@ class SearchHotTopic extends Component {
 
     return (
       <React.Fragment>
-        <form className="flex flex-col" onSubmit={this.handleSubmit}>
-          <div className="flex items-center pb-3">
-            <input
-              type="text"
-              placeholder="Search the topic you want to generate blogcast..."
-              name="search"
-              className="flex-1 p-2 rounded-md bg-zinc-800 text-white ml-5"
-              value={search}
-              onChange={this.handleChange}
-              required
-            />
-            <button type="submit" className="p-2">
-              <FaSearch className="h-5 w-5 text-gray-300" />
-            </button>
-          </div>
-        </form>
+        {!loading && (
+          <form className="flex flex-col" onSubmit={this.handleSubmit}>
+            <div className="flex items-center pb-3">
+              <input
+                type="text"
+                placeholder="Search the topic you want to generate blogcast..."
+                name="search"
+                className="flex-1 p-2 rounded-md bg-zinc-800 text-white ml-5"
+                value={search}
+                onChange={this.handleChange}
+                required
+              />
+              <button type="submit" className="p-2">
+                <FaSearch className="h-5 w-5 text-gray-300" />
+              </button>
+            </div>
+          </form>
+        )}
         {loading && (
-          <div className="inset-0 flex items-center justify-center bg-zinc-900">
-            <div className="loader"></div>
-            <p className="text-gray-600 text-xl">
-              <h2 className="text-2xl font-bold text-gray-800 mt-6">
-                Blogcast is being generated!
-              </h2>
-            </p>
+          <div className="flex justify-center items-center">
+            <div className="p-4 rounded shadow">
+              <img src="/images/pokemon.gif" alt="Loading..." />
+            </div>
           </div>
         )}
         {content && (
-          <a
-            onClick={() => this.handleClicked(content)}
-            className="playlist-card p-4 flex flex-col items-center justify-center group relative transition-all duration-300 overflow-hidden gap-5 rounded-md shadow-lg hover:shadow-xl outline-none bg-zinc-500/5 hover:bg-zinc-500/20 focus:bg-zinc-500/20"
-            data-color={"colors.teal.dark"}
-            transition-name={`playlist ${content.id} box`}
-          >
-            <div className="w-40">
-              <div className="relative group mx-auto h-40 w-full flex-none shadow-lg">
-                <img
-                  src={content.podcast.thumbnail_url}
-                  alt={content.podcast.transcript.title}
-                  className="object-cover h-full w-full rounded-md shadow-[5px_0_30px_0px_rgba(0,0,0,0.3)]"
-                  transition-name={`playlist ${content.id} image`}
-                />
-                <div
-                  className="absolute right-2 bottom-2 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all"
-                  transition-name={`playlist ${content.id} play`}
-                >
-                  <PlayButton />
-                </div>
-              </div>
-              <div className="pt-2">
-                <div
-                  className="font-bold block truncate"
-                  transition-name={`playlist ${content.id} title`}
-                >
-                  {content.blog.title}
-                </div>
-              </div>
-            </div>
-          </a>
+          <div className="flex flex-col items-center justify-center mt-6">
+            <button
+              className="bg-purple-700 text-white text-xs uppercase font-semibold px-2 py-2 rounded-lg"
+              onClick={() => this.handleClicked(content)}
+            >
+              Your Generated Blogcasts
+            </button>
+          </div>
         )}
         {error && !loading && <p className="bg-red-500">Error: {error}</p>}
       </React.Fragment>

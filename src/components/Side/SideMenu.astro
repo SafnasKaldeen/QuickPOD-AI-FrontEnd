@@ -22,10 +22,8 @@ import HotNewsArticles from "../HotNewsArtices.jsx";
       <button id="collapsible">
         <SideMenuItem IconName="podcast" client:load />
       </button>
-      <div class="flex flex-col gap-4 items-center justify-between mx-4">
-        <div id="content" class="">
-          <HotNewsArticles client:load />
-        </div>
+      <div class="flex flex-col gap-4 items-center justify-between mx-4 hidden" id="content">
+        <HotNewsArticles client:visible />
       </div>
     </ul>
   </div>

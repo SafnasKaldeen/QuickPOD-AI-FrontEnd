@@ -49,7 +49,8 @@ class ChooseTags extends Component {
     } catch (error) {
       console.error("Error fetching profile data:", error);
       this.setState({
-        error: "there is an error while fetching suitable interests",
+        error:
+          "there is an error while fetching suitable interests -> " + error,
         isLoading: false,
       });
     }
@@ -123,7 +124,9 @@ class ChooseTags extends Component {
       console.error("Error updating topics:", error);
       this.setState({ isBlogcastLoading: false });
       this.setState({ blogCast: null });
-      this.setState({ error: "Failed to generate blogcast" });
+      this.setState({
+        error: "Failed to generate blogcast -> " + "server error",
+      });
       // alert("Error updating topics. Please try again." + error);
     }
   };

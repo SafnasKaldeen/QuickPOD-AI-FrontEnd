@@ -147,7 +147,7 @@ const MarkupComponent = ({ markdownContent }) => {
           ),
         }}
       >
-        {BLOG}
+        {markdownContent}
       </ReactMarkdown>
     </div>
   );
