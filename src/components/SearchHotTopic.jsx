@@ -149,7 +149,7 @@ class SearchHotTopic extends Component {
           <div className="flex flex-col items-center justify-center mt-6">
             <button
               className="bg-purple-700 text-white text-xs uppercase font-semibold px-2 py-2 rounded-lg"
-              onClick={() => this.handleClicked(content)}
+              onClick={() => this.handleClicked(generatedBlogcasts)}
             >
               Your Generated Blogcasts
             </button>
