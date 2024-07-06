@@ -79,11 +79,13 @@ const YourComponent = () => {
                     alt={POD.podcast.transcript.title}
                     className="object-cover h-full w-full shadow-[5px_0_30px_0px_rgba(0,0,0,0.3)]"
                   />
+                  safnas
                 </div>
                 <div className="flex flex-col justify-between">
                   <div>
                     <h1 className="title-clamp font-bold block text-4xl text-white">
                       {POD.podcast.transcript.title || "Title Not Found"}
+                      <p>Safnas</p>
                       <span></span>
                     </h1>
                   </div>

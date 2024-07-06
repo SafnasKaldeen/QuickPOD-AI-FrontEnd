@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import { FaLink, FaPlay, FaSearch } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
 import PlayButton from "./PlayButton";
+import Loading from "./Player/Loading";
+import load from "node_modules/astro-icon/lib/utils";
 
 class SearchHotTopic extends Component {
   constructor(props) {
@@ -8,11 +10,18 @@ class SearchHotTopic extends Component {
     this.state = {
       search: "",
       content: null,
+      loading: false,
+      error: null,
     };
 
     // Binding methods to the component instance
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    // Optionally, you can fetch initial data here when the component mounts
+    // Example: this.fetchData();
   }
 
   handleChange(e) {
@@ -21,37 +30,68 @@ class SearchHotTopic extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    // Simulate setting content based on search result
+    const { search } = this.state;
+    const apiUrl = "http://127.0.0.1:8000/generate_news_blogcast";
 
-    this.setState({
-      content: {
-        blog: {
-          markdown:
-            "# The Rise of AI\nArtificial Intelligence is transforming industries...",
-          title: "The Rise of AI",
-          blog_img_url:
-            "https://images.unsplash.com/photo-1568605114967-8130f3a36994",
-        },
-        podcast: {
-          audio_url:
-            "https://www.sample-videos.com/audio/mp3/crowd-cheering.mp3",
-          thumbnail_url:
-            "https://images.unsplash.com/photo-1580927752452-5d1b75d4e0d7",
-          transcript: {
-            title: "AI Podcast Episode 1",
-            content:
-              "Welcome to our podcast on AI. Today we discuss the impact of artificial intelligence on various industries...",
-          },
-        },
-        keywords: ["AI", "technology", "future"],
-        type: "technology",
-        id: 5,
+    console.log("Making request to:", apiUrl); // Check if apiUrl is correct
+
+    this.setState({ loading: true });
+
+    fetch(apiUrl, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        Authorization: "Bearer " + Cookies.get("access_token"),
+        "Content-Type": "application/json",
       },
-    });
+      body: JSON.stringify({
+        type: "user_defined",
+        topics: [
+          {
+            title: search,
+            link: `https://example.com/${encodeURIComponent(search)}`,
+          },
+        ],
+      }),
+    })
+      .then((response) => {
+        console.log("Response status:", response.status); // Check response status
+
+        if (!response.ok) {
+          console.error("Network response was not ok");
+          this.setStatet({
+            loading: false,
+            error: "Network response was not ok",
+          });
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Fetched data:", data); // Check the fetched data
+        if (data && data.length > 0) {
+          const firstResult = data[0];
+          this.setState({
+            content: firstResult,
+            loading: false,
+            error: null,
+          });
+        } else {
+          this.setState({
+            content: null,
+            loading: false,
+            error: "No results found",
+          });
+        }
+      })
+      .catch((error) => {
+        this.setState({ error: error.message, loading: false });
+        console.error("There was a problem with the fetch operation:", error);
+      });
   }
 
   render() {
-    const { search, content } = this.state;
+    const { search, content, loading, error } = this.state;
 
     return (
       <React.Fragment>
@@ -71,9 +111,19 @@ class SearchHotTopic extends Component {
             </button>
           </div>
         </form>
+        {loading && (
+          <div className="inset-0 flex items-center justify-center bg-zinc-900">
+            <div className="loader"></div>
+            <p className="text-gray-600 text-xl">
+              <h2 className="text-2xl font-bold text-gray-800 mt-6">
+                Blogcast is being generated!
+              </h2>
+            </p>
+          </div>
+        )}
         {content && (
           <a
-            href={`/podcast/${content.id}`}
+            href={`/podcast`} // Ensure this link is properly generated based on your application logic
             className="playlist-card p-4 flex flex-col items-center justify-center group relative transition-all duration-300 overflow-hidden gap-5 rounded-md shadow-lg hover:shadow-xl outline-none bg-zinc-500/5 hover:bg-zinc-500/20 focus:bg-zinc-500/20"
             data-color={"colors.teal.dark"}
             transition-name={`playlist ${content.id} box`}
@@ -104,6 +154,7 @@ class SearchHotTopic extends Component {
             </div>
           </a>
         )}
+        {error && !loading && <p className="bg-red-500">Error: {error}</p>}
       </React.Fragment>
     );
   }

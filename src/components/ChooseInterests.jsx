@@ -126,6 +126,7 @@ class ChooseTags extends Component {
       console.error("Error updating topics:", error);
       this.setState({ isBlogcastLoading: false });
       this.setState({ blogCast: Data });
+      alert("Error updating topics. Please try again." + error);
     }
   };
 

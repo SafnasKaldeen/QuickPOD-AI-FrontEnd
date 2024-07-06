@@ -2,6 +2,7 @@ import React from "react";
 import { FaHome } from "react-icons/fa";
 import { SiApplepodcasts } from "react-icons/si";
 import { BiCustomize } from "react-icons/bi";
+import { MdWorkHistory } from "react-icons/md";
 
 const SideMenuItem = ({ IconName }) => {
   if (IconName === "home") {
@@ -34,6 +35,20 @@ const SideMenuItem = ({ IconName }) => {
         </a>
       </li>
     );
+  } else if (IconName === "History") {
+    return (
+      <li>
+        <a
+          className="flex gap-4 text-zinc-400 hover:text-zinc-100 py-3.5 px-5 font-semibold transition-all duration-300"
+          href="/history"
+        >
+          <MdWorkHistory className="h-6 w-6" />
+          <span>My Library</span>
+        </a>
+      </li>
+    );
+  } else {
+    return null;
   }
 };
 

@@ -55,7 +55,13 @@ const PodcastDetail = () => {
   };
 
   if (!POD) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="p-4  rounded shadow">
+          <img src="/images/loader.gif" alt="Loading..." />
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -77,6 +83,11 @@ const PodcastDetail = () => {
           <span>
             <h1 className="text-5xl font-bold h-80">{POD?.blog.title}</h1>
           </span>
+          {/* <img
+            src="/images/cover/SriLanka.webp"
+            alt="Sri Lanka"
+            className="h-60 w-60 object-cover"
+          /> */}
           <div className="flex-1 flex items-center justify-center">
             <div className="text-sm">
               <div className="relative space-y-8 py-3 px-3">

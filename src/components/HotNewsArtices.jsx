@@ -47,7 +47,7 @@ const NewsFeed = () => {
   return (
     <div>
       {loading ? (
-        <p className="m-5">Loading...</p>
+        <img src="/images/03-42-11-849_512.webp" alt="Loading..." />
       ) : error ? (
         <p className="m-5 text-red-500">{error}</p>
       ) : (

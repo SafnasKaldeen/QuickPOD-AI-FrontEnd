@@ -217,7 +217,7 @@ const data = [
             <span class="mb-4 lg:mb-0 lg:mr-auto">
               <GreetingTitle client:visible />
             </span>
-            <span class="mb-4 lg:mb-0 lg:ml-2">
+            <span class="mb-4 lg:mb-0">
               <div class="toggle">
                 <input type="checkbox" id="btn" />
                 <label for="btn">
@@ -255,9 +255,9 @@ const data = [
         </div>
         <div
           id="customize-section"
-          class="transition-opacity duration-1000 hidden"
+          class="transition-opacity duration-1000"
         >
-          <MusicsTable client:visible data={data} />
+          <!-- <MusicsTable client:visible data={data} /> -->
         </div>
         <div id="news-section" class="transition-opacity duration-1000">
           <h1

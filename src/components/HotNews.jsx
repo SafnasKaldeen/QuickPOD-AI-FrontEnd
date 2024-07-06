@@ -18,7 +18,7 @@ class HotNews extends Component {
   }
 
   fetchPlaylists() {
-    const apiUrl = "http://127.0.0.1:8000/generate_hot_news";
+    const apiUrl = "http://127.0.0.1:8000/generate_news_blogcast";
 
     this.setState({ loading: true });
     // alert(Cookies.get("access_token"));
@@ -82,8 +82,10 @@ class HotNews extends Component {
         <h2 className="text-2xl font-bold">
           Select the Hot News to generate Blogcasts
         </h2>
-        {loading && <p className="mt-5">Loading...</p>}
-        {error && <p className="mt-5">Error: {error}</p>}
+        {loading && (
+          <img src="/images/03-42-11-849_512.webp" alt="Loading..." />
+        )}
+        {error && <p className="mt-5 text-red-500">Error: {error}</p>}
         {!loading && !error && (
           <React.Fragment>
             {playlists.length === 0 && (
