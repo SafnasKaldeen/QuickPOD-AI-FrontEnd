@@ -83,7 +83,11 @@ class HotNews extends Component {
           Select the Hot News to generate Blogcasts
         </h2>
         {loading && (
-          <img src="/images/03-42-11-849_512.webp" alt="Loading..." />
+          <div className="flex justify-center items-center">
+            <div className="p-4  rounded shadow">
+              <img src="/images/pokemon.gif" alt="Loading..." />
+            </div>
+          </div>
         )}
         {error && <p className="mt-5 text-red-500">Error: {error}</p>}
         {!loading && !error && (

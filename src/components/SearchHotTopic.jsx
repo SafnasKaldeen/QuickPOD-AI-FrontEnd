@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { FaSearch } from "react-icons/fa";
 import PlayButton from "./PlayButton";
-import Loading from "./Player/Loading";
-import load from "node_modules/astro-icon/lib/utils";
+import Cookies from "js-cookie";
 
 class SearchHotTopic extends Component {
   constructor(props) {
@@ -27,6 +26,20 @@ class SearchHotTopic extends Component {
   handleChange(e) {
     this.setState({ search: e.target.value });
   }
+
+  handleClicked = async (song) => {
+    console.log(song);
+    alert(song.id);
+    try {
+      await Cookies.set("id", song.id);
+      alert(song.id);
+      console.log("Cookie : ");
+      alert(Cookies.get("id"));
+      // window.location.href = "/podcast";
+    } catch (error) {
+      console.error("Error setting cookie:", error);
+    }
+  };
 
   handleSubmit(e) {
     e.preventDefault();
@@ -59,7 +72,7 @@ class SearchHotTopic extends Component {
 
         if (!response.ok) {
           console.error("Network response was not ok");
-          this.setStatet({
+          this.setState({
             loading: false,
             error: "Network response was not ok",
           });
@@ -123,7 +136,7 @@ class SearchHotTopic extends Component {
         )}
         {content && (
           <a
-            href={`/podcast`} // Ensure this link is properly generated based on your application logic
+            onClick={() => this.handleClicked(content)}
             className="playlist-card p-4 flex flex-col items-center justify-center group relative transition-all duration-300 overflow-hidden gap-5 rounded-md shadow-lg hover:shadow-xl outline-none bg-zinc-500/5 hover:bg-zinc-500/20 focus:bg-zinc-500/20"
             data-color={"colors.teal.dark"}
             transition-name={`playlist ${content.id} box`}
@@ -140,7 +153,7 @@ class SearchHotTopic extends Component {
                   className="absolute right-2 bottom-2 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all"
                   transition-name={`playlist ${content.id} play`}
                 >
-                  <PlayButton client:load />
+                  <PlayButton />
                 </div>
               </div>
               <div className="pt-2">

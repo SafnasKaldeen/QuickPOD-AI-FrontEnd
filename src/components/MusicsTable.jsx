@@ -42,8 +42,15 @@ const SongTable = () => {
     fetchData();
   }, []);
 
-  const handleClicked = (song) => {
+  const handleClicked = async (song) => {
     console.log(song);
+    try {
+      await Cookies.set("id", song.id);
+      console.log("Cookie : ", Cookies.get("id"));
+      window.location.href = "/podcast";
+    } catch (error) {
+      console.error("Error setting cookie:", error);
+    }
   };
 
   const handleSort = (key) => {
@@ -88,7 +95,14 @@ const SongTable = () => {
     return keywords.includes(searchTerm.toLowerCase());
   });
 
-  if (loading) return <div>Loading...</div>;
+  if (loading)
+    return (
+      <div className="flex justify-center items-center">
+        <div className="p-4  rounded shadow">
+          <img src="/images/pokemon.gif" alt="Loading..." />
+        </div>
+      </div>
+    );
   if (error) return <div>Error: {error.message}</div>;
 
   return (
@@ -193,17 +207,23 @@ const SongTable = () => {
                 <td className="whitespace-nowrap px-4 py-2 flex gap-3 items-center">
                   <div className="h-10 w-10">
                     <img
-                      src={song.podcast.thumbnail_url}
+                      src={song.podcast.thumbnail_url.replace(
+                        "E:\\UOM\\My-CODE_RUSH\\projects\\Quick Pod\\spotify-astro-transitions-main\\spotify-astro-transitions-main\\podcast-backend",
+                        ""
+                      )}
                       alt={song.podcast.transcript.title}
                       className="rounded object-cover h-full w-full shadow-[5px_0_30px_0px_rgba(0,0,0,0.3)]"
                     />
                   </div>
-                  <div className="leading-none">
-                    {song.podcast.transcript.title}
+                  <div className="leading-none sm:leading-tight">
+                    <p>{song.podcast.transcript.title}</p>
                   </div>
                 </td>
                 <td className="whitespace-nowrap px-4 py-2">
-                  <a className="text-gray-300 group-hover:text-white">
+                  <a
+                    className="text-gray-300 group-hover:text-white"
+                    onClick={() => handleClicked(song)}
+                  >
                     <PlayButton />
                   </a>
                 </td>
