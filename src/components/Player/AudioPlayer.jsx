@@ -153,7 +153,7 @@ class AudioPlayer extends React.Component {
           ref={(ref) => (this.player = ref)}
         />
         <p>{this.props.color}</p>
-        <div className="bg-transparent text-green-500 font-mono rounded-lg flex flex-col gap-4 p-4">
+        <div className="bg-transparent text-primary  rounded-lg flex flex-col gap-4 p-4">
           <div className="flex justify-around">
             <Loading loaded={this.state.loaded} title={this.props.title} />
             <div>
@@ -186,14 +186,14 @@ class AudioPlayer extends React.Component {
                   className={`${this.state.playing ? "text-white" : ""}`}
                 />
               </button>
-              <button onClick={this.handleLike}>
-                <FaHeart
-                  className={`${this.state.Liked ? "text-red-500" : "text-white"}`}
-                />
-              </button>
               <button onClick={this.handleToggle}>
                 <FaPlay
                   className={`${this.state.playing ? "" : "text-white"}`}
+                />
+              </button>
+              <button onClick={this.handleLike}>
+                <FaHeart
+                  className={`${this.state.Liked ? "text-red-500" : "text-white"}`}
                 />
               </button>
             </div>

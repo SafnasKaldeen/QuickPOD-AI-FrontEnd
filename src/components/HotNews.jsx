@@ -146,7 +146,7 @@ class HotNews extends Component {
         <h2 className="text-2xl">Select the Hot News to generate Blogcasts</h2>
         {(isBeingGenerated || loading) && (
           <div className="flex justify-center items-center">
-            <div className="p-4 rounded shadow">
+            <div className="p-4 rounded shadow w-60">
               <img src="/images/pokemon.gif" alt="Loading..." />
             </div>
           </div>
@@ -193,14 +193,16 @@ class HotNews extends Component {
                 </button>
               </div>
             )}
-            <button
-              className={`flex flex-wrap mt-6 gap-4 rounded-md items-center p-2 text-white bg-green-500 hover:bg-green-700 ${
-                selected.length === 0 ? "hidden" : ""
-              }`}
-              onClick={this.Generate}
-            >
-              Generate
-            </button>
+            {!generatedBlogcasts && (
+              <button
+                className={`flex flex-wrap mt-6 gap-4 rounded-md items-center p-2 text-white bg-green-500 hover:bg-green-700 ${
+                  selected.length === 0 ? "hidden" : ""
+                }`}
+                onClick={this.Generate}
+              >
+                Generate
+              </button>
+            )}
             <p className="mt-5">All</p>
             <div className="flex flex-wrap mt-6 gap-4">
               {playlists.map((playlist) => (

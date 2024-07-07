@@ -7,6 +7,7 @@ import Cookies from "js-cookie";
 
 const PodcastDetail = () => {
   const [POD, setPOD] = useState(null);
+  const [isPodcastView, setIsPodcastView] = useState(true); // Track current view
 
   useEffect(() => {
     const fetchPODData = async () => {
@@ -29,7 +30,6 @@ const PodcastDetail = () => {
         const data = await response.json();
         console.log("Fetched data:", data);
 
-        // Assuming your API response structure, adjust as needed
         const processedData = data.blogcasts.map((blogcast) => ({
           ...blogcast,
           blog: {
@@ -44,7 +44,7 @@ const PodcastDetail = () => {
         setPOD(
           processedData[Cookies.get("id")] ||
             processedData[processedData.length - 1]
-        ); // Setting the last item for display
+        );
       } catch (error) {
         console.error("Error fetching the POD data:", error);
       }
@@ -53,13 +53,14 @@ const PodcastDetail = () => {
     fetchPODData();
   }, []);
 
-  const handleBlogButtonClick = () => {
+  const handleToggleClick = () => {
     const podElement = document.getElementById("POD");
     const blogElement = document.getElementById("BLG");
 
     if (podElement && blogElement) {
       podElement.classList.toggle("hidden");
       blogElement.classList.toggle("hidden");
+      setIsPodcastView(!isPodcastView); // Toggle view state
     }
   };
 
@@ -99,18 +100,17 @@ const PodcastDetail = () => {
             <div className="text-sm">
               <div className="relative space-y-8 py-3 px-3">
                 <div>
-                  <a
-                    className="text-xl font-semibold text-gray-700 dark:text-blue-400 transition flex items-center gap-1 relative group font-semibold hover:cursor-pointer"
-                    id="blog-button"
-                    onClick={handleBlogButtonClick}
+                  <button
+                    className="px-4 py-2 mb-6 bg-primary text-black rounded-md hover:bg-primary/70 transition duration-300"
+                    onClick={handleToggleClick}
+                    aria-label="Toggle View"
                   >
-                    <span>{"BLOG <-> PODCAST"}</span>
-                  </a>
+                    {isPodcastView ? "BLOG" : "PODCAST"}
+                  </button>
                 </div>
               </div>
             </div>
           </div>
-          {/* Additional content or grid setup can be added here */}
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80"></div>
       </div>
@@ -123,31 +123,10 @@ const PodcastDetail = () => {
           {/* Additional podcast details */}
         </div>
 
-        <div className="bg-zinc-900 mt-6 flex-1 p-6">
+        <div className="bg-black flex-1 p-6">
           <div className="px-6 pt-4">
             <main className="flex min-h-screen flex-col items-center gap-20 py-20 px-4 md:px-24 md:py-24">
               <div className="flex flex-col gap-4">
-                {/* <p>
-                  {`url("/${POD?.blog.blog_img_url
-                    .replace(/\\/g, "/")
-                    .replace(
-                      "E://UOM//My-CODE_RUSH//projects//Quick Pod//spotify-astro-transitions-main//spotify-astro-transitions-main//podcast-frontend//public//",
-                      ""
-                    )
-                    .replace(
-                      "E:/UOM/My-CODE_RUSH/projects/Quick Pod/spotify-astro-transitions-main/spotify-astro-transitions-main/podcast-backend/",
-                      ""
-                    )}")`}
-                </p>
-                <p>
-                  {"/" +
-                    POD?.podcast.audio_url
-                      .replace(/\\/g, "/")
-                      .replace(
-                        "E://UOM//My-CODE_RUSH//projects//Quick Pod//spotify-astro-transitions-main//spotify-astro-transitions-main//podcast-frontend//public//",
-                        ""
-                      )}
-                </p> */}
                 <AudioPlayer
                   title={POD?.podcast.transcript.title}
                   src={
@@ -159,7 +138,6 @@ const PodcastDetail = () => {
                         ""
                       )
                   }
-                  // src="/audio_files/podcast_with_bgm_20240706192006.mp3"
                 />
               </div>
               <Transcript Transcript={POD?.podcast.transcript.content} />

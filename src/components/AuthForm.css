@@ -38,7 +38,7 @@
 
 .container button {
   background-color: rgb(143, 51, 233);
-  color: #fff;
+  color: black;
   font-size: 12px;
   padding: 10px 45px;
   border: 1px solid transparent;
@@ -52,7 +52,7 @@
 
 .container button.hiddenBg {
   background-color: transparent !important;
-  border-color: #fff !important;
+  border-color: black !important;
 }
 
 .container form {
@@ -139,8 +139,7 @@
 .toggle {
   background-color: orange;
   height: 100%;
-  background: radial-gradient(circle farthest-corner at 10% 20%, rgba(2, 37, 78, 1) 0%, rgba(4, 56, 126, 1) 19.7%, rgba(85, 245, 221, 1) 100.2%);
-  color: #fff;
+  background: #CCF241;
   position: relative;
   left: -100%;
   width: 200%;

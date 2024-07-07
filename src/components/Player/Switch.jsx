@@ -37,7 +37,7 @@ class Switch extends Component {
       >
         <div
           className={`relative ${
-            checked ? "bg-green-500" : "bg-gray-300"
+            checked ? "bg-primary" : "bg-gray-300"
           } w-10 h-5 rounded-full transition`}
         >
           <input
@@ -53,7 +53,7 @@ class Switch extends Component {
             }`}
           ></div>
         </div>
-        <div className="ml-1 text-green-500 font-medium">{label}</div>
+        <div className="ml-1 text-primary font-medium">{label}</div>
       </label>
     );
   }

@@ -48,8 +48,8 @@ const NewsFeed = () => {
     <div>
       {loading ? (
         <div className="flex justify-center items-center">
-          <div className="p-4  rounded shadow">
-            <img src="/images/giphy.gif" alt="Loading..." />
+          <div className="p-4  rounded shadow w-60">
+            <img src="/images/pokemon.gif" alt="Loading..." />
           </div>
         </div>
       ) : error ? (

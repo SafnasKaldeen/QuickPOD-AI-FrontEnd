@@ -140,7 +140,7 @@ class SearchHotTopic extends Component {
         )}
         {loading && (
           <div className="flex justify-center items-center">
-            <div className="p-4 rounded shadow">
+            <div className="p-4 rounded shadow w-60">
               <img src="/images/pokemon.gif" alt="Loading..." />
             </div>
           </div>

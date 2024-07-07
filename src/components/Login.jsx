@@ -100,7 +100,16 @@ const AuthForm = ({ FormType }) => {
             name="first_name"
             placeholder="First Name"
             required
-            className="text-black"
+            style={{
+              color: "white",
+              backgroundColor: "black",
+              borderRadius: "4px",
+              border: "1px solid #ccc",
+              padding: "8px",
+              "::placeholder": {
+                color: "#f0f0f0",
+              },
+            }}
           />
           <input
             type="text"
@@ -108,6 +117,16 @@ const AuthForm = ({ FormType }) => {
             placeholder="Last Name"
             required
             className="text-black"
+            style={{
+              color: "white",
+              backgroundColor: "black",
+              borderRadius: "4px",
+              border: "1px solid #ccc",
+              padding: "8px",
+              "::placeholder": {
+                color: "#f0f0f0",
+              },
+            }}
           />
           <input
             type="email"
@@ -115,6 +134,16 @@ const AuthForm = ({ FormType }) => {
             placeholder="Email"
             required
             className="text-black"
+            style={{
+              color: "white",
+              backgroundColor: "black",
+              borderRadius: "4px",
+              border: "1px solid #ccc",
+              padding: "8px",
+              "::placeholder": {
+                color: "#f0f0f0",
+              },
+            }}
           />
           <input
             type="password"
@@ -122,6 +151,16 @@ const AuthForm = ({ FormType }) => {
             placeholder="Password"
             required
             className="text-black"
+            style={{
+              color: "white",
+              backgroundColor: "black",
+              borderRadius: "4px",
+              border: "1px solid #ccc",
+              padding: "8px",
+              "::placeholder": {
+                color: "#f0f0f0",
+              },
+            }}
           />
 
           <input
@@ -130,6 +169,16 @@ const AuthForm = ({ FormType }) => {
             placeholder="Gender"
             required
             className="text-black"
+            style={{
+              color: "white",
+              backgroundColor: "black",
+              borderRadius: "4px",
+              border: "1px solid #ccc",
+              padding: "8px",
+              "::placeholder": {
+                color: "#f0f0f0",
+              },
+            }}
           />
           <input
             type="date"
@@ -137,6 +186,16 @@ const AuthForm = ({ FormType }) => {
             placeholder="Date of Birth"
             required
             className="text-black"
+            style={{
+              color: "white",
+              backgroundColor: "black",
+              borderRadius: "4px",
+              border: "1px solid #ccc",
+              padding: "8px",
+              "::placeholder": {
+                color: "#f0f0f0",
+              },
+            }}
           />
           <input
             type="text"
@@ -144,6 +203,16 @@ const AuthForm = ({ FormType }) => {
             placeholder="Country"
             required
             className="text-black"
+            style={{
+              color: "white",
+              backgroundColor: "black",
+              borderRadius: "4px",
+              border: "1px solid #ccc",
+              padding: "8px",
+              "::placeholder": {
+                color: "#f0f0f0",
+              },
+            }}
           />
           <input
             type="text"
@@ -151,6 +220,16 @@ const AuthForm = ({ FormType }) => {
             placeholder="Language Code"
             required
             className="text-black"
+            style={{
+              color: "white",
+              backgroundColor: "black",
+              borderRadius: "4px",
+              border: "1px solid #ccc",
+              padding: "8px",
+              "::placeholder": {
+                color: "#f0f0f0",
+              },
+            }}
           />
 
           <button
@@ -172,6 +251,16 @@ const AuthForm = ({ FormType }) => {
             name="email"
             placeholder="Email"
             required
+            style={{
+              color: "white",
+              backgroundColor: "black",
+              borderRadius: "4px",
+              border: "1px solid #ccc",
+              padding: "8px",
+              "::placeholder": {
+                color: "#f0f0f0",
+              },
+            }}
           />
           <input
             className="text-black"
@@ -179,6 +268,16 @@ const AuthForm = ({ FormType }) => {
             name="password"
             placeholder="Password"
             required
+            style={{
+              color: "white",
+              backgroundColor: "black",
+              borderRadius: "4px",
+              border: "1px solid #ccc",
+              padding: "8px",
+              "::placeholder": {
+                color: "#f0f0f0",
+              },
+            }}
           />
           <button
             style={{ backgroundColor: "#CCF241", color: "black" }}
@@ -192,15 +291,19 @@ const AuthForm = ({ FormType }) => {
       <div className="toggle-container">
         <div className="toggle">
           <div className="toggle-panel toggle-left">
-            <h1 className="font-bold">Welcome Back!</h1>
-            <p>Enter your personal details to use all site features</p>
+            <h1 className="font-bold text-black">Welcome Back!</h1>
+            <p className="text-black">
+              Enter your personal details to use all site features
+            </p>
             <button className="hiddenBg" onClick={handleLoginClick}>
               Sign In
             </button>
           </div>
           <div className="toggle-panel toggle-right">
-            <h1 className="font-bold">Welcome, Friend!</h1>
-            <p>Enter your personal details to use all site features</p>
+            <h1 className="font-bold text-black">Welcome, Friend!</h1>
+            <p className="text-black">
+              Enter your personal details to use all site features
+            </p>
             <button className="hiddenBg" onClick={handleRegisterClick}>
               Sign Up
             </button>
