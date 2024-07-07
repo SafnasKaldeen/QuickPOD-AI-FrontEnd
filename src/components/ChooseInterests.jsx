@@ -109,7 +109,7 @@ class ChooseTags extends Component {
         }
       );
 
-      alert("Updating topics...");
+      // alert("Updating topics...");
       if (response.ok) {
         const responseData = await response.json();
         console.log("Topics updated successfully", responseData);
@@ -196,13 +196,10 @@ class ChooseTags extends Component {
             </button>
           </div>
           {isBlogcastLoading && (
-            <div className="absolute inset-0 flex items-center justify-center bg-zinc-900">
-              <div className="loader"></div>
-              <p className="text-gray-600 text-xl">
-                <h2 className="text-2xl font-bold text-gray-800 mt-6">
-                  Blogcast is being generated!
-                </h2>
-              </p>
+            <div className="flex justify-center items-center">
+              <div className="p-4 rounded shadow">
+                <img src="/images/pokemon.gif" alt="Loading..." />
+              </div>
             </div>
           )}
           <div className="flex flex-wrap justify-center items-center">
@@ -222,7 +219,7 @@ class ChooseTags extends Component {
           {blogCast && (
             <div className="flex flex-col items-center justify-center mt-6">
               <button
-                className="bg-purple-700 text-white text-xs uppercase font-semibold px-2 py-2 rounded-lg"
+                className="bg-primary text-black text-xs uppercase font-bold px-2 py-2 rounded-lg"
                 disabled={isBlogcastLoading}
                 onClick={() => this.handleClicked(blogCast)}
               >

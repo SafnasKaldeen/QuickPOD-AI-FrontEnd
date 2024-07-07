@@ -140,27 +140,26 @@ class ChooseTags extends Component {
                 placeholder="Add more tags"
                 value={newTag}
                 onChange={this.handleChange}
-                className="p-2 bg-sky-900 text-white rounded border border-gray-400 flex-1 mr-2"
+                className="p-2 bg-zinc-900 text-white rounded border border-gray-400 flex-1 mr-2"
                 aria-label="Add more tags"
               />
               <button
-                className="p-2 text-white rounded bg-green-500"
+                className="p-2  rounded border border-primary bg-transparent text-primary"
                 onClick={this.handleAddTag}
                 aria-label="Add Tag"
               >
                 Add Tag
               </button>
             </div>
-
-            <div className="relative items-center justify-center">
-              <button
-                onClick={this.handleFinalizeInterests}
-                className="bg-purple-700 text-white text-xs uppercase font-semibold px-5 py-3 rounded-lg border border-transparent my-5 cursor-pointer"
-                aria-label="Update Interests"
-              >
-                Update Interests
-              </button>
-            </div>
+          </div>
+          <div className="relative items-center justify-center">
+            <button
+              onClick={this.handleFinalizeInterests}
+              className="bg-primary text-black text-xs uppercase font-bold px-5 py-3 rounded-lg border border-transparent my-5 cursor-pointer"
+              aria-label="Update Interests"
+            >
+              Update Interests
+            </button>
           </div>
         </div>
       </div>

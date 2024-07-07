@@ -30,7 +30,7 @@
     document.getElementById("Full_Name").textContent =
       data.first_name + " " + data.last_name;
     document.getElementById("Email").innerHTML =
-      `<a href="mailto:${data.email}" class="__cf_email__ text-blue-500">[email&#160;protected]</a>`;
+      `<a href="mailto:${data.email}" class="__cf_email__ text-primary">[email&#160;protected]</a>`;
     document.getElementById("Language").textContent = data.lang_code;
     document.getElementById("Gender").textContent = data.gender;
     document.getElementById("Country").textContent = data.country;
@@ -42,7 +42,7 @@
   renderProfileDetails();
 </script>
 
-<div class="card-body p-4">
+<div class="card-body p-4 h-full">
   <div class="row">
     <div class="col-sm-3">
       <h6 class="mb-0">Full Name</h6>

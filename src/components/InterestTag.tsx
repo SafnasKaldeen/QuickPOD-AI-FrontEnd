@@ -15,14 +15,14 @@ const InterestItem: React.FC<Interest> = ({ interest, active , onClick }) => {
 
   return (
     <div
-      className={`border m-3 text-white border-black p-2 rounded-lg hover:border-primary cursor-pointer interest-item ${active ? 'bg-black text-white border-primary' : ''}`}
+      className={`border m-3 text-white border-black p-2 rounded-lg  cursor-pointer interest-item ${active ? 'bg-black text-white border-primary' : ''}`}
       onClick={onClick}
     >
       <div className="flex items-center space-x-2">
         <span className="icon">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className={`h-6 w-6 plus-icon ${isActive ? 'hidden' : ''}`}
+            className={`h-6 w-6 plus-icon ${active ? 'hidden' : ''}`}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -31,7 +31,7 @@ const InterestItem: React.FC<Interest> = ({ interest, active , onClick }) => {
           </svg>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className={`h-6 w-6 minus-icon ${isActive ? '' : 'hidden'}`}
+            className={`h-6 w-6 minus-icon ${active ? '' : 'hidden'}`}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"

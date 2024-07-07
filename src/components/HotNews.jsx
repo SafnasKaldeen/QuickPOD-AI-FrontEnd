@@ -40,7 +40,7 @@ class HotNews extends Component {
       })
       .then((data) => {
         this.setState({ playlists: data.hot_news, loading: false });
-        // Cookies.set("hot_news", JSON.stringify(data));
+        Cookies.set("hot_news", JSON.stringify(data));
       })
       .catch((error) => {
         this.setState({ loading: false });
@@ -118,7 +118,7 @@ class HotNews extends Component {
         console.log("Generated blogcasts:", data.id);
         console.log("Generated blogcasts:", generatedBlogcasts);
         this.setState({ isBeingGenerated: false });
-        // Cookies.set("id", data.id);
+        Cookies.set("id", data.id);
         // window.location.href = "/podcast";
       })
       .catch((error) => {
@@ -184,13 +184,14 @@ class HotNews extends Component {
             {generatedBlogcasts.length === 0 && (
               <p>Error generating blogcasts</p>
             )}
-            {generatedBlogcasts && (
+            {Object.keys(generatedBlogcasts).length === 0 && (
               <div className="flex flex-col items-center justify-center mt-6">
+                <p>{generatedBlogcasts.id}</p>
                 <button
-                  className="bg-primary text-black text-bold text-xs uppercase font-semibold px-2 py-2 rounded-lg"
+                  className="bg-primary text-black text-xs uppercase font-bold px-2 py-2 rounded-lg"
                   onClick={() => this.handleClicked(generatedBlogcasts)}
                 >
-                  Your Generated suggested Blogcasts
+                  Your Generated Blogcasts
                 </button>
               </div>
             )}
@@ -213,6 +214,7 @@ class HotNews extends Component {
                 </div>
               ))}
             </div>
+            <h2 className="text-2xl font-bold mt-10">Generated Blogcasts</h2>
           </React.Fragment>
         )}
       </div>

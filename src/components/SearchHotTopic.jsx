@@ -148,14 +148,16 @@ class SearchHotTopic extends Component {
         {content && (
           <div className="flex flex-col items-center justify-center mt-6">
             <button
-              className="bg-purple-700 text-white text-xs uppercase font-semibold px-2 py-2 rounded-lg"
+              className="bg-primary text-black text-xs uppercase font-bold px-2 py-2 rounded-lg"
               onClick={() => this.handleClicked(content)}
             >
               Your Generated user defined Blogcasts
             </button>
           </div>
         )}
-        {error && !loading && <p className="bg-red-500">Error: {error}</p>}
+        {error && !loading && (
+          <p className="m-6 text-red-500">Error: {error}</p>
+        )}
       </React.Fragment>
     );
   }
