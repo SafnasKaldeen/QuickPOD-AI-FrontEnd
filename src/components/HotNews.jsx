@@ -138,12 +138,12 @@ class HotNews extends Component {
     } = this.state;
 
     const selectedCountStyle = {
-      color: selected.length < 3 ? "red" : "white",
+      color: selected.length < 3 ? "#ef4444" : "white",
     };
 
     return (
       <div className="px-6 relative z-10 mt-4">
-        <h2 className="text-2xl">Select the Hot News to generate Blogcasts</h2>
+        <h2 className="text-2xl">Select News for a Blogcast</h2>
         {(isBeingGenerated || loading) && (
           <div className="flex justify-center items-center">
             <div className="p-4 rounded shadow w-60">
@@ -167,7 +167,7 @@ class HotNews extends Component {
             </p>
             <div
               className={`flex flex-wrap mt-6 gap-4 rounded-md p-2 items-center ${
-                selected.length > 0 ? "border border-secondary" : ""
+                selected.length > 0 ? "border border-primary" : ""
               }`}
             >
               {selected.map((playlist) => (
@@ -189,13 +189,13 @@ class HotNews extends Component {
                   className="btn btn-primary px-4 py-2 bg-primary text-black text-bold rounded"
                   onClick={() => this.handleClicked(generatedBlogcasts)}
                 >
-                  Your Generated Blogcasts
+                  View Blogcast
                 </button>
               </div>
             )}
             {!generatedBlogcasts && (
               <button
-                className={`flex flex-wrap mt-6 gap-4 rounded-md items-center p-2 text-white bg-green-500 hover:bg-green-700 ${
+                className={`flex flex-wrap mt-6 gap-4 rounded-md items-center p-2 text-black bg-primary hover:bg-primary/70 ${
                   selected.length === 0 ? "hidden" : ""
                 }`}
                 onClick={this.Generate}

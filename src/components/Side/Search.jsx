@@ -57,7 +57,7 @@ class Search extends Component {
         {content && (
           <a href={content.link} target="_blank" rel="noreferrer">
             <div className="flex flex-col gap-4 items-center justify-between mx-4">
-              <div className="w-80 my-2 border border-secondary rounded-md p-2 items-center">
+              <div className="w-80 my-2 border border-primary rounded-md p-2 items-center">
                 <div className="relative group mx-auto h-40 w-full flex-none shadow-lg">
                   <img
                     src={content.imageUrl}

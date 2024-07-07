@@ -111,7 +111,7 @@ const SongTable = () => {
         id="General"
         className="text-center text-2xl dark:text-white md:text-4xl m-8 text-white"
       >
-        Your Own Customized Playlist
+        Blogcast History
       </h1>
       <div className="mx-5">
         <div onClick={() => console.log("Playing everything one by one")}>
@@ -207,22 +207,16 @@ const SongTable = () => {
                 <td className="whitespace-nowrap px-4 py-2 flex gap-3 items-center">
                   <div className="h-10 w-10">
                     <img
-                      src={song.podcast.thumbnail_url
-                        .replace(/\\/g, "/")
-                        .replace(
-                          "E://UOM//My-CODE_RUSH//projects//Quick Pod//spotify-astro-transitions-main//spotify-astro-transitions-main//podcast-frontend//public//",
-                          ""
-                        )
-                        .replace(
-                          "E:/UOM/My-CODE_RUSH/projects/Quick Pod/spotify-astro-transitions-main/spotify-astro-transitions-main/podcast-backend/",
-                          ""
-                        )}
+                      src={song.podcast.thumbnail_url.replace(/.*\\public/, "")}
                       alt={song.podcast.transcript.title}
                       className="rounded object-cover h-full w-full shadow-[5px_0_30px_0px_rgba(0,0,0,0.3)]"
                     />
                   </div>
                   <div className="leading-none sm:leading-tight">
                     <p>{song.podcast.transcript.title}</p>
+                    <p>
+                      {/* {song.podcast.thumbnail_url.replace(/.*\\public/, "")} */}
+                    </p>
                   </div>
                 </td>
                 <td className="whitespace-nowrap px-4 py-2">

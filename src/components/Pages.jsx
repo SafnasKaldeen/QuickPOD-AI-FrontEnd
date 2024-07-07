@@ -79,16 +79,7 @@ const PodcastDetail = () => {
       <div
         className="relative transition-all duration-1000 bg-context h-1/2"
         style={{
-          backgroundImage: `url("/${POD?.blog.blog_img_url
-            .replace(/\\/g, "/")
-            .replace(
-              "E://UOM//My-CODE_RUSH//projects//Quick Pod//spotify-astro-transitions-main//spotify-astro-transitions-main//podcast-frontend//public//",
-              ""
-            )
-            .replace(
-              "E:/UOM/My-CODE_RUSH/projects/Quick Pod/spotify-astro-transitions-main/spotify-astro-transitions-main/podcast-backend/",
-              ""
-            )}")`,
+          backgroundImage: `url("${POD?.blog.blog_img_url.replace(/.*\\public/, "").replace(/\\/g, "/")}")`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -107,6 +98,7 @@ const PodcastDetail = () => {
                   >
                     {isPodcastView ? "BLOG" : "PODCAST"}
                   </button>
+                  {/* <p>{`url("${POD?.blog.blog_img_url.replace(/.*\\public/, "")}")`}</p> */}
                 </div>
               </div>
             </div>
@@ -129,15 +121,7 @@ const PodcastDetail = () => {
               <div className="flex flex-col gap-4">
                 <AudioPlayer
                   title={POD?.podcast.transcript.title}
-                  src={
-                    "/" +
-                    POD?.podcast.audio_url
-                      .replace(/\\/g, "/")
-                      .replace(
-                        "E://UOM//My-CODE_RUSH//projects//Quick Pod//spotify-astro-transitions-main//spotify-astro-transitions-main//podcast-frontend//public//",
-                        ""
-                      )
-                  }
+                  src={POD?.podcast.audio_url.replace(/.*\\public/, "")}
                 />
               </div>
               <Transcript Transcript={POD?.podcast.transcript.content} />
@@ -150,16 +134,7 @@ const PodcastDetail = () => {
           style={{ "--context-color": POD?.blog.title }}
         >
           <img
-            src={POD?.blog.blog_img_url
-              .replace(/\\/g, "/")
-              .replace(
-                "E://UOM//My-CODE_RUSH//projects//Quick Pod//spotify-astro-transitions-main//spotify-astro-transitions-main//podcast-frontend//public//",
-                ""
-              )
-              .replace(
-                "E:/UOM/My-CODE_RUSH/projects/Quick Pod/spotify-astro-transitions-main/spotify-astro-transitions-main/podcast-backend/",
-                ""
-              )}
+            src={POD?.blog.blog_img_url.replace(/.*\\public/, "")}
             alt={POD?.blog.title}
             className="el-to-fade transition-all duration-500 z-[-1] absolute inset-0 mix-blend-overlay opacity-20 scale-90 w-full h-full object-cover blur-md"
           />

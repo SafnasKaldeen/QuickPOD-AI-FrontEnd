@@ -161,18 +161,18 @@ class ChooseTags extends Component {
             <div className="content-center flex items-center">
               <input
                 type="text"
-                placeholder="Add more tags"
+                placeholder="Add more topics"
                 value={newTag}
                 onChange={this.handleChange}
                 className="p-2 m-3 bg-zinc-900 text-white rounded border border-gray-400 flex-1 mr-2"
-                aria-label="Add more tags"
+                aria-label="Add more topics"
               />
               <button
                 className="bg-transparent m-3  text-primary text-bold text-xs uppercase font-semibold px-5 py-3 rounded-lg border border-primary my-5 cursor-pointer"
                 onClick={this.handleAddTag}
-                aria-label="Add Tag"
+                aria-label="Add Interest"
               >
-                Add Tag
+                Add Topics
               </button>
             </div>
 
@@ -213,7 +213,7 @@ class ChooseTags extends Component {
                 />
               ))
             ) : (
-              <p className="mx-5">No Topics found. Add yours</p>
+              <p className="mx-5">No Topics found. Add yours.</p>
             )}
           </div>
           {blogCast && (

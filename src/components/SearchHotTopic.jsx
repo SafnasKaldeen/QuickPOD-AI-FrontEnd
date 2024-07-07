@@ -125,7 +125,7 @@ class SearchHotTopic extends Component {
             <div className="flex items-center pb-3">
               <input
                 type="text"
-                placeholder="Search the topic you want to generate blogcast..."
+                placeholder="Make me a Blogcast on..."
                 name="search"
                 className="flex-1 p-2 rounded-md bg-zinc-800 text-white ml-5"
                 value={search}
@@ -151,7 +151,7 @@ class SearchHotTopic extends Component {
               className="btn btn-primary px-4 py-2 bg-primary text-black text-bold rounded"
               onClick={() => this.handleClicked(content)}
             >
-              Your Generated user defined Blogcasts
+              View Blogcast
             </button>
           </div>
         )}
