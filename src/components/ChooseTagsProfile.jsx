@@ -155,7 +155,7 @@ class ChooseTags extends Component {
           <div className="relative items-center justify-center">
             <button
               onClick={this.handleFinalizeInterests}
-              className="bg-primary text-black text-xs uppercase font-bold px-5 py-3 rounded-lg border border-transparent my-5 cursor-pointer"
+              className="btn btn-primary px-4 py-2 bg-primary text-black  rounded   text-xs uppercase  border border-transparent my-5 cursor-pointer"
               aria-label="Update Interests"
             >
               Update Interests

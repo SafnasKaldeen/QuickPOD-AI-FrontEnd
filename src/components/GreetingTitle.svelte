@@ -10,7 +10,7 @@
   } else if (currentHour >= 12 && currentHour < 18) {
     greeting = `Good afternoon ${userName}!`;
   } else {
-    greeting = `Good night ${userName}!`;
+    greeting = `Good Evening ${userName}!`;
   }
 </script>
 

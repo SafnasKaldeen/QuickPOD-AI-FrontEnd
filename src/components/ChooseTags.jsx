@@ -63,7 +63,6 @@ class ChooseTags extends Component {
     const selectedInterests = tags
       .filter((tag) => !tag.selected)
       .map((tag) => tag.name);
-    // alert(selectedInterests);
 
     try {
       const response = await fetch("http://127.0.0.1:8000/profile/interests", {
@@ -79,21 +78,17 @@ class ChooseTags extends Component {
       if (response.ok) {
         console.log("Interests updated successfully");
         alert("Interests updated successfully!");
-        // Optionally, reset state or perform other actions upon successful update
       } else {
         throw new Error(`Failed to update interests: ${response.statusText}`);
       }
     } catch (error) {
       console.error("Error updating interests:", error);
-      // Optionally, handle error cases
     }
-    // Redirect page after updating interests
   };
 
   handleTagClick = (index) => {
     this.setState((prevState) => {
       const updatedTags = [...prevState.tags];
-      // alert(updatedTags[index].active);
       updatedTags[index].active = !updatedTags[index].active;
       updatedTags[index].selected = !updatedTags[index].selected;
       return { tags: updatedTags };
@@ -104,65 +99,58 @@ class ChooseTags extends Component {
     const { tags, newTag, isLoading, error } = this.state;
 
     return (
-      <div className="relative flex items-center justify-center">
+      <div className="flex flex-col items-center justify-center space-y-6">
         <div className="text-center mx-auto">
+          {error && (
+            <p className="text-red-500" role="alert">
+              Error: {error}
+            </p>
+          )}
+          {isLoading && <p className="text-gray-600">Loading...</p>}
+
           <div className="flex flex-wrap justify-center gap-y-4 gap-x-6">
-            <div className="flex flex-wrap justify-center items-center">
-              {error && (
-                <p className="text-red-500" role="alert">
-                  Error: {error}
-                </p>
-              )}
-              {isLoading && <p className="text-gray-600">Loading...</p>}
-            </div>
-
-            <div className="flex flex-wrap justify-center items-center">
-              {tags.length > 0 ? (
-                tags.map((tag, index) => (
-                  <React.Fragment key={index}>
-                    <Tags
-                      key={index}
-                      interest={tag.name}
-                      active={tag.active}
-                      onClick={() => this.handleTagClick(index)}
-                    />
-                  </React.Fragment>
-                ))
-              ) : (
-                <p>No interests found. Add yours</p>
-              )}
-            </div>
-
-            <div className="content-center flex items-center">
-              <input
-                type="text"
-                placeholder="Add more tags"
-                value={newTag}
-                onChange={this.handleChange}
-                className="p-2 bg-sky-900 text-white rounded border border-gray-400 flex-1 mr-2"
-                aria-label="Add more tags"
-              />
-              <button
-                className="p-2 text-white rounded bg-green-500"
-                onClick={this.handleAddTag}
-                aria-label="Add Tag"
-              >
-                Add Tag
-              </button>
-            </div>
-
-            <div className="relative items-center justify-center">
-              <a href="/Dashboard" className="text-blue-500 underline">
-                <button
-                  onClick={this.handleFinalizeInterests}
-                  className="bg-purple-700 text-white text-xs uppercase font-semibold px-5 py-3 rounded-lg border border-transparent my-5 cursor-pointer"
-                  aria-label="Update Interests"
-                >
-                  Update Interests
-                </button>
-              </a>
-            </div>
+            {tags.length > 0 ? (
+              tags.map((tag, index) => (
+                <Tags
+                  key={index}
+                  interest={tag.name}
+                  active={tag.active}
+                  onClick={() => this.handleTagClick(index)}
+                />
+              ))
+            ) : (
+              <p>No interests found. Add yours</p>
+            )}
           </div>
+        </div>
+
+        <div className="flex flex-col items-center">
+          <div className="flex flex-row items-center mb-4">
+            <input
+              type="text"
+              placeholder="Add more tags"
+              value={newTag}
+              onChange={this.handleChange}
+              className="p-2 bg-zinc-900 text-white rounded border border-gray-400 mr-2"
+              aria-label="Add more tags"
+            />
+            <button
+              className="p-2 rounded bg-transparent border border-primary text-primary hover:bg-primary hover:border-primary hover:text-black transition duration-300 ease-in-out"
+              onClick={this.handleAddTag}
+              aria-label="Add Tag"
+            >
+              Add Tag
+            </button>
+          </div>
+          <a href="/Dashboard" className="text-blue-500 underline">
+            <button
+              onClick={this.handleFinalizeInterests}
+              className="mt-4 px-4 py-2 bg-primary text-black rounded transition duration-300 ease-in-out"
+              aria-label="Update Interests"
+            >
+              Update Interests
+            </button>
+          </a>
         </div>
       </div>
     );

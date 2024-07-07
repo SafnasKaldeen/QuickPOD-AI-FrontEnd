@@ -148,7 +148,7 @@ class SearchHotTopic extends Component {
         {content && (
           <div className="flex flex-col items-center justify-center mt-6">
             <button
-              className="bg-primary text-black text-xs uppercase font-bold px-2 py-2 rounded-lg"
+              className="btn btn-primary px-4 py-2 bg-primary text-black text-bold rounded"
               onClick={() => this.handleClicked(content)}
             >
               Your Generated user defined Blogcasts

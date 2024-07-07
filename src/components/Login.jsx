@@ -153,7 +153,12 @@ const AuthForm = ({ FormType }) => {
             className="text-black"
           />
 
-          <button type="submit">Sign Up</button>
+          <button
+            type="submit"
+            style={{ backgroundColor: "#CCF241", color: "black" }}
+          >
+            Sign Up
+          </button>
         </form>
       </div>
 
@@ -175,7 +180,12 @@ const AuthForm = ({ FormType }) => {
             placeholder="Password"
             required
           />
-          <button type="submit">Sign In</button>
+          <button
+            style={{ backgroundColor: "#CCF241", color: "black" }}
+            type="submit"
+          >
+            Sign In
+          </button>
         </form>
       </div>
 
