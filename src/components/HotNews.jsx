@@ -10,7 +10,7 @@ class HotNews extends Component {
       loading: false,
       error: null,
       selected: [],
-      generatedBlogcasts: {}, // New state for storing fetched data
+      generatedBlogcasts: null,
       isBeingGenerated: false,
     };
   }
@@ -143,9 +143,7 @@ class HotNews extends Component {
 
     return (
       <div className="px-6 relative z-10 mt-4">
-        <h2 className="text-2xl font-bold">
-          Select the Hot News to generate Blogcasts
-        </h2>
+        <h2 className="text-2xl">Select the Hot News to generate Blogcasts</h2>
         {(isBeingGenerated || loading) && (
           <div className="flex justify-center items-center">
             <div className="p-4 rounded shadow">
@@ -181,12 +179,12 @@ class HotNews extends Component {
                 </div>
               ))}
             </div>
-            {generatedBlogcasts.length === 0 && (
+            {generatedBlogcasts && generatedBlogcasts.length === 0 && (
               <p>Error generating blogcasts</p>
             )}
-            {Object.keys(generatedBlogcasts).length === 0 && (
+            {generatedBlogcasts && (
               <div className="flex flex-col items-center justify-center mt-6">
-                <p>{generatedBlogcasts.id}</p>
+                {/* <p>{generatedBlogcasts.id}</p> */}
                 <button
                   className="btn btn-primary px-4 py-2 bg-primary text-black text-bold rounded"
                   onClick={() => this.handleClicked(generatedBlogcasts)}
@@ -214,7 +212,7 @@ class HotNews extends Component {
                 </div>
               ))}
             </div>
-            <h2 className="text-2xl font-bold mt-10">Generated Blogcasts</h2>
+            {/* <h2 className="text-2xl font-bold mt-10">Generated Blogcasts</h2> */}
           </React.Fragment>
         )}
       </div>

@@ -81,23 +81,26 @@ import ProfileUpload from "./ProfileUpload.jsx";
   </h1>
 
   <select
-    id="voiceSelect"
-    class="form-select px-4 py-2 mt-4 border border-gray-300 rounded text-white bg-zinc-900/30"
-  >
-    <option selected disabled value="0">Select Voice</option>
-    <option value="alloy">Alloy: Female</option>
-    <option value="echo">Echo: Male</option>
-    <option value="fable">Fable: Male (British)</option>
-    <option value="onyx">Onyx: Male</option>
-    <option value="nova">Nova: Female</option>
-    <option value="shimmer">Shimmer: Female</option>
-  </select>
-  <img
-    id="AI-img"
-    src="/images/Ai.gif"
-    alt="AI"
-    class="w-1/2 h-1/2 object-cover rounded-full mx-auto mt-4 cursor-pointer opacity-20"
-  />
+  id="voiceSelect"
+  class="form-select px-4 py-2 mt-4  bg-zinc-900 text-white rounded border border-gray-400"
+>
+  <option selected disabled value="0">Select Voice</option>
+  <option value="alloy">Alloy: Female</option>
+  <option value="echo">Echo: Male</option>
+  <option value="fable">Fable: Male (British)</option>
+  <option value="onyx">Onyx: Male</option>
+  <option value="nova">Nova: Female</option>
+  <option value="shimmer">Shimmer: Female</option>
+</select>
+
+<!-- Audio Element for Playing Selected Voice -->
+<audio id="voiceAudio" src=""></audio>
+<img
+src="/images/Ai.gif"
+alt="AI"
+class="w-1/2 h-1/2 object-cover rounded-full mx-auto mt-4 cursor-pointer opacity-20"
+id="Gif"
+/>
   <form class="flex items-center justify-center mt-4">
     <input
       id="botName"
@@ -117,3 +120,48 @@ import ProfileUpload from "./ProfileUpload.jsx";
     Upload Avatar
   </button>
 </div>
+
+<script>
+  document
+    .getElementById("voiceSelect")
+    .addEventListener("change", function () {
+      const selectedValue = this.value;
+      const audioElement = document.getElementById("voiceAudio");
+      const Gif = document.getElementById("Gif");
+      let audioSrc = "";
+
+      switch (selectedValue) {
+        case "alloy":
+          audioSrc = "/Audio/AI-Voices/alloy.mp3";
+          break;
+        case "echo":
+          audioSrc = "/Audio/AI-Voices/echo.mp3";
+          break;
+        case "fable":
+          audioSrc = "/Audio/AI-Voices/fable.mp3";
+          break;
+        case "onyx":
+          audioSrc = "/Audio/AI-Voices/onyx.mp3";
+          break;
+        case "nova":
+          audioSrc = "/Audio/AI-Voices/nova.mp3";
+          break;
+        case "shimmer":
+          audioSrc = "/Audio/AI-Voices/shimmer.mp3";
+          break;
+        default:
+          audioSrc = "";
+      }
+
+      if (audioSrc) {
+        audioElement.src = audioSrc;
+        Gif.classList.remove("opacity-20");
+        audioElement.play();
+
+        // Re-add the class once the audio is finished playing
+        audioElement.addEventListener("ended", function () {
+          Gif.classList.add("opacity-20");
+        });
+      }
+    });
+</script>

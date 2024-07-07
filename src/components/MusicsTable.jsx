@@ -109,7 +109,7 @@ const SongTable = () => {
     <React.Fragment>
       <h1
         id="General"
-        className="text-center text-2xl font-bold dark:text-yellow-400 md:text-4xl m-8 text-green-400"
+        className="text-center text-2xl dark:text-white md:text-4xl m-8 text-white"
       >
         Your Own Customized Playlist
       </h1>

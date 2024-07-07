@@ -1,6 +1,6 @@
 ---
 import GreetingTitle from "../../components/GreetingTitle.svelte";
-import PageHeader from "../../components/PageHeader.astro";
+import PageHeader from "../../components/PageHeader.jsx";
 import PlaylistItemCard from "../../components/PlaylistItemCard.jsx";
 import Layout from "../../layouts/Layout.astro";
 import SideMenu from "../../components/Side/SideMenu.astro";
@@ -33,9 +33,9 @@ import MusicsTable from "../../components/MusicsTable.jsx";
         <div
           id="playlist-container"
           class="relative transition-all duration-1000 bg-context border-b-4 border-black"
-          style="min-height:200px;--context-color:#134e4a;"
+          style="min-height:200px;--context-color:#0b0b0d;"
         >
-          <PageHeader />
+        <PageHeader client:load />
           <div
             class="relative z-10 flex flex-col lg:flex-row items-center justify-between lg:justify-between w-full"
           >

@@ -10,7 +10,7 @@ const PlayIcon = ({ size = "md" }) => {
         size === "md" ? "h-10 w-10" : "h-14 w-14"
       }`}
     >
-      <FaPlay className="text-white" />
+      <FaPlay className="text-black" />
     </span>
   );
 };
