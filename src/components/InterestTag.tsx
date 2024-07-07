@@ -15,7 +15,7 @@ const InterestItem: React.FC<Interest> = ({ interest, active , onClick }) => {
 
   return (
     <div
-      className={`border-2 m-3 text-sky-500 border-gray-300 p-2 rounded-lg hover:border-sky-500 cursor-pointer interest-item ${active ? 'bg-green-500 text-white' : ''}`}
+      className={`border m-3 text-white border-black p-2 rounded-lg hover:border-primary cursor-pointer interest-item ${active ? 'bg-black text-white border-primary' : ''}`}
       onClick={onClick}
     >
       <div className="flex items-center space-x-2">

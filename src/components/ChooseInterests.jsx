@@ -164,11 +164,11 @@ class ChooseTags extends Component {
                 placeholder="Add more tags"
                 value={newTag}
                 onChange={this.handleChange}
-                className="p-2 m-3 bg-sky-900 text-white rounded border border-gray-400 flex-1 mr-2"
+                className="p-2 m-3 bg-zinc-900 text-white rounded border border-gray-400 flex-1 mr-2"
                 aria-label="Add more tags"
               />
               <button
-                className="p-2 m-3 text-white rounded bg-green-500"
+                className="bg-transparent m-3  text-primary text-bold text-xs uppercase font-semibold px-5 py-3 rounded-lg border border-primary my-5 cursor-pointer"
                 onClick={this.handleAddTag}
                 aria-label="Add Tag"
               >
@@ -176,15 +176,24 @@ class ChooseTags extends Component {
               </button>
             </div>
 
-            <div className="relative items-center justify-center">
+            {/* <div className="relative items-center justify-center">
               <button
                 onClick={this.handleFinalizeInterests}
-                className="bg-purple-700 m-3  text-white text-xs uppercase font-semibold px-5 py-3 rounded-lg border border-transparent my-5 cursor-pointer"
+                className="bg-primary m-3  text-black text-bold text-xs uppercase font-semibold px-5 py-3 rounded-lg border border-transparent my-5 cursor-pointer"
                 aria-label="Update Interests"
               >
                 {isBlogcastLoading ? "Updating..." : "Update Topics"}
               </button>
-            </div>
+            </div> */}
+          </div>
+          <div className="relative items-center justify-center">
+            <button
+              onClick={this.handleFinalizeInterests}
+              className="bg-primary m-3 text-bold text-black text-bold text-xs uppercase font-semibold px-5 py-3 rounded-lg border border-transparent my-5 cursor-pointer"
+              aria-label="Update Interests"
+            >
+              {isBlogcastLoading ? "Updating..." : "Update Topics"}
+            </button>
           </div>
           {isBlogcastLoading && (
             <div className="absolute inset-0 flex items-center justify-center bg-zinc-900">

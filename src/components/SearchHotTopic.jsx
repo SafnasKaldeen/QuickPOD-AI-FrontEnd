@@ -151,7 +151,7 @@ class SearchHotTopic extends Component {
               className="bg-purple-700 text-white text-xs uppercase font-semibold px-2 py-2 rounded-lg"
               onClick={() => this.handleClicked(content)}
             >
-              Your Generated Blogcasts
+              Your Generated user defined Blogcasts
             </button>
           </div>
         )}

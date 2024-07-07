@@ -102,7 +102,7 @@ class HotNews extends Component {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        // Authorization: "Bearer " + Cookies.get("access_token"),
+        Authorization: "Bearer " + Cookies.get("access_token"),
       },
       body: JSON.stringify(requestBody),
     })
@@ -187,10 +187,10 @@ class HotNews extends Component {
             {generatedBlogcasts && (
               <div className="flex flex-col items-center justify-center mt-6">
                 <button
-                  className="bg-purple-700 text-white text-xs uppercase font-semibold px-2 py-2 rounded-lg"
+                  className="bg-primary text-black text-bold text-xs uppercase font-semibold px-2 py-2 rounded-lg"
                   onClick={() => this.handleClicked(generatedBlogcasts)}
                 >
-                  Your Generated Blogcasts
+                  Your Generated suggested Blogcasts
                 </button>
               </div>
             )}
@@ -213,7 +213,6 @@ class HotNews extends Component {
                 </div>
               ))}
             </div>
-            <h2 className="text-2xl font-bold mt-10">Generated Blogcasts</h2>
           </React.Fragment>
         )}
       </div>
