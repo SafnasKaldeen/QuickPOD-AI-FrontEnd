@@ -29,8 +29,7 @@ const SongTable = () => {
         }
         const result = await response.json();
         console.log("Fetched data:", result.blogcasts);
-        setData(result.blogcasts || []); // Assuming data.hot_news is the correct structure
-        console.log("Fetched data:", result.blogcasts.length);
+        setData(result.blogcasts || []); // Assuming data.blogcasts is the correct structure
         setLoading(false);
       } catch (error) {
         setError(error);
@@ -98,8 +97,8 @@ const SongTable = () => {
   if (loading)
     return (
       <div className="flex justify-center items-center">
-        <div className="p-4  rounded shadow w-60">
-          <img src="/images/pokemon.gif" alt="Loading..." />
+        <div className="p-4 rounded shadow w-60">
+          <img src="/images/loading.gif" alt="Loading..." />
         </div>
       </div>
     );
@@ -107,10 +106,7 @@ const SongTable = () => {
 
   return (
     <React.Fragment>
-      <h1
-        id="General"
-        className="text-center text-2xl dark:text-white md:text-4xl m-8 text-white"
-      >
+      <h1 className="text-center text-2xl dark:text-white md:text-4xl m-8 text-white">
         Blogcast History
       </h1>
       <div className="mx-5">
@@ -127,12 +123,12 @@ const SongTable = () => {
               onSubmit={(e) => e.preventDefault()}
             >
               <label htmlFor="search" className="sr-only">
-                Search by key-words
+                Search by keywords
               </label>
               <input
                 type="text"
                 id="search"
-                placeholder="Search by key-words"
+                placeholder="Search by keywords"
                 className="p-2 rounded-md bg-zinc-800 text-white"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
@@ -214,9 +210,6 @@ const SongTable = () => {
                   </div>
                   <div className="leading-none sm:leading-tight">
                     <p>{song.podcast.transcript.title}</p>
-                    <p>
-                      {/* {song.podcast.thumbnail_url.replace(/.*\\public/, "")} */}
-                    </p>
                   </div>
                 </td>
                 <td className="whitespace-nowrap px-4 py-2">
@@ -227,13 +220,39 @@ const SongTable = () => {
                     <PlayButton />
                   </a>
                 </td>
-                <td className="whitespace-nowrap px-4 py-2 text-right">
-                  {song.keywords[0]}
+                <td
+                  style={{
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    maxWidth: "100px",
+                    // textAlign: "center",
+                  }}
+                >
+                  {song.keywords.map((keyword, index) => (
+                    <span
+                      key={index}
+                      style={{
+                        display: "inline-block",
+                        // backgroundColor: "#E2E8F0",
+                        color: "white",
+                        fontSize: "16px",
+                        // padding: "1px 8px",
+                        borderRadius: "999px",
+                        // marginRight: "2px",
+                        whiteSpace: "nowrap",
+                        textOverflow: "ellipsis",
+                        maxWidth: "100px",
+                      }}
+                    >
+                      {index > 0 && ","}
+                      {keyword}
+                    </span>
+                  ))}
                 </td>
               </tr>
             ))}
           </tbody>
-          <div className="flex flex-wrap mt-6 gap-4"></div>
         </table>
       </div>
     </React.Fragment>

@@ -8,6 +8,7 @@ import SearchHotTopic from "../../components/SearchHotTopic.jsx";
 import HotNews from "../../components/HotNews.jsx";
 import ChooseInterests from "../../components/ChooseInterests.jsx";
 import MusicsTable from "../../components/MusicsTable.jsx";
+import Layout from "../../layouts/Layout.astro";
 ---
 
 <script>
@@ -23,6 +24,7 @@ import MusicsTable from "../../components/MusicsTable.jsx";
     // alert(token);
   }
 </script>
+<Layout title="history">
 <div class="relative h-screen gap-2 flex items-stretch bg-black">
   <div class="w-[350px] flex-col hidden lg:flex overflow-y-auto">
     <SideMenu />

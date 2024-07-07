@@ -3,8 +3,9 @@ import Layout from "../../../layouts/Layout.astro";
 import Container from "../../../componentLandingPage/Container.astro";
 import RegistrationAvatarSelection from "../../../components/RegistrationAvatarSelection.astro";
 import ChooseTags from "../../../components/ChooseTags.jsx";
+import Nav from "./Nav.astro";
 ---
-
+<Nav />
 <Layout title="Add Avatar">
   <body class="dark">
     <div class="relative gap-2 flex items-stretch h-full">
@@ -19,11 +20,12 @@ import ChooseTags from "../../../components/ChooseTags.jsx";
           <Container class="flex-col align-middle justify-center">
             <div class="relative flex items-center justify-center">
               <div class="text-center mx-auto">
-                <div class="flex flex-wrap justify-center gap-y-4 gap-x-6">
+                <div class="flex flex-wrap justify-center gap-y-4 gap-x-6" id="Add Avatar">
                   <RegistrationAvatarSelection />
                 </div>
                 <div
-                  class="flex flex-wrap justify-center gap-y-4 gap-x-6 mt-20"
+                  class="flex flex-wrap justify-center gap-y-4 gap-x-6"
+                  id="Interests"
                 >
                   <ChooseTags client:load />
                 </div>
