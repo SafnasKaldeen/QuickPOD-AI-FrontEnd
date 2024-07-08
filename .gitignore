@@ -22,4 +22,9 @@ pnpm-debug.log*
 
 .vscode
 public/audio_files/podcast*
-public/image_files
+public/image_files/*
+
+# Sample
+!public/audio_files/podcast_with_bgm_20240707010920.mp3
+!public/image_files/blog_image_20240705012953.png
+!public/image_files/thumbnail_20240705013226.png
