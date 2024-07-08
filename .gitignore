@@ -23,3 +23,7 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+.vscode
+public/audio_files/podcast*
+public/image_files
